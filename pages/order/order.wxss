@@ -1,0 +1,171 @@
+.nav{
+    display:flex;
+    font-size: 30rpx;
+    height:50rpx;
+}
+
+.item{
+    flex:1;
+    text-align:center;
+}
+
+
+
+.order-item {
+    border-top: 20rpx solid #f4f4f4;
+}
+
+
+.order-t1 {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size:26rpx;
+    padding: 0 40rpx 0 40rpx;
+    border-bottom: 2rpx solid  #f4f4f4;
+}
+
+.order-t1 .text1{
+    font-weight: bold;
+    float: right;
+    font-size:28rpx;
+    color:#fd8238;
+}
+
+.order-t2 {
+    line-height: 50rpx;
+    padding: 20rpx 40rpx;
+}
+
+.order-t2 .text2 {
+    color: #ccc;
+    font-size:26rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #f4f4f4;
+}
+
+.order-t3 {
+    display: flex;
+    font-size:26rpx;
+    justify-content: space-between;
+    padding: 20rpx 40rpx;
+    border-bottom: 2rpx solid #f4f4f4;
+    padding-top: 0;
+}
+
+.text3{
+    font-size:26rpx;
+    color:#fd8238;
+}
+
+
+
+.order-t3 .right {
+    display: flex;
+    align-items: center;
+}
+
+
+.order-t3 .btn{
+    text-align: center;
+    width: 140rpx;
+    border: 1px solid #FD8238;
+    border-radius: 20rpx;
+    line-height: 35rpx;
+    margin-left: 20rpx;
+    padding: 10rpx 0;
+    height: 35rpx;
+    font-size:26rpx;
+}
+
+
+.order-t3 .bt1 {
+    color:#999;
+}
+
+
+
+.order-t3 .bt2 {
+    background-color: #FD8238;
+    color: #fff;
+}
+
+
+.more {
+    padding: 20rpx 0;
+    background: #f4f4f4;
+}
+
+.noData {
+    padding-top: 20rpx;
+    line-height: 1.6em;
+    text-align: center;
+    font-size:22rpx;
+    color: #ccc;
+    font-size:22rpx;
+    background-color: #f4f4f4;
+}
+
+
+.noOrder {
+    margin: 300rpx 0 0 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noOrder image {
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.noOrder .null-icon {
+    font-size: 200rpx;
+}
+
+.not-login {
+    padding-top: 200rpx;
+    padding-bottom: 50rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.not-login-tip {
+    text-align: center;
+    font-size:26rpx;
+    color:#555;
+}
+
+.unlogin-btn {
+    padding: 20rpx 0;
+    margin: 0 40rpx;
+    background: #FD8238;
+    text-align: center;
+    color: #fff;
+    border-radius: 10rpx;
+    margin-top: 150rpx;
+    font-size:32rpx;
+}
+
+.btnHover {
+    background: #ffb98e;
+}
+
+.icon-unlogin {
+    font-size: 200rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

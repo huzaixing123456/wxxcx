@@ -1,0 +1,61 @@
+<view class="wrap3">
+  户型
+  <view class="items">
+        <view bindtap="activeTogg" class="item {{item.active==true?'active':''}} font26" data-active="{{item.active}}" data-id="{{index}}" data-name="room_type" data-parm="{{item.parm}}" wx:for="{{activeList.room_type}}">{{item.title}}</view>
+    </view>
+</view>
+
+<view class="wrap3 count-wrap">
+    <view class="count-item">
+        人数
+        <view class="items">
+            <view class="minus"> - </view>
+            <view>不限</view>
+            <view class="add"> + </view>
+        </view>
+    </view>
+    <view class="count-item">
+        床铺数
+        <view class="items">
+            <view class="minus"> - </view>
+            <view>不限</view>
+            <view class="add"> + </view>
+        </view>
+    </view>
+</view>
+
+<view class="wrap3">
+房型
+<view class="items">
+    <view bindtap="activeTogg" class="item {{item.active==true?'active':''}} font26" data-active="{{item.active}}" data-id="{{index}}" data-name="house_type" data-parm="{{item.parm}}" wx:for="{{activeList.house_type}}">{{item.title}}</view>
+</view>
+</view>
+
+
+<view class="wrap4">
+  配套 <text bindtap="arrowChange2" class="arrow daoke-icon icon-down-trangle-copy-copy" style="{{isArrow_2}}"></text>
+    <view class="items" style="{{isView_2}}">
+        <view bindtap="activeTogg" class="item" data-active="{{item.active}}" data-id="{{item.id}}" data-name="service" data-parm="{{item.parm}}" wx:for="{{activeList.service}}">
+            <view class="t1 {{item.active==true?'active':''}}">
+                <text class="t2 daoke-icon {{item.icon}}"></text>
+            </view>
+            <text class="{{item.active==true?'active':''}} font26">{{item.title}}</text>
+        </view>
+    </view>
+</view>
+
+
+<view class="wrap5">
+    <view bindtap="clearAll" class="t1 {{isActive?'active':''}}">清空</view>
+    <view bindtap="confirm" class="t2">
+        <view hoverClass="btnHover" style="{{result=='0套'?'background:rgb(218,218,218)':''}}" wx:if="{{isQuery}}">
+            <text>确认查看({{result}})</text>
+        </view>
+        <view class="loading" wx:else>
+            <view class="query-loading">
+                <zan-loading color="black" type="circle"></zan-loading>
+            </view>
+            <text>查询中</text>
+        </view>
+    </view>
+</view>

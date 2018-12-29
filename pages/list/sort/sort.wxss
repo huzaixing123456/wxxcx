@@ -1,0 +1,5 @@
+.sort{
+  font-size:30rpx;
+  line-height:2.5;
+  padding-left:20rpx;
+}

@@ -1,0 +1,66 @@
+<view class="tips" wx:if="{{order.payStatus==0}}">
+    <view class="text">
+        距离订单关闭还剩
+        <view><text class="daoke-icon icon-naozhong"></text></view>
+        <text>{{clock}}</text>
+    </view>
+    <view class="btn {{isDisabled?'topay-active':''}}" hoverClass="btnHover">去付款</view>
+</view>
+
+<view class="kongbai" hidden="{{order.payStatus!=0}}"></view>
+
+<view class="order-item1">
+    <text class="t1">订单号： {{order.orderNumber}}</text>
+    <text class="t2" style="color: {{order.orderStatusLabel!='已取消'?'rgb(255,102,102)':''}}">{{order.orderStatusLabel}}</text>
+    <text class="t3">状态： </text>
+</view>
+
+
+<view class="order-item2">
+    <view class="font32">{{order.unitName}} {{order.bookingCount}}套</view>
+    <view class="t4">
+        <text>入住：{{order.checkInDate}}</text>
+        <text>退房：{{order.checkOutDate}}</text>
+    </view>
+    <view bindtap="togglePopup" class="t5" wx:if="{{order.defund}}">{{order.outTime}} 后取消或变更订单将产生违约金<text class="alert-icon daoke-icon icon-bofang"></text>
+    </view>
+    <view class="t6">总房费： ￥{{order.total_price}}<text bindtap="navigatorTohouseCost">房费明细</text>
+    </view>
+</view>
+
+<view class="order-item3">
+  <view class="t7">全额房费：<text>￥{{order.total_price}}</text></view>
+  <view class="t8" wx:if="{{order.is_deposit==1}}">住房押金：<text>￥{{order.depositMoney}}</text></view>
+  <view class="t9">待付金额：<text>￥{{order.total_price}}</text></view>
+</view>
+
+<view class="order-item4">
+  <view>房屋信息</view>
+  <view class="t10">
+        <view>{{order.unitName}}</view>
+        <text class="arrow-icon daoke-icon icon-zhixiang"></text>
+    </view>
+    <view bindtap="openLocation" class="t11">
+        <view>地址：{{order.unitAddress}}</view>
+        <text class="arrow-icon daoke-icon icon-zhixiang"></text>
+    </view>
+</view>
+
+
+<view class="order-item5">
+  入住人信息
+  <view class="color0">姓名：{{order.bookerName}}</view>
+  <view class="t12">手机：{{order.phone}}</view>
+</view>
+
+<view class="order-item6">
+    <text class="prompt-icon daoke-icon icon-shoucang color"></text>温馨提示:
+    <view >需{{order.accomTime}}办理入住，早到可能需要等待。</view>
+    <view >需{{order.outTime}}之前办理退房，如需延迟退房请与商户协商。</view>
+    <view >未到店或未入住时，请勿轻易线下转账方式支付押金或其他费用，以免上当受骗！</view>
+</view>
+
+<view class="btn-wrap font26">
+    <view bindtap="deleteOrder" class="btn bt1">删除</view>
+    <view bindtap="navigatorTohouseDetail" class="btn bt2">再次预定</view>
+</view>

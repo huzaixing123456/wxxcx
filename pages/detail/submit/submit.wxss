@@ -1,0 +1,159 @@
+.img {
+    height: 180rpx;
+    text-align: center;
+    line-height: 180rpx;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    font-size:26rpx;
+}
+
+.wrap1 {
+    padding: 60rpx 30rpx 30rpx 30rpx;
+    line-height: 40rpx;
+    border-bottom: 20rpx solid #f7f9fb;
+}
+
+.wrap1 .t1{
+    font-size:32rpx;
+    color:#999;
+}
+
+.wrap1 .t2 {
+    margin: 0 30rpx;
+}
+
+.wrap2 {
+    font-size:26rpx;
+    border-bottom: 20rpx solid #f7f9fb;
+}
+
+.wrap2 .t3 {
+    padding: 20rpx 30rpx;
+    display: flex;
+    line-height: 70rpx;
+    justify-content: space-between;
+}
+
+.wrap2 .t4 {
+    padding: 20rpx 30rpx;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2rpx solid #f4f4f4;
+}
+
+.wrap2 .t5 {
+    padding: 20rpx 30rpx;
+    display: flex;
+    border-top: 2rpx solid f4f4f4;
+}
+
+.wrap2 .t5 input {
+    width: 100%;
+}
+
+.wrap2 .t5 .width3 {
+    width: 33%;
+    line-height: 50rpx;
+}
+
+.wrap2 .t6 {
+    display: flex;
+}
+
+.wrap2 .t6 .icon {
+    margin: 20rpx 0 0 10rpx;
+    width: 0;
+    height: 0;
+    border-width: 10rpx;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+.wrap2 .t7{
+    padding: 20rpx 30rpx;
+    display: flex;
+}
+
+.wrap3 {
+    padding: 20rpx 30rpx;
+    border-bottom: 20rpx solid #f7f9fb;
+    display: flex;
+    color:#999;
+    font-size:26rpx;
+}
+
+.wrap3 .t1 {
+    margin: 0 10rpx 0 20rpx;
+}
+
+.wrap3 .t2 {
+    color:#fd8238;
+    text-decoration: underline;
+}
+
+.wrap4 {
+    padding: 10rpx 30rpx;
+    line-height: 70rpx;
+    font-size: 30rpx;
+}
+
+.wrap4 .t2 {
+    border-top: 2rpx solid #f4f4f4;
+}
+
+.wrap4 .t1 {
+    float: right;
+    font-size:32rpx;
+    color:#fd8238;
+}
+
+.wrap5 {
+    background-color: #f7f9fb;
+    padding: 30rpx 30rpx 120rpx 30rpx;
+}
+
+.item {
+    margin-bottom: 20rpx;
+    display: flex;
+    font-size:22rpx;
+}
+
+.wrap5 image {
+    width: 15rpx;
+    height: 15rpx;
+    margin-right: 30rpx;
+}
+
+.wrap6 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 120rpx;
+    display: flex;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.wrap6 .t1 {
+    width: 30%;
+    padding: 20rpx 30rpx;
+}
+
+.wrap6 .t2{
+    width: 70%;
+    text-align: center;
+    line-height: 120rpx;
+    background-color: rgb(253,130,56);
+    color: #fff;
+    font-size:32rpx;
+}
+
+.wrap6 .t2.disabled {
+    background: rgb(255,185,142);
+}
+
+.btnHover {
+    background: rgb(255,185,142);
+}

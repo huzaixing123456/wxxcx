@@ -1,0 +1,37 @@
+<view class="nav">
+    <view bindtap="changeNav" data-navId = '0' class="{{navId==0?'active':''}}">一键授权登录</view>
+    <view bindtap="changeNav" data-navId = '1' class="{{navId==1?'active':''}}">验证码登录</view>
+</view>
+<view class="accout" wx:if="{{navId==0}}">
+    <view class="accout-wrap">
+        <view  class="item" bindtap="wxLogin">
+            <view class="icon">
+                <text class="text1 daoke-icon icon-weixindenglu "></text>
+            </view>
+            <text class="text2">授权微信登录</text>
+        </view>
+        <button class="item"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            <view class="icon">
+                <text class="text daoke-icon icon-shoujidenglu1"></text>
+            </view>
+            <text class="text2">授权手机号登录</text>
+        </button>
+    </view>
+    <view class="tip">*未注册的手机号将自动创建为稻客民宿用户*</view>
+</view>
+
+<view class="code" wx:else>
+    <view class="item">
+        <input focus bindinput="getPhone" maxlength="11" placeholder="请输入手机号" placeholderClass="font26" type="number"></input>
+    </view>
+    <view class="item">
+        <input bindinput="getImageCode" placeholder="请输入图形验证码" placeholderClass="font26"></input>
+        <image bindtap="getImg" src="{{imgUrl}}&v={{sjn}}"></image>
+    </view>
+    <view class="item">
+        <input bindinput="setCode" maxlength="6" placeholder="请输入验证码" placeholderClass="font26" type="number"></input>
+        <view class="message-code" bindtap="getCode">获取验证码</view>
+    </view>
+    <view bindtap="login" class="btn" hoverClass="{{isFinished?'btn-click':''}}" style="color: {{isFinished?'#fff':''}}">登录</view>
+    <view class="tip">*未注册的手机号将自动创建为稻客民宿用户*</view>
+</view>

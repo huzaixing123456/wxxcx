@@ -1,0 +1,31 @@
+<view class="header">
+    <view class="t1">
+        <open-data type="userAvatarUrl" wx:if="{{isLogin}}"></open-data>
+        <view class="unLogin" wx:else>
+            <text class="tx-icon daoke-icon icon-denglu"></text>
+        </view>
+    </view>
+    <view>
+        <view bindtap="toLogin" class="login" wx:if="{{!isLogin}}">登录/注册</view>
+        <view class="login" wx:else>
+            <open-data class="username" type="userNickName"></open-data>
+        </view>
+    </view>
+</view>
+
+
+<view class="content">
+    <view class="item" hoverClass="colorf2">
+        <text class="item-icon daoke-icon icon-dd"></text>
+        <text class="title">我的订单</text>
+        <text class="arrow daoke-icon icon-zhixiang"></text>
+    </view>
+    <view class="item" hoverClass="colorf2">
+        <text class="item-icon daoke-icon icon-icon-test"></text>
+        <text class="title">联系客服</text>
+        <text class="arrow daoke-icon icon-zhixiang"></text>
+    </view>
+
+    <view bindtap="exit" class="logout" hoverClass="colorf2" wx:if="{{isLogin}}">退出登录</view>
+</view>
+

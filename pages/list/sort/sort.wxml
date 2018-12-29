@@ -1,0 +1,5 @@
+<view class='sort'>
+  <view wx:for="{{items}}">
+    <text>{{item.name}}</text>
+  </view>
+</view>

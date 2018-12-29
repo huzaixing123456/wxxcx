@@ -1,0 +1,49 @@
+<block wx:if="{{isLogin}}">
+    <view class="nav">
+      <view wx:for="{{list}}" class='item'>
+        {{item.title}}
+      </view>
+    </view>
+    <view hidden="{{orderList.length==0}}">
+        <view class="order-item" data-id="{{item.orderId}}" wx:for="{{orderList}}" bindtap="navigatorToOrderDetail">
+            <view class="order-t1">
+                <text>订单号：{{item.orderNumber}}</text>
+                <text class="text1">{{item.orderStatusLabel}}</text>
+            </view>
+            <view class="order-t2">
+                <view class="font26">{{item.unitName}}</view>
+                <view class="text2">
+                    <text>入住：{{item.checkInDate}}</text>
+                    <text>退房：{{item.checkOutDate}}</text>
+                </view>
+            </view>
+            <view class="order-t3">
+                <view class="left">
+                    <view>总房费：<text class="text3">￥{{item.totalUnitAmount}}</text></view>
+                    <view>订金：<text class="text3">￥{{item.preAmount}}</text></view>
+                </view>
+                <view class="right">
+                    <view catchtap="{{item.payStatus==0?'contactOwner':'cancleOrder'}}" class="btn bt1" data-id="{{item.orderId}}" data-pho="{{item.masterPhone}}" hoverClass="colorf2" wx:if="{{item.orderStatus!=9}}">{{item.payStatus==0?'联系房东':'取消'}}</view>
+                    <view catchtap="{{item.payStatus==0?'navigatorToPay':'contactOwner'}}" class="btn bt2" data-pho="{{item.masterPhone}}" data-value="{{item.orderId}}" hoverClass="btn-click" wx:if="{{item.orderStatus!=9}}">{{item.payStatus==0?'付款':'联系房东'}}</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="more" hidden="{{isHideLoadMore}}">
+
+        </view>
+        <view class="noData" wx:if="{{orderList.length==total}}">这里是最后一条啦~</view>
+    </view>
+    <view class="noOrder" hidden="{{orderList.length!=0}}">
+        <text class="null-icon daoke-icon icon-meiyoujieguo color"></text>
+        <text class="font26">您目前尚无此类订单~</text>
+    </view>
+</block>
+<block wx:else>
+    <view class="not-login">
+        <text class="icon-unlogin daoke-icon icon-meiyoudingdan"></text>
+    </view>
+    <view class="not-login-tip">啊哦，您还没有登录哦！</view>
+    <view bindtap="toLogin" class="not-login-btn" hoverClass="btnHover">立即登录</view>
+</block>
+

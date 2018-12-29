@@ -1,0 +1,315 @@
+<view class="wrap">
+    <view class="swiper">
+        <swiper circular bindchange="bindchange" class="item">
+            <swiper-item wx:for="{{detailList.ImageList}}">
+                <image bindtap="navigatorToPhoto" data-value="{{detailList.ImageList}}" src="{{item.path}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="count">
+            <text class="daoke-icon icon-suolvetu"></text>
+      {{current+1}}/{{detailList.ImageList.length}}
+        </view>
+        <view class="share">
+            <button openType="share">
+                <text class="share-icon daoke-icon icon-shangchuan"></text>
+            </button>
+        </view>
+    </view>
+
+    <view class="detail">
+        <view class="item1">
+            <text class="font36">{{detailList.introduction.minsu_name}}</text>
+            <view bindtap="togglePopup" class="info-title-service" data-isShow="isShow2" hidden="{{level==''&&detailList.is_spacil.length==0}}">
+                <text class="t1" hidden="{{level==''}}">
+{{level}}</text>
+                <text class="t2" hidden="{{level==''}}">·</text>
+                <block wx:for="{{detailList.is_spacil}}">
+                    <text class="t3" style="color: {{item=='优选'?'#ff6b08':''}}">{{item}}</text>
+                    <text class="font22" wx:if="{{index+1!=detailList.is_spacil.length}}">·</text>
+                    <view wx:else></view>
+                </block>
+            </view>
+        </view>
+
+        <view class="item2">
+            <view class="t1">
+                <text class="room-icon daoke-icon icon-fangjian"></text>
+                <text class="font26">
+{{detailList.bedroomCount}}室{{detailList.livingroomCount}}厅 {{detailList.bathroomCount}}卫{{detailList.kitchenCount}}厨
+</text>
+                <text class="t3">{{detailList.addExplanation}} {{detailList.roomArea}}平方</text>
+            </view>
+            <view class="t2">
+                <text class="room-icon daoke-icon icon-chuang"></text>
+                <text class="font26">
+宜住{{detailList.recommendedGuests}}人 {{detailList.bedTypeList.length}}床
+</text>
+                <text class="t4" wx:for="{{detailList.bedTypeList}}">{{item}}
+</text>
+            </view>
+        </view>
+
+
+        <view class="item3">
+            <view class="t1">
+                <image src="{{detailList.logoPicURL}}"></image>
+                <view>
+                    <text class="font32">{{detailList.unitAddress}}</text>
+                    <view class="t2">
+                        <block wx:for="{{detailList.merchant}}" wx:for-index="idx" wx:for-item="info_item">
+              {{info_item}}<text hidden="{{idx+1==detailList.merchant.length}}"> · </text>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+        <view class="item4">
+            <view class="t1">房屋位置</view>
+            <view bindtap="navigatorToLocation" class="t2" data-lat="{{detailList.bdLat}}" data-lng="{{detailList.bdLng}}">
+                <map id="map"
+                     longitude="113.324520"
+                     latitude="23.099994"
+                     scale="18"
+                     enableZoom="false"
+                     enableScroll="false"
+                     enable-rotate
+                     bindtap="goLocation"
+                     style="width: 100%; height: 300px;"></map>
+            </view>
+            <view class="t3">
+                <view>
+                    <text class="map-icon daoke-icon icon-xinxinicon"></text>
+                </view>
+                <view class="t4 {{isView1?'zan-ellipsis--l3':''}}">
+                    <text>{{detailList.unitAddress}}</text>
+                    <text class="color6">
+{{detailList.introduction.room_add}}</text>
+                </view>
+            </view>
+        </view>
+
+
+        <!--<view class="info-map-path-show font26" hidden="{{!detailList.introduction.room_add}}">-->
+            <!--<text bindtap="viewChange" data-value="isView1">{{isView1==''?'收起':'展开全部'}}</text>-->
+            <!--<view bindtap="viewChange" class="info-map-path-show-img" data-value="isView1">-->
+                <!--<text class="zhankai-icon daoke-icon {{isView2==''?'icon-wangshang':'icon-down-trangle-copy-copy'}}"></text>-->
+            <!--</view>-->
+        <!--</view>-->
+
+
+<view class="item5">
+    房屋详情
+    <view class="item">
+        <view class="t1" wx:for="{{detailList.room_detail[0].tags}}">{{item}}</view>
+    </view>
+    <view class="t2 {{isView2?'zan-ellipsis--l3':''}}">
+        房屋描述
+        <view>
+            <text class="t3">{{detailList.introduction.room_special}}</text>
+        </view>
+    </view>
+
+    <view class="t4 {{isView2?'zan-ellipsis--l3':''}}">
+        周边介绍
+        <view>
+            <text class="t3">{{detailList.introduction.room_intduce}}</text>
+        </view>
+    </view>
+</view>
+
+
+
+        <view class="item6">
+            <text bindtap="viewChange" data-value="isView2">{{isView2==''?'收起':'展开全部'}}</text>
+            <view bindtap="viewChange" data-value="isView2">
+                <text class="zhankai-icon daoke-icon {{isView2==''?'icon-wangshang':'icon-down-trangle-copy-copy'}}"></text>
+            </view>
+        </view>
+
+    <view class="item7">
+          设施服务
+          <!--<view class="t1" hidden="{{isView4}}" wx:for="{{detailList.facilities}}">-->
+              <!--{{item.title}}-->
+              <!--<view class="items color5">-->
+                  <!--<view wx:for="{{item.child}}" wx:for-item="item2">-->
+                    <!--<text class="t2 daoke-icon icon-wifi color" ></text>-->
+                    <!--&lt;!&ndash;<text>{{item2.title}}</text>&ndash;&gt;-->
+                  <!--</view>-->
+             <!--</view>-->
+         <!--</view>-->
+
+        <view class="items" hidden="{{!isView4}}" style="height: 275rpx;overflow:hidden">
+            <view wx:for="{{detailList.facilities[0].child}}" wx:for-item="ite"  class="item">
+                <text class="t2 daoke-icon icon-wifi color" ></text>
+                <text>{{ite.title}}</text>
+            </view>
+        </view>
+    </view>
+
+
+        <view class="item6">
+            <text bindtap="viewChange" data-value="isView4">{{!isView4?'收起':'展开全部 '+facilitiesCount+'个'}}</text>
+            <view bindtap="viewChange" data-value="isView4">
+                <text class="zhankai-icon daoke-icon {{isView4==''?'icon-wangshang':'icon-down-trangle-copy-copy'}}"></text>
+            </view>
+        </view>
+
+        <view class="item8">
+            <text class="t1">可租日期</text>
+            <view class="summary_calendar">
+                <view class="summary_calendarmain">
+                    <view class="summary_center">
+                        <view class="summary_centertitle">{{date.month}}</view>
+                    </view>
+                </view>
+                <view bindtap="navigatorToCalendar" class="calendar_number">
+                    <view class="calendar_number_title">
+                        <view>日</view>
+                        <view>一</view>
+                        <view>二</view>
+                        <view>三</view>
+                        <view>四</view>
+                        <view>五</view>
+                        <view>六</view>
+                    </view>
+                    <view class="number_title">
+                        <view class="day {{item.type==0?'disabled':''}}  {{item.select==1?'ruzhu':''}} {{item.select==2?'lidian':''}} {{item.select==3?'select':''}}" wx:for="{{date.day}}" wx:key="date_{{item.dayIndex}}">
+                            <view class="text" wx:if="{{item.day2==0}}"></view>
+                            <view class="text line44" wx:if="{{item.day2>0&&item.select==1}}">{{item.day2}}<view class="p">入住</view>
+                            </view>
+                            <view class="text {{item.already?'zan-text-deleted':''}} {{item.today==1?'line44':'line88'}}" hidden="{{item.already}}" wx:if="{{item.day2>0&&(item.select==0||item.select==3)}}">{{item.day2}}<view class="p" data-in="{{item.dayIndex}}" wx:if="{{item.today==1}}">今天</view>
+                            </view>
+                            <view class="text line44" wx:if="{{item.day2>0&&item.select==2}}">{{item.day2}}<view class="p">离店</view>
+                            </view>
+                            <view class="text line44  color9" hidden="{{item.select==2}}" wx:if="{{item.already}}">{{item.day2}}<view class="p">无房</view>
+                            </view>
+                            <view class="yuan"></view>
+                            <view class="{{item.select==3&&item.type==0?'':'right'}}"></view>
+                            <view class="{{item.select==3&&item.type==0?'':'left'}}"></view>
+                        </view>
+                    </view>
+                    <view class="changedate font26">修改日期</view>
+                </view>
+            </view>
+        </view>
+
+
+        <view class="item9">
+            <view class="t1">
+                <view>交易规则</view>
+                <block wx:if="{{detailList.refundsRule}}">
+                    <block wx:for="{{detailList.refundsRule}}">
+                        <view class="item">
+                            <view class="point"></view>
+                            <text class="color9">{{item.statusTexe}}</text>
+                        </view>
+                        <view class="item">
+                            <view class="line"></view>
+                            <view class="text">{{item.desc}}</view>
+                        </view>
+                    </block>
+
+                    <view class="item">
+                        <view class="point"></view>
+                        <text></text>
+                    </view>
+                </block>
+
+
+                <view class="text">
+                    <view class="view1">付款方式:</view>
+                    <view class="view2">{{detailList.payType}}</view>
+                </view>
+                <view class="text">
+                    <view class="view1">需要确认:</view>
+                    <view class="view2">{{detailList.isComfirm}}</view>
+                </view>
+                <view class="text">
+                    <view class="view1">入住押金:</view>
+                    <view class="color6" wx:if="{{detailList.is_deposit==0}}">免收</view>
+                    <view bindtap="togglePopup" class="view2 flex" data-isShow="isShow" wx:else>
+            在线支付￥{{detailList.depositMoney}}
+            <view>
+                            <text class="ruzhu-icon daoke-icon icon-gantanhao"></text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+
+        <view class="item10">
+            <text class="font32">入住须知</text>
+            <view class="items">
+                <view class="item" wx:for="{{detailList.info.accomAuto}}" wx:for-item="ruzhuItem">
+                    <view>
+                        <text class="daoke-icon {{ruzhuItem.isHas?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{ruzhuItem.isHas?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    </view>
+            {{ruzhuItem.title}}
+          </view>
+
+        </view>
+            <view class="text">卫生打扫: <text class="color6">{{detailList.info.washType.wash}}</text>
+            </view>
+            <view class="text">被单更换: <text class="color6">{{detailList.info.washType.clear}}</text>
+            </view>
+            <view class="text">入住退房: <text class="color6">入住时间{{detailList.info.accomTime}}后 | 退房时间{{detailList.info.outTime}}前</text>
+            </view>
+            <view class="text">接待时间: <text class="color6">{{detailList.info.recepTime.start}}~{{detailList.info.recepTime.end}}</text>
+            </view>
+            <view class="text">自助入住: <text class="color6">{{detailList.auto}}</text>
+            </view>
+            <view class="text">提供发票: <text bindtap="toFaPiao" class="color6 orange" data-val="{{detailList.InvoiceUrl}}">{{detailList.Invoice}}</text>
+            </view>
+        </view>
+        <view class="item10">
+            <text class="font32">额外费用</text>
+            <view class="items">
+                <view class="item" wx:for="{{detailList.info.accomAuto}}" wx:for-item="ruzhuItem">
+                    <view>
+                        <text class="daoke-icon {{ruzhuItem.isHas?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{ruzhuItem.isHas?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    </view>
+                    {{ruzhuItem.title}}
+                </view>
+
+            </view>
+            <view class="text">加人: <text class="color6">50每人</text></view>
+            <view class="text">加人: <text class="color6">50每人</text></view>
+            <view class="text">加人: <text class="color6">50每人</text></view>
+            <view class="text">加人: <text class="color6">50每人</text></view>
+            <view class="text">加人: <text class="color6">50每人</text></view>
+            <view class="text">加人: <text class="color6">50每人</text></view>
+
+        </view>
+
+
+    </view>
+
+
+    <view class="item13">
+        <view class="t1">
+            <view bindtap="markerUpPhone" class="t3" data-phone="{{detailList.house_detail.tel}}">
+                <text class="daoke-icon icon-dianhua"></text>
+                <text>
+电话</text>
+            </view>
+        </view>
+        <view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click">
+            <view class="t4" wx:if="{{detailList.decount_list==null}}">￥{{price}}</view>
+            <view class="t4" wx:else>
+                <view class="t5" wx:if="{{days>=detailList.decount_list[0].day}}">
+                    <view class="font36">￥{{filter.toFix(price*detailList.decount_list[0].discount*0.1)}}</view>
+                    <view class="t6">
+            ￥{{price}}
+            <view class="t7">连住{{detailList.decount_list[0].day}}天{{detailList.decount_list[0].discount}}折</view>
+                    </view>
+                </view>
+                <text wx:else>￥{{price}}</text>
+            </view>
+            <view class="t8">立即预订</view>
+        </view>
+    </view>
+</view>

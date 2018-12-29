@@ -1,0 +1,163 @@
+page {
+  background:#DEDEDE;
+}
+
+.wrap{
+  background: #fff;
+}
+
+.swiper {
+  height: 450rpx;
+}
+
+.swiper image {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+}
+
+.info{
+  position: relative;
+  width: 600rpx;
+  margin: 20rpx auto;
+  background-color: #fff;
+  height: 420rpx;
+  padding: 0 40rpx 20rpx 40rpx;
+  margin-top: -100rpx;
+  box-shadow: 5rpx 5rpx 5rpx 0rpx #F2F2F2;
+}
+
+.location{
+  display: flex;
+  height: 100rpx;
+  justify-content:space-between;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #F2F2F2;
+}
+
+.location .right{
+  font-size:26rpx;
+  display:flex;
+}
+
+.date {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #F2F2F2;
+  display:flex;
+  font-size:22rpx;
+  justify-content: space-between;
+}
+
+.count {
+  text-align: center;
+  height: 75rpx;
+  color: #fd8238;
+  border-bottom: 2rpx solid #fd8238;
+}
+
+.person {
+  height: 100rpx;
+  line-height: 100rpx;
+  display:flex;
+  font-size:30rpx;
+  justify-content:space-between;
+}
+
+.btn-big {
+  background: #fd8238;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  color: #fff;
+}
+
+.btn-big-click {
+  background: rgb(255,185,142);
+}
+
+
+.box .title {
+  display:flex;
+  justify-content:space-between;
+  padding: 20rpx 40rpx;
+  font-size:32rpx;
+}
+
+.box .bold{
+  font-weight:bold;
+}
+
+.box .img {
+  margin: 0 40rpx;
+}
+
+.box .swiper {
+  height: 450rpx;
+  margin-bottom: 40rpx;
+}
+
+.box .t1 {
+  position: absolute;
+  left: 0;
+  bottom: 50rpx;
+  padding: 20rpx;
+  background: rgba(0,0,0,0.678);
+  color: #fff;
+  font-size:32rpx;
+}
+
+
+.box .t2{
+  font-size:26rpx;
+  display:flex;
+  justify-content:space-between
+}
+
+.introdution{
+  margin:0 40rpx;
+}
+
+.introdution>image{
+  width:100%;
+}
+
+
+
+
+
+/*.main {*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 35rpx;*/
+/*}*/
+
+/*.userinfo {*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*padding-top: 150rpx;*/
+  /*color: #fff;*/
+/*}*/
+
+/*.userinfo-avatar {*/
+  /*width: 110rpx;*/
+  /*height: 110rpx;*/
+  /*margin: 20rpx;*/
+  /*border-radius: 50%;*/
+  /*border: 2rpx solid #fff;*/
+  /*overflow: hidden;*/
+/*}*/
+
+/*.user-motto {*/
+  /*color: #fff;*/
+/*}*/
+
+
+
+
+
+
+
+
+

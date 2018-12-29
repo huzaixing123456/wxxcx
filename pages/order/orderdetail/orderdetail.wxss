@@ -1,0 +1,252 @@
+.tips {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgb(249,240,220);
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0 40rpx 0 40rpx;
+    font-size: 26rpx;
+    display: flex;
+}
+
+
+.tips .text {
+    flex:1
+}
+
+.tips .text image {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 25rpx 5rpx 0 10rpx;
+}
+
+.tips .text text {
+    margin-left: 10rpx;
+    color: #ff8b96;
+}
+
+.tips .btn {
+    margin-top: 10rpx;
+    width: 170rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #FD8238;
+    font-size: 30rpx;
+    margin-right:60rpx;
+}
+
+.tips .btn.disabled {
+    background: #999;
+}
+
+.btnHover {
+    background: #ffb98e;
+}
+
+.kongbai {
+    height: 90rpx;
+}
+
+.order-item1 {
+    padding: 0 40rpx 0 40rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 2rpx solid rgb(244,244,244);
+    background-color: rgb(248,249,251);
+    font-size: 26rpx;
+}
+
+
+.order-item1 .t2 {
+    float: right;
+    font-size: 24rpx;
+    color: #bfbfbf;
+}
+
+.order-item1 .t3 {
+    float: right;
+    color: #bfbfbf;
+    font-size: 24rpx;
+}
+
+
+.order-item2 {
+    padding: 40rpx 40rpx 0 40rpx;
+    border-bottom: 20rpx solid rgb(248,249,251);
+}
+
+.order-item2 .t4 {
+    margin: 20rpx 0 20rpx 0;
+    color: rgb(191,191,191);
+    font-size: 26rpx;
+}
+
+.order-item2 .t4 text:first-child {
+    margin-right: 40rpx;
+}
+
+
+
+.order-item2 .t5 {
+    font-size: 26rpx;
+    color: #FD8238;
+    padding-bottom: 40rpx;
+    border-bottom: 2rpx solid rgb(244,244,244);
+}
+
+.info-alert image {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 10rpx;
+}
+
+.order-item2 .t6 {
+    color: #bfbfbf;
+    font-size: 34rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.order-item2 .t6 text {
+    color: #FD8238;
+    font-size: 26rpx;
+    margin-left: 30rpx;
+    text-decoration: underline;
+}
+
+
+.order-item3{
+    padding: 40rpx 0 40rpx 40rpx;
+}
+
+
+.order-item3 .t7 {
+    font-size: 28rpx;
+    color: rgb(191,191,191);
+}
+
+.order-item3 .t7 text {
+    color: #000;
+    margin-left: 80rpx;
+}
+
+.order-item3 .t8 {
+    font-size: 28rpx;
+    color: rgb(191,191,191);
+    padding: 10rpx 0 20rpx 0;
+    border-bottom: 2rpx solid rgb(244,244,244);
+}
+.order-item3 .t8 text {
+    color: #000;
+    margin-left: 80rpx;
+}
+
+.order-item3 .t9 {
+    font-size: 30rpx;
+}
+
+.order-item3 .t9  text {
+    height: 80rpx;
+    line-height: 80rpx;
+    color: #FD8238;
+    margin-left: 70rpx;
+}
+
+
+.order-item4 {
+    position: relative;
+    padding: 20rpx 40rpx 0 40rpx;
+    font-size: 28rpx;
+    color: rgb(191,191,191);
+    border-bottom: 2rpx solid rgb(244,244,244);
+}
+
+.order-item4 .t10{
+    display:flex;
+    justify-content: space-between;
+}
+
+.order-item4 .t10 image {
+    top: 80rpx;
+    position: absolute;
+    right: 40rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.order-item4 .t11 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28rpx;
+    height: 80rpx;
+    color: #000;
+    line-height: 80rpx;
+}
+
+.order-item4 .t11 image {
+    top: 160rpx;
+}
+
+
+.order-item5 {
+    padding: 20rpx 0 20rpx 40rpx;
+    border-bottom: 2rpx solid #f4f4f4;
+    font-size: 28rpx;
+    color: #bfbfbf;
+}
+
+
+.order-item5 .t12 {
+    color: #000;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.order-item6 {
+    padding: 20rpx 40rpx 20rpx 40rpx;
+    color: #bfbfbf;
+    font-size: 22rpx;
+}
+
+.order-item6 image {
+    width: 15rpx;
+    height: 15rpx;
+}
+
+
+.refund {
+    padding: 0 40rpx 40rpx 40rpx;
+    font-size: 28rpx;
+    color: rgb(191,191,191);
+    border-bottom: 2rpx solid rgb(244,244,244);
+}
+
+.btn-wrap {
+    display: flex;
+    padding: 40rpx;
+    background-color: #fff;
+    justify-content: flex-end;
+}
+
+.btn-wrap .btn{
+    text-align: center;
+    font-size: 28rpx;
+    width: 140rpx;
+    padding: 10rpx 0;
+    height: 35rpx;
+    border-radius: 20rpx;
+    line-height: 35rpx;
+    margin-left: 20rpx;
+}
+
+.btn-wrap .btn.bt1 {
+    border: 1px solid #FD8238;
+}
+
+.btn-wrap .btn.bt2 {
+    background-color: #FD8238;
+    color: #fff;
+}
