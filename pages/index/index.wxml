@@ -8,7 +8,7 @@
   <view class="info">
     <view class="location">
       <view bindtap="navigatorToCity" class="font32">
-        <text hidden="{{place!=''}}">{{cityInfo.city_name}}</text>
+        <text hidden="{{place!=''}}">{{city.address}}</text>
         <text hidden="{{place==''}}">{{place}}</text>
       </view>
       <view  class="right" hidden="{{!isHide}}">

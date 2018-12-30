@@ -6,7 +6,7 @@ function getAllCity() {
 
 //获取具体位置信息
 function getCityInfo(data) {
-    return http.get('/api/city/city/location',data);
+    return http.get('/api/city/location',data);
 }
 
 //获取详细地址信息

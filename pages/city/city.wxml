@@ -5,35 +5,20 @@
     </view>
     <view class="text">
       <view class="city-c1">我的位置</view>
-      <view class="city-c2">北京市昌平区沙河镇松兰堡</view>
+      <view class="city-c2">{{city.address}}</view>
       <view class="city-c3">
-        <text class='city-text'>北京</text>
+        <text class='city-text'>{{city.name}}</text>
       </view>
     </view>
   </view>
   <view class='list'>
-    <view class="item">
-     <view class="letter">A</view>
-      <view class="allCitys">
-        <view class="city_name">北京</view>
-        <view class="city_name">北京</view>
-        <view class="city_name">北京</view>
-      </view>
-    </view>
-    <view class="item">
-     <view class="letter">B</view>
-      <view class="allCitys">
-        <view class="city_name">北京</view>
-        <view class="city_name">北京</view>
-        <view class="city_name">北京</view>
-      </view>
+    <view class="item" wx:for="{{list}}" wx:key='*this'>
+     <view class="letter">{{index}}</view>
+      
     </view>
   </view>
 
   <view class="fixed-letters">
-    <view>A</view>
-    <view>B</view>
-    <view>C</view>
-    <view>D</view>
+    <view wx:for="{{list}}" wx:key='*this'>{{index}}</view>
   </view>
 </view>

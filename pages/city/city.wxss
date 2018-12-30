@@ -19,6 +19,7 @@
 }
 
 .city-c2{
+  margin-top:10rpx;
   font-size:30rpx;
 }
 

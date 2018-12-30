@@ -10,12 +10,12 @@
             </view>
             <text class="text2">授权微信登录</text>
         </view>
-        <button class="item"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <view class="item"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
             <view class="icon">
                 <text class="text daoke-icon icon-shoujidenglu1"></text>
             </view>
             <text class="text2">授权手机号登录</text>
-        </button>
+        </view>
     </view>
     <view class="tip">*未注册的手机号将自动创建为稻客民宿用户*</view>
 </view>

@@ -8,19 +8,19 @@ Page({
         startDate: "", //开始时间
         endDate: "",  //结束时间
         days: "",     //入住天数
-
+        city: {
+          name: "",
+          address: "北京市",
+          latitude: "",
+          longitude: ""
+        },
         bannerList: ["https://pic1.ajkimg.com/display/hj/d2d4fb3bb62a358d6ec0c671358eb690/240x180m.jpg?t=1","https://pic1.ajkimg.com/display/hj/f10a54ddb204240a4b5fe7353732ac66/240x180m.jpg?t=1"],
         src: "",
         motto: "休息，休息一下~",
         userInfo: {},
         hasUserInfo: !1,
         canIUse: '',
-        cityInfo: {
-            city_id: "",
-            city_name: "北京市",
-            city_lat: "",
-            city_lng: ""
-        },
+        
         place: "",
 
         peopleNum: "不限人数",
@@ -36,18 +36,28 @@ Page({
             }]
     },
     onLoad: function(a) {
-        util.getLocation().then(data=>{
-            return httpApi.getCityInfo(data);
-            LocalStorage.set('trapeze',data); //保存经纬度
-        }).then(data=>{
-            return httpApi.getAddress({
-                did:data['did']
-            });
-        });
-
-        httpApi.getAllCity().then(res=>{
-            console.log(res);
-        });
+        // util.getLocation().then(data=>{
+        //     return httpApi.getCityInfo(data);
+        //     LocalStorage.set('trapeze',data); //保存经纬度
+        // }).then(data=>{
+        //     return httpApi.getAddress({
+        //         did:data['did']
+        //     });
+        // });
+      util.getLocation().then(data => {
+        return httpApi.getCityInfo(data);
+        LocalStorage.set('trapeze', data); //保存经纬度
+      }).then(data => {
+        var result = data['result'];
+        var cityData = {
+          name: result['addressComponent']['city'],
+          address: result['formatted_address']
+        }
+         this.setData({
+           city: cityData
+         })
+        LocalStorage.set('cityData', cityData);
+      });
     },
     onShow(){
         LocalStorage.get('checkDate').then(res=>{

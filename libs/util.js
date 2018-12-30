@@ -19,6 +19,7 @@ function getLocation(){
             success:resolve
         })
     }).then(data=>{
+      console.log(data)
         let {latitude ,longitude} = data;
         return {
             latitude,
