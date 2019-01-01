@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "房屋详情"
+    "navigationBarTitleText": "房屋详情",
+    "usingComponents": {
+      "calendar": "/components/calendar/calendar"
+    }
 }

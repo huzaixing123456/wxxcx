@@ -4,10 +4,7 @@ import LocalStorage from '../../libs/localStorage';
 
 Page({
     data:{
-      city:{
-        name:'',
-        address:''
-      },
+      city:'',
       list:[]
     },
     onShow(){

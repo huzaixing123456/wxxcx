@@ -1,23 +1,25 @@
 <view class="nav">
-    <view bindtap="toCalendar" class="nav-wrap">
-      <view class="item">{{startDate}}-{{endDate}}<view class="arrow"></view></view>
-      <view bindtap="toPlace" class="item">{{place.title}}<view class="arrow"></view></view>
-      <view bindtap="toSort" class="item">{{sort[sort_value].name}}<view class="arrow"></view></view>
-      <view bindtap="toFilter" class="item">{{filter[0].title}}
-          <view class="circle font22" hidden="{{filter_num==''}}">{{filter_num>9?'9+':filter_num}}</view>
-            <view class="arrow"></view>
-      </view>
+  <view bindtap="toCalendar" class="nav-wrap">
+    <view class="item">{{startDate}}-{{endDate}}<view class="arrow"></view></view>
+    <view bindtap="toPlace" class="item">{{place.title}}<view class="arrow"></view></view>
+    <view bindtap="toSort" class="item">{{sort[sort_value].name}}<view class="arrow"></view></view>
+    <view bindtap="toFilter" class="item">{{filter[0].title}}
+        <view class="circle font22" hidden="{{filter_num==''}}">{{filter_num>9?'9+':filter_num}}</view>
+          <view class="arrow"></view>
     </view>
+  </view>
 </view>
 <scroll-view
     scroll-y
     bindscrolltoupper="upper"
     bindscrolltolower="lower"
-    bindscroll="scroll"
-    scroll-into-view="{{toView}}"
-    scroll-top="{{scrollTop}}"
     class="list-item" wx:if="{{houseList.length!=0}}">
-    <view bindtap="navigatorToHouseDetail" data-id="{{item.room_id}}" hoverClass="colorf2" wx:for="{{houseList}}">
+    <view 
+      bindtap="navigatorToHouseDetail" 
+      data-id="{{item.room_id}}" 
+      hoverClass="colorf2" 
+      wx:for="{{houseList}}"
+      wx:key="*this">
         <view class="wrap1">
             <image src="{{item.pictureURL}}"></image>
             <view class="t1">

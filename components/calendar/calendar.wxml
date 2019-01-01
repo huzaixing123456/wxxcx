@@ -9,9 +9,10 @@
 	</view>
 	<view class='date-box'>
 		<view wx:for='{{dateArr}}'
-			  class='{{item.isToday < isToday ? "disabled":(item.isToday == startDate || item.isToday == endDate)? "active" : (isToday == item.isToday && !startDate && !endDate) ? "active": ""}}'
-			  data-num='{{item.isToday}}'
-			  bindtap="setCurrent"
+          wx:key='*this'
+			    class='{{item.isToday < isToday ? "disabled":(item.isToday == startDate || item.isToday == endDate)? "active" : (isToday == item.isToday && !startDate && !endDate) ? "active": ""}}'
+			    data-num='{{item.isToday}}'
+			    bindtap="setCurrent"
 		>
 			<view class='date-head'>
 				<view class="text">{{item.dateNum}}</view>

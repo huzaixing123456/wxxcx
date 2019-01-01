@@ -6,7 +6,8 @@ Page({
     data: {
         navId: 1,
         phone:18611985439,
-        imageCode:'5862',
+        imageCodeUrl:'',
+        imageCode:'',
         code:3456,
 
         isLogin: !0,
@@ -18,11 +19,30 @@ Page({
     },
     onLoad: function(t) {
         util.getLogin().then(res=>{
-            console.log(res);
+          // httpApi.getOpenId({
+          //   code:res
+          // });
+          wx.getUserInfo({
+            success(res) {
+              console.log(res);
+              const userInfo = res.userInfo
+              const nickName = userInfo.nickName
+              const avatarUrl = userInfo.avatarUrl
+              const gender = userInfo.gender // 性别 0：未知、1：男、2：女
+              const province = userInfo.province
+              const city = userInfo.city
+              const country = userInfo.country
+            }
+          })
+            console.log("code值是"+res);
         });
-        httpApi.getImageCode().then(res=>{
-
-        })
+        this.getImage();
+    },
+    getImage(){
+      var imageCodeUrl = httpApi.getImageCode();
+      this.setData({
+        imageCodeUrl
+      })
     },
     changeNav: function (event) {
         this.setData({

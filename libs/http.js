@@ -1,7 +1,7 @@
-var defaultConfig = {
-    prefix:"https://wx.longmenkezhan.com"
-};
-
+import {
+  HTTP
+} from './const.js'
+ 
 
 class Http {
     constructor(options) {
@@ -21,7 +21,7 @@ class Http {
         wx.showLoading({
             title: '加载中',
         })
-        var dataUrl = defaultConfig['prefix'] + url;
+      var dataUrl = HTTP['prefix'] + url;
         var requestObj = {};
         if(method == "GET"){
             var paramsUrl = '';

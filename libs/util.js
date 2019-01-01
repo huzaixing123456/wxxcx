@@ -16,7 +16,8 @@ function getLocation(){
     return new Promise((resolve,reject)=>{
         wx.getLocation({
             type:'wgs84',
-            success:resolve
+            success:resolve,
+            fail: reject
         })
     }).then(data=>{
       console.log(data)
@@ -93,11 +94,14 @@ function getDays(year,month) {
 }
 
 //根据年月日字符串获取日期
-function getDateByNum(str) {
+function getDateByNum(str,e) {
     var original = str.toString();
     var year = parseInt(original.substr(0,4));
     var month = parseInt(original.substr(4,2));
     var day = parseInt(original.substr(6,2));
+    if (e){
+      return year + e + month + e + day;
+    };
     return {
         year,
         month,
@@ -114,10 +118,17 @@ function getStrByNum(year,month,date) {
 
 //计算两个日期之间相差天数
 function getCountDay(startDay,endDay) {
-    var start = new Date(startDay['year'] + '-' + startDay['month'] + '-' + startDay['day']);
-    var end = new Date(endDay['year'] + '-' + endDay['month'] + '-' + endDay['day']);
-    var days = parseInt(Math.abs(start - end) / 1000 / 60 / 60 / 24);
+    var start = (new Date(startDay['year'] + '-' + startDay['month'] + '-' + startDay['day'])).getTime();
+    var end = (new Date(endDay['year'] + '-' + endDay['month'] + '-' + endDay['day'])).getTime();
+    var days = parseInt(Math.ceil((end - start) / 1000 / 60 / 60 / 24));
     return days;
+}
+
+//获取随机数
+function getRandomNumber(n){
+  var number = Math.random();
+  number = number.toFixed(n);
+  return number.toString().replace('0.','');
 }
 
 
@@ -133,4 +144,5 @@ export default {
     getStrByNum,
     getWeek,
     getDays,
+    getRandomNumber
 }

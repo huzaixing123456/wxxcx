@@ -1,3 +1,8 @@
+var HTTP = {
+  prefix: "https://wx.longmenkezhan.com",
+  imgPath:'https://wx.longmenkezhan.com/images/rooms/'
+};
+
 
 var REGEXP = {
     TELEPHONE:/^1[34578]\d{9}/,
@@ -5,5 +10,6 @@ var REGEXP = {
 }
 
 export {
-    REGEXP
+  HTTP,
+  REGEXP
 }

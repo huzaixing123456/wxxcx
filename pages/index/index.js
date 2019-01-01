@@ -1,12 +1,13 @@
 import httpApi from '../../libs/httpApi';
 import util from '../../libs/util';
 import LocalStorage from '../../libs/localStorage';
-
+import {HTTP} from '../../libs/const';
 
 Page({
     data: {
         startDate: "", //开始时间
         endDate: "",  //结束时间
+        current:0,    //当前索引
         days: "",     //入住天数
         city: {
           name: "",
@@ -14,49 +15,42 @@ Page({
           latitude: "",
           longitude: ""
         },
-        bannerList: ["https://pic1.ajkimg.com/display/hj/d2d4fb3bb62a358d6ec0c671358eb690/240x180m.jpg?t=1","https://pic1.ajkimg.com/display/hj/f10a54ddb204240a4b5fe7353732ac66/240x180m.jpg?t=1"],
-        src: "",
-        motto: "休息，休息一下~",
-        userInfo: {},
-        hasUserInfo: !1,
-        canIUse: '',
-        
-        place: "",
-
-        peopleNum: "不限人数",
-        isHide: !0,
-        current: 0,
-        recommendList: [{
-            imageURL:"https://pic1.ajkimg.com/display/hj/d2d4fb3bb62a358d6ec0c671358eb690/240x180m.jpg?t=1",
-            title:"我的房间1"
-        },
-            {
-                imageURL:"https://pic1.ajkimg.com/display/hj/f10a54ddb204240a4b5fe7353732ac66/240x180m.jpg?t=1",
-                title:"我的房间2"
-            }]
+        headImg:'',
+        rooms:''
     },
     onLoad: function(a) {
-        // util.getLocation().then(data=>{
-        //     return httpApi.getCityInfo(data);
-        //     LocalStorage.set('trapeze',data); //保存经纬度
-        // }).then(data=>{
-        //     return httpApi.getAddress({
-        //         did:data['did']
-        //     });
-        // });
       util.getLocation().then(data => {
-        return httpApi.getCityInfo(data);
+        console.log('允许定位啦');
         LocalStorage.set('trapeze', data); //保存经纬度
-      }).then(data => {
-        var result = data['result'];
-        var cityData = {
-          name: result['addressComponent']['city'],
-          address: result['formatted_address']
-        }
-         this.setData({
-           city: cityData
-         })
-        LocalStorage.set('cityData', cityData);
+        return httpApi.getCityInfo(data).then(data => {
+          var result = data['result'];
+          var cityData = {
+            name: result['addressComponent']['city'],
+            address: result['formatted_address'],
+            cityId: result['addressComponent']['adcode']
+          };
+          this.setData({
+            city: cityData
+          });
+          LocalStorage.set('cityData', cityData);
+          this.getDataByCity(cityData.cityId);
+        }); 
+      },()=>{
+        this.getDataByCity();
+        console.log("我不允许定位");
+      });
+    },
+    getDataByCity(cityId){
+      httpApi.getRecommend({city:cityId}).then(res=>{
+        let { rooms, headImg} = res;
+        rooms = rooms.map(item=>{
+          item.coverPic = HTTP.imgPath + item.coverPic
+        })
+        headImg = HTTP.imgPath + headImg;
+        this.setData({
+          rooms:res.rooms,
+          headImg: headImg
+        });
       });
     },
     onShow(){

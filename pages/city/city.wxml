@@ -1,24 +1,35 @@
-<view class="city">
-  <view class="current">
-    <view class="icon">
-      <text class="daoke-icon icon-dingwei1 color"></text>
+
+  <view class="city">
+    <view class="current" wx:if="{{city}}">
+      <view class="icon">
+        <text class="daoke-icon icon-dingwei1 color"></text>
+      </view>
+      <view class="text">
+        <view class="city-c1">我的位置</view>
+        <view class="city-c2">{{city.address}}</view>
+        <view class="city-c3">
+          <text class='city-text'>{{city.name}}</text>
+        </view>
+      </view>
     </view>
-    <view class="text">
-      <view class="city-c1">我的位置</view>
-      <view class="city-c2">{{city.address}}</view>
-      <view class="city-c3">
-        <text class='city-text'>{{city.name}}</text>
+
+  <scroll-view
+    scroll-y
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"
+    style="paddingTop:{{city?'175rpx':0}}"
+    class="list">
+      <view class="item" wx:for="{{list}}" wx:key='*this'>
+      <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName'>
+        <view class="letter">{{index}}</view>
+        <view class="city_name" wx:for="{{itemName}}" wx:for-item="itemCity" wx:key='*this'>{{itemCity.city}}      </view>
+      </view>
+      </view>
+    </scroll-view>
+
+    <view class="fixed-letters">
+      <view wx:for="{{list}}" wx:key='*this'>
+        <view wx:for="{{item}}">{{index}}</view>
       </view>
     </view>
   </view>
-  <view class='list'>
-    <view class="item" wx:for="{{list}}" wx:key='*this'>
-     <view class="letter">{{index}}</view>
-      
-    </view>
-  </view>
-
-  <view class="fixed-letters">
-    <view wx:for="{{list}}" wx:key='*this'>{{index}}</view>
-  </view>
-</view>
