@@ -1,6 +1,7 @@
 import util from '../../libs/util';
 import httpApi from '../../libs/httpApi';
 import {REGEXP} from '../../libs/const';
+import LocalStorage from '../../libs/localStorage';
 
 Page({
     data: {
@@ -16,18 +17,18 @@ Page({
           // httpApi.getOpenId({
           //   code:res
           // });
-          wx.getUserInfo({
-            success(res) {
-              console.log(res);
-              const userInfo = res.userInfo
-              const nickName = userInfo.nickName
-              const avatarUrl = userInfo.avatarUrl
-              const gender = userInfo.gender // 性别 0：未知、1：男、2：女
-              const province = userInfo.province
-              const city = userInfo.city
-              const country = userInfo.country
-            }
-          })
+          // wx.getUserInfo({
+          //   success(res) {
+          //     console.log(res);
+          //     const userInfo = res.userInfo
+          //     const nickName = userInfo.nickName
+          //     const avatarUrl = userInfo.avatarUrl
+          //     const gender = userInfo.gender // 性别 0：未知、1：男、2：女
+          //     const province = userInfo.province
+          //     const city = userInfo.city
+          //     const country = userInfo.country
+          //   }
+          // })
             console.log("code值是"+res);
         });
         this.getImage();
@@ -90,13 +91,14 @@ Page({
         }
         if (!REGEXP.CODE.test(code)){
             util.toast({title:"请输入正确格式的验证码"});
-        }
-        httpApi.register({
-            mobile:phone,
-            captcha:imageCode,
-            smscode:code
+        };
+        LocalStorage.get('cityData').then(res=>{
+          httpApi.register({
+            mobile: phone,
+            did:res['cityId'],
+            smscode: code
+          })
         })
-
     },
     getPhoneNumber(e){
 
