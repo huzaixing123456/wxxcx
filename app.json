@@ -1,13 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/city/city",
+    "pages/people/people",
     "pages/list/list",
-    
     "pages/login/login",
-    
+    "pages/city/city",
     "pages/detail/detail",
-    
     "pages/list/filter/filter",
     "pages/date/date",
     "pages/list/location/location",

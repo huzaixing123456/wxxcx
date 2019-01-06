@@ -23,7 +23,7 @@ class Http {
         })
       var dataUrl = HTTP['prefix'] + url;
         var requestObj = {};
-        if(method == "GET"){
+        //if(method == "GET"){
             var paramsUrl = '';
             for(var i in data){
                 paramsUrl = paramsUrl + i + '=' + data[i] + "&";
@@ -33,13 +33,10 @@ class Http {
                 paramsUrl = `?${paramsUrl}`;
                 dataUrl = dataUrl + paramsUrl;
             }
-        }
+        //}
         requestObj = {
             'url' : dataUrl,
-            'method':method,
-            'header': {
-                'content-type': 'application/json'
-            }
+            'method':method
         };
         if(method == "POST"){
             requestObj['data'] = data;
@@ -59,7 +56,12 @@ class Http {
             }
 
         },error=>{
-
+          wx.showToast({
+            title: '网络错误',
+            icon: 'none',
+            duration: 2000
+          })
+          console.log("加载错误");
         })
     }
 }

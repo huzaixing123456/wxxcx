@@ -9,13 +9,7 @@ Page({
         imageCodeUrl:'',
         imageCode:'',
         code:3456,
-
-        isLogin: !0,
-        fun_id: 2,
-        time: "获取验证码",
-        currentTime: 61,
-        disabled: !1,
-        imgUrl: ""
+        timestamp:''      
     },
     onLoad: function(t) {
         util.getLogin().then(res=>{
@@ -39,9 +33,12 @@ Page({
         this.getImage();
     },
     getImage(){
-      var imageCodeUrl = httpApi.getImageCode();
+      var timestamp = util.getRandomNumber(10);
+      var imageCodeUrl = httpApi.getImageCode({random:timestamp});
+      console.log(imageCodeUrl);
       this.setData({
-        imageCodeUrl
+        imageCodeUrl,
+        timestamp
       })
     },
     changeNav: function (event) {
@@ -65,10 +62,11 @@ Page({
         })
     },
     getCode(){
-        let {phone,imageCode} = this.data;
+        let {phone,imageCode,timestamp} = this.data;
         httpApi.getMessageCode({
             mobile:phone,
-            captcha:imageCode
+            captcha:imageCode,
+            timestamp
         }).then(res=>{
 
         })
@@ -90,7 +88,7 @@ Page({
         if(!code){
             util.toast({title:"请输入验证码"});
         }
-        if(!REGEXP.CODE.test(CODE)){
+        if (!REGEXP.CODE.test(code)){
             util.toast({title:"请输入正确格式的验证码"});
         }
         httpApi.register({

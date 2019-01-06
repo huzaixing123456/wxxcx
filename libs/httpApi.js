@@ -17,15 +17,13 @@ function getAddress(data) {
 }
 
 //获取图片验证码
-function getImageCode() {
-  var timestamp = new Date().getTime();
-  var random = util.getRandomNumber(10);
-  return HTTP['prefix'] + '/captcha?timestamp=' + timestamp + '' + random;
+function getImageCode({random}) {
+  return HTTP['prefix'] + '/captcha?timestamp=' + random;
 }
 
 //获取短信验证码
 function getMessageCode(data) {
-    return http.post('/api/sms/send',data);
+    return http.get('/api/sms/send',data);
 }
 
 //登录接口

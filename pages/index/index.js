@@ -16,18 +16,18 @@ Page({
           longitude: ""
         },
         headImg:'',
-        rooms:''
+        rooms:'',
+        peopleNum:'' //入住人数
     },
     onLoad: function(a) {
       util.getLocation().then(data => {
         console.log('允许定位啦');
         LocalStorage.set('trapeze', data); //保存经纬度
         return httpApi.getCityInfo(data).then(data => {
-          var result = data['result'];
           var cityData = {
-            name: result['addressComponent']['city'],
-            address: result['formatted_address'],
-            cityId: result['addressComponent']['adcode']
+            name: data['city'],
+            address: data['addRess'],
+            cityId: data['cid']
           };
           this.setData({
             city: cityData
@@ -41,7 +41,7 @@ Page({
       });
     },
     getDataByCity(cityId){
-      httpApi.getRecommend({city:cityId}).then(res=>{
+      httpApi.getRecommend({did:cityId}).then(res=>{
         let { rooms, headImg} = res;
         rooms = rooms.map(item=>{
           item.coverPic = HTTP.imgPath + item.coverPic
@@ -77,6 +77,11 @@ Page({
                 endDate: util.getStrByNum(tomorrow.year,tomorrow.month,tomorrow.date)
             })
         });
+        LocalStorage.get('people').then(res=>{
+          this.setData({
+            peopleNum:res['text']
+          })
+        })
     },
     navigatorToCity: function () {
         wx.navigateTo({
@@ -92,5 +97,10 @@ Page({
         wx.navigateTo({
             url: "../list/list"
         });
+    },
+    navigatorToPeople(){
+      wx.navigateTo({
+        url: "../people/people"
+      });
     }
 });

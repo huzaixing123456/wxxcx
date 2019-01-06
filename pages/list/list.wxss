@@ -156,7 +156,7 @@ page {
 }
 
 .more {
-    padding-top: 20rpx;
+    padding:20rpx 0;
     line-height: 1.6em;
     text-align: center;
     font-size:22rpx;

@@ -1,0 +1,14 @@
+.wrap{
+  height: 100vh;
+}
+
+.item{
+  line-height:3;
+  color:#666;
+  padding:0 40rpx;
+  font-size:30rpx;
+}
+
+.active{
+  color:#fd8238;
+}

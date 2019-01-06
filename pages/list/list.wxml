@@ -1,6 +1,6 @@
 <view class="nav">
   <view bindtap="toCalendar" class="nav-wrap">
-    <view class="item">{{startDate}}-{{endDate}}<view class="arrow"></view></view>
+    <view class="item">{{start}}-{{end}}<view class="arrow"></view></view>
     <view bindtap="toPlace" class="item">{{place.title}}<view class="arrow"></view></view>
     <view bindtap="toSort" class="item">{{sort[sort_value].name}}<view class="arrow"></view></view>
     <view bindtap="toFilter" class="item">{{filter[0].title}}
@@ -11,50 +11,34 @@
 </view>
 <scroll-view
     scroll-y
-    bindscrolltoupper="upper"
-    bindscrolltolower="lower"
-    class="list-item" wx:if="{{houseList.length!=0}}">
+    bindscrolltolower="onBottomRefresh"
+    class="list-item" 
+    wx:if="{{list.length!=0}}">
     <view 
       bindtap="navigatorToHouseDetail" 
       data-id="{{item.room_id}}" 
       hoverClass="colorf2" 
-      wx:for="{{houseList}}"
+      wx:for="{{list}}"
       wx:key="*this">
         <view class="wrap1">
-            <image src="{{item.pictureURL}}"></image>
+            <image src="{{item.coverPic}}"></image>
             <view class="t1">
                 <view class="price-top">
-                    <text class="font22">￥</text>
-                    <view class="price-pos font36">
-                        <block wx:if="{{item.activityType}}">
-              {{item.activityPrice}}
-            </block>
-                        <block wx:else>
-              {{item.price}}
-            </block>
-                        <view class="price" wx:if="{{item.activityType==2}}">今日<text>
-</text>甩卖</view>
-                        <view class="angle" wx:if="{{item.activityType==2}}"></view>
-                    </view>
+                    <text class="font22">￥{{item.price}}</text>
                 </view>
             </view>
         </view>
-
-
         <view class="wrap2">
             <view class="t4">
-                {{item.introduction.minsu_name}}
+                {{item.roomName}}
             </view>
             <view class="t5">
-                <text wx:for="{{item.advantage}}" wx:for-index="id2" wx:for-item="it2">{{it2}} <text hidden="{{id2+1==item.advantage.length}}">· </text>
-                </text>
+                {{item.bedNum}}居{{item.bedNum}}床{{item.bedNum}}宜住{{item.distance}} · {{item.address}}
             </view>
         </view>
     </view>
-    <view class="more" wx:if="{{houseList.length==total}}">
-  这里是最后一条啦~
-</view>
+    <view class="more" wx:if="{{noMoreData}}">
+      这里是最后一条啦~
+    </view>
 </scroll-view>
-<view class="noData" wx:else>
-暂时没有数据~
-</view>
+<view class="noData" wx:if="{{noData}}">暂时没有数据~</view>

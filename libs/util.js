@@ -127,8 +127,8 @@ function getCountDay(startDay,endDay) {
 //获取随机数
 function getRandomNumber(n){
   var number = Math.random();
-  number = number.toFixed(n);
-  return number.toString().replace('0.','');
+  number = number.toFixed(n) * Math.pow(10,n);
+  return Math.floor(number);
 }
 
 
