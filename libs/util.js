@@ -118,8 +118,8 @@ function getStrByNum(year,month,date) {
 
 //计算两个日期之间相差天数
 function getCountDay(startDay,endDay) {
-    var start = (new Date(startDay['year'] + '-' + startDay['month'] + '-' + startDay['day'])).getTime();
-    var end = (new Date(endDay['year'] + '-' + endDay['month'] + '-' + endDay['day'])).getTime();
+    var start = (new Date(startDay['year'],startDay['month'],startDay['day'])).getTime();
+    var end = (new Date(endDay['year'],endDay['month'],endDay['day'])).getTime();
     var days = parseInt(Math.ceil((end - start) / 1000 / 60 / 60 / 24));
     return days;
 }

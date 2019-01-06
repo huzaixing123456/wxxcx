@@ -25,11 +25,18 @@ Component({
   attached : function () {
     let {year,month} = this.properties;
     var current = util.getCurrentDate();
-    this.dateInit(year,month);
+    this.dateInit(year,month); 
+    var today = current['year'];
+    if (current['month']<10){
+      current['month'] = '0' + current['month'];
+    }
+    if (current['date'] < 10){
+      current['date'] = '0' + current['date']; 
+    }
     this.setData({
       year: year,
       month: month,
-      isToday: parseInt('' + current['year'] + current['month'] + current['date'] )
+      isToday: parseInt('' + current['year'] + current['month'] + current['date'])
     })
   },
   methods:{
@@ -60,7 +67,7 @@ Component({
       },
       setCurrent(e){
           var num = e.currentTarget.dataset.num;
-          if(num > this.data.isToday){
+          if(num >= this.data.isToday){
               this.triggerEvent('myevent', {num});
           }
       }

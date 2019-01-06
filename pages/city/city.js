@@ -24,5 +24,8 @@ Page({
           city: data
         })
       })
+    },
+    changeCity(){
+
     }
 });

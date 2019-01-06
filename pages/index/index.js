@@ -54,6 +54,7 @@ Page({
       });
     },
     onShow(){
+      console.log("显示了");
         LocalStorage.get('checkDate').then(res=>{
             var {startDate,endDate} = res;
             var start = util.getDateByNum(startDate);
@@ -64,18 +65,19 @@ Page({
                 endDate:`${end.month}月${end.day}`,
                 days
             });
-        }).catch(err=>{
-            var current = util.getCurrentDate();
-            var tomorrow = util.getTomorrowDate();
-            this.setData({
-                startDate:`${current.month}月${current.date}`,
-                endDate:`${tomorrow.month}月${tomorrow.date}`,
-                days:1
-            });
-            LocalStorage.set('checkDate',{
-                startDate: util.getStrByNum(current.year,current.month,current.date),
-                endDate: util.getStrByNum(tomorrow.year,tomorrow.month,tomorrow.date)
-            })
+        },()=>{
+          console.log("11111");
+          var current = util.getCurrentDate();
+          var tomorrow = util.getTomorrowDate();
+          this.setData({
+            startDate: `${current.month}月${current.date}`,
+            endDate: `${tomorrow.month}月${tomorrow.date}`,
+            days: 1
+          });
+          LocalStorage.set('checkDate', {
+            startDate: util.getStrByNum(current.year, current.month, current.date),
+            endDate: util.getStrByNum(tomorrow.year, tomorrow.month, tomorrow.date)
+          })
         });
         LocalStorage.get('people').then(res=>{
           this.setData({

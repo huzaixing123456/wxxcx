@@ -22,14 +22,13 @@
       <view class="item" wx:for="{{list}}" wx:key='*this'>
       <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName'>
         <view class="letter">{{index}}</view>
-        <view class="city_name" wx:for="{{itemName}}" wx:for-item="itemCity" wx:key='*this'>{{itemCity.city}}      </view>
+        <view class="city_name" bindtap='changeCity'  wx:for="{{itemName}}" wx:for-item="itemCity" wx:key='*this'>{{itemCity.city}}</view>
       </view>
       </view>
     </scroll-view>
-
     <view class="fixed-letters">
       <view wx:for="{{list}}" wx:key='*this'>
-        <view wx:for="{{item}}">{{index}}</view>
+        <view wx:for="{{item}}" wx:key='*this'>{{index}}</view>
       </view>
     </view>
   </view>
