@@ -1,6 +1,6 @@
 <view class='sort'>
-  <view wx:for="{{items}}" class='item'>
+  <view wx:for="{{items}}" class="item {{item.active?'color':''}}" bindtap='getSort' data-index="{{index}}"> 
     <text>{{item.name}}</text>
-    <text class='iconfont icon-duihao color'></text>
+    <text class='iconfont icon-duihao color' wx:if="{{item.active}}"></text>
   </view>
 </view>

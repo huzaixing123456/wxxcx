@@ -15,7 +15,10 @@ Page({
       end:'',
       list:[],
       noData:'',
-      noMoreData:false      
+      noMoreData:false,
+      location:'',
+      sort:'',
+      filter:[]
     },
     onShow(){
         LocalStorage.get('checkDate').then(res=>{

@@ -1,25 +1,43 @@
 Page({
-    data: {
-        items: [ {
-            value: "1",
-            name: "推荐排序"
-        }, {
-            value: "2",
-            name: "距离排序"
-        }, {
-            value: "3",
-            name: "价格低到高"
-        }, {
-            value: "4",
-            name: "价格高到低"
-        }, {
-            value: "5",
-            name: "好评排序"
-        } ],
-        checkedValue: 1,
-        activeColor: "#ff8008"
-    },
-    onLoad: function(e) {
+  data: {
+    items: [{
+      value: "1",
+      name: "推荐排序",
+      active: false
+    }, {
+      value: "2",
+      name: "距离排序",
+      active: false
+    }, {
+      value: "3",
+      name: "价格低到高",
+      active: false
+    }, {
+      value: "4",
+      name: "价格高到低",
+      active: false
+    }, {
+      value: "5",
+      name: "好评排序",
+      active: false
+    }]
+  },
+  getSort(e){
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var {items} = this.data;
+    items.forEach((item,i)=>{
+      if(index == i){
+        item['active'] = true;
+      }else{
+        item['active'] = false;
+      }
+    }) 
+    this.setData({
+      items
+    })
+  },
+  onLoad: function(e) {
 
-    }
+  }
 });

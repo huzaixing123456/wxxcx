@@ -1,10 +1,10 @@
 <view class="nav">
   <view bindtap="toCalendar" class="nav-wrap">
     <view class="item">{{start}}-{{end}}<view class="arrow"></view></view>
-    <view bindtap="toPlace" class="item">{{place.title}}<view class="arrow"></view></view>
-    <view bindtap="toSort" class="item">{{sort[sort_value].name}}<view class="arrow"></view></view>
-    <view bindtap="toFilter" class="item">{{filter[0].title}}
-        <view class="circle font22" hidden="{{filter_num==''}}">{{filter_num>9?'9+':filter_num}}</view>
+    <view bindtap="toPlace" class="item">{{location?location:'位置'}}<view class="arrow"></view></view>
+    <view bindtap="toSort" class="item">{{sort?sort:'排序'}}<view class="arrow"></view></view>
+    <view bindtap="toFilter" class="item">
+      筛选{{filter.length>0?'.' + filter.length:''}}
           <view class="arrow"></view>
     </view>
   </view>

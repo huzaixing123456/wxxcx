@@ -1,14 +1,14 @@
 {
   "pages": [
+    "pages/list/list",
+    "pages/index/index",
     "pages/detail/submit/submit",
     "pages/order/order",
     "pages/list/filter/filter",
     "pages/login/login",
     "pages/list/sort/sort",
-    "pages/list/list",
     "pages/people/people",
     "pages/center/center",
-    "pages/index/index",
     "pages/list/location/location",
     "pages/city/city",
     "pages/detail/detail",
