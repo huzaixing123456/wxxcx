@@ -92,6 +92,10 @@
     font-size:22rpx;
 }
 
+.code .item .message-code.disabled{
+ background:#999;
+}
+
 .btn {
     background: #fd8238;
     text-align: center;
@@ -107,3 +111,53 @@
     background: rgb(255,185,142);
 }
 
+.model{
+  position: fixed;
+  width:90%;
+  background:#FFF;
+  border:1px solid #EEE;
+  border-radius:5rpx;
+  top:30%;
+  left:50%;
+  z-index:100;
+  transform:translateX(-50%) translateY(-50%)
+}
+
+.model .t1{
+  padding:30rpx;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+}
+
+.model .t1 image{
+  width: 120rpx;
+  height: 55rpx;
+}
+
+.model .t1 .text{
+  font-size:30rpx;
+  padding:10rpx 30rpx;
+  border:1px solid #DFDFDF;
+  border-radius:5rpx;
+  align-items:center;
+}
+
+.model .t2{
+  padding:20rpx 30rpx 30rpx;
+}
+
+.model .t2 input{
+  background:#EFEFEF;
+  font-size:30rpx;
+  height:60rpx;
+  line-height:60rpx;
+  padding-left:10rpx;
+}
+
+.model .t3{
+  border-top:1rpx solid #EFEFEF;
+  text-align:center;
+  line-height:80rpx;
+  color:dodgerblue;
+}

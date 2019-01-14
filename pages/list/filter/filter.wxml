@@ -1,7 +1,7 @@
 <view class="wrap3">
   户型
   <view class="items">
-        <view bindtap="activeTogg" class="item {{item.active==true?'active':''}} font26" data-active="{{item.active}}" data-id="{{index}}" data-name="room_type" data-parm="{{item.parm}}" wx:for="{{activeList.room_type}}">{{item.title}}</view>
+        <view bindtap="changeHouse" data-index="{{index}}" class="item {{item.active==true?'active':''}} font26"  wx:for="{{bedRoom}}" wx:key="*this">{{item.text}}</view>
     </view>
 </view>
 
@@ -27,23 +27,25 @@
 <view class="wrap3">
 房型
 <view class="items">
-    <view bindtap="activeTogg" class="item {{item.active==true?'active':''}} font26" data-active="{{item.active}}" data-id="{{index}}" data-name="house_type" data-parm="{{item.parm}}" wx:for="{{activeList.house_type}}">{{item.title}}</view>
+    <view bindtap="activeTogg" class="item {{item.active==true?'active':''}} font26" wx:for="{{roomType}}" wx:key="*this">{{item.text}}</view>
 </view>
 </view>
 
 
 <view class="wrap4">
-  配套 <text bindtap="arrowChange2" class="arrow daoke-icon icon-down-trangle-copy-copy" style="{{isArrow_2}}"></text>
-    <view class="items" style="{{isView_2}}">
-        <view bindtap="activeTogg" class="item" data-active="{{item.active}}" data-id="{{item.id}}" data-name="service" data-parm="{{item.parm}}" wx:for="{{activeList.service}}">
+  配套
+    <view class="items">
+        <view bindtap="activeTogg" class="item" data-active="{{item.active}}" wx:for="{{facilities}}" wx:key="*this">
             <view class="t1 {{item.active==true?'active':''}}">
-                <text class="t2 daoke-icon {{item.icon}}"></text>
+                <text class="t2 iconfont {{item.icon}}"></text>
             </view>
-            <text class="{{item.active==true?'active':''}} font26">{{item.title}}</text>
+            <text class="{{item.active==true?'active':''}} font26">{{item.text}}</text>
         </view>
     </view>
 </view>
 
+<view class='wrap-height'>
+</view>
 
 <view class="wrap5">
     <view bindtap="clearAll" class="t1 {{isActive?'active':''}}">清空</view>

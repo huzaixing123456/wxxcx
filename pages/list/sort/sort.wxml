@@ -1,5 +1,6 @@
 <view class='sort'>
-  <view wx:for="{{items}}">
+  <view wx:for="{{items}}" class='item'>
     <text>{{item.name}}</text>
+    <text class='iconfont icon-duihao color'></text>
   </view>
 </view>

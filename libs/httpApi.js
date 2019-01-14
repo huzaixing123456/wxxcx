@@ -51,7 +51,20 @@ function getRecommend(data) {
   return http.get('/api/room/recommend', data);
 }
 
+//用户登录
+function codeLogin(data){
+  return http.post('/oauth/token', data);
+}
 
+//获取商圈
+function getBusiness(data){
+  return http.get('/api/city/business',data);
+}
+
+//预定下单
+function submitOrder(data) {
+  return http.post('/book', data,{body:true});
+}
 
 export default {
     getAllCity,
@@ -63,5 +76,8 @@ export default {
     getRoomList,
     getRoomDetail,
     getOpenId,
-    getRecommend
+    getRecommend,
+    codeLogin,
+    getBusiness,
+    submitOrder
 }

@@ -36,7 +36,6 @@
     width: 480rpx;
     color: #fff;
     line-height: 110rpx;
-    font-size: 43rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -59,6 +58,11 @@
     border-top: 1px solid rgb(248,248,248);
 }
 
+.item .icon{
+  font-size:36rpx;
+  color:#666;
+}
+
 
 .item .title {
     margin-left: 40rpx;
@@ -78,4 +82,9 @@
     text-align: center;
     color:#555;
     box-shadow: 1px 3px 6px 1px rgb(232,232,232);
+}
+
+.icon-tx{
+  font-size: 40rpx;
+  color:#666;
 }

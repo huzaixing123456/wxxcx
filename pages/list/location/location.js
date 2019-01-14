@@ -1,3 +1,6 @@
+import httpApi from '../../../libs/httpApi';
+import LocalStorage from '../../../libs/localStorage';
+
 Page({
     data: {
         items: [ {
@@ -35,6 +38,16 @@ Page({
         } ],
         mainActiveIndex: 0,
         activeId: 0
+    },
+    onShow(){
+      LocalStorage.get('cityData').then(res=>{
+        console.log(res);
+        httpApi.getBusiness({
+          did:res['cityId']
+        }).then(res => {
+          console.log(res);
+        })
+      });
     },
     handleNavClick: function(e) {
         

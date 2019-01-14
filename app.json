@@ -1,19 +1,19 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/people/people",
-    "pages/list/list",
+    "pages/detail/submit/submit",
+    "pages/order/order",
+    "pages/list/filter/filter",
     "pages/login/login",
+    "pages/list/sort/sort",
+    "pages/list/list",
+    "pages/people/people",
+    "pages/center/center",
+    "pages/index/index",
+    "pages/list/location/location",
     "pages/city/city",
     "pages/detail/detail",
-    "pages/list/filter/filter",
     "pages/date/date",
-    "pages/list/location/location",
-    "pages/list/sort/sort",
-    "pages/detail/submit/submit",
-    "pages/order/orderdetail/orderdetail",
-    "pages/order/order",
-    "pages/center/center"
+    "pages/order/orderdetail/orderdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

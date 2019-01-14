@@ -1,4 +1,7 @@
-
+import httpApi from '../../../libs/httpApi';
+import util from '../../../libs/util';
+import LocalStorage from '../../../libs/localStorage';
+import { HTTP } from '../../../libs/const.js';
 Page({
     data: {
         dataList: {
@@ -40,7 +43,21 @@ Page({
         isDisabled: !1
     },
     onLoad: function(e) {
-       
+      httpApi.submitOrder({
+        checkInDate:'2019-01-14',
+        checkOutDate:'2019-01-15',
+        guestNum:'3', 
+        idNo:'421181198706078010',  
+        idType:0 ,
+        mobile:'18611985439',
+        name :'胡再兴', 
+        roomId :28, 
+        roomNum :1
+      }).then(res=>{
+        console.log(res);
+      })
+
+
     },
     onShow: function() {
       

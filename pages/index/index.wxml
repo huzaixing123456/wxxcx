@@ -10,7 +10,7 @@
         <text>{{place}}</text>
       </view>
       <view  class="right" hidden="{{!isHide}}">
-        <text class="daoke-icon icon-dingwei1 color"></text>
+        <text class="iconfont icon-dingwei color"></text>
         <view class="font22">我的位置</view>
       </view>
       <!-- <view hidden="{{isHide}}">
@@ -26,7 +26,7 @@
 
     <view class="person" bindtap='navigatorToPeople'>
       <text>{{peopleNum}}</text>
-      <text class="daoke-icon icon-zhixiang"></text>
+      <text class="iconfont icon-xiangyoujiantou"></text>
     </view>
 
     <view bindtap="navigatorToList" class="btn-big" hoverClass="btn-big-click">查找美屋</view>

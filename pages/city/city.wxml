@@ -2,7 +2,7 @@
   <view class="city">
     <view class="current" wx:if="{{city}}">
       <view class="icon">
-        <text class="daoke-icon icon-dingwei1 color"></text>
+        <text class="iconfont icon-dingwei color"></text>
       </view>
       <view class="text">
         <view class="city-c1">我的位置</view>

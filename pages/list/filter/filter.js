@@ -1,244 +1,134 @@
 Page({
     data: {
-        leftMin: 0,
-        leftMax: 6,
-        rightMin: 0,
-        rightMax: 6,
-        leftValue: 0,
-        rightValue: 6,
-        leftPer: "90%",
-        activeList: {
-            house_level: [ {
-                id: 0,
-                parm: 1,
-                title: "豪华",
-                active: !1,
-                icon: "icon-jingpin1"
-            }, {
-                id: 1,
-                parm: 2,
-                title: "精品",
-                active: !1,
-                icon: "icon-jingpin"
-            }, {
-                id: 2,
-                parm: 3,
-                title: "舒适",
-                active: !1,
-                icon: "icon-zuowu-xiaomai"
-            } ],
-            recommend: [ {
-                id: 0,
-                title: "豪宅",
-                active: !1
-            }, {
-                id: 1,
-                title: "超赞房东",
-                active: !1
-            }, {
-                id: 2,
-                title: "超赞新房",
-                active: !1
-            }, {
-                id: 3,
-                title: "新房特惠",
-                active: !1
-            }, {
-                id: 4,
-                title: "自营民宿",
-                active: !1
-            }, {
-                id: 5,
-                title: "独立房间",
-                active: !1
-            }, {
-                id: 6,
-                title: "连住优惠",
-                active: !1
-            }, {
-                id: 7,
-                title: "稻客优选",
-                active: !1
-            }, {
-                id: 8,
-                title: "斯维登",
-                active: !1
-            }, {
-                id: 9,
-                title: "闪灯",
-                active: !1
-            }, {
-                id: 10,
-                title: "信用免押金",
-                active: !1
-            }, {
-                id: 11,
-                title: "提供发票",
-                active: !1
-            } ],
-            room_type: [ {
-                id: 0,
-                parm: 1,
-                title: "一居",
-                active: !1
-            }, {
-                id: 1,
-                parm: 2,
-                title: "二居",
-                active: !1
-            }, {
-                id: 2,
-                parm: 3,
-                title: "三居",
-                active: !1
-            }, {
-                id: 3,
-                parm: 4,
-                title: "四居及以上",
-                active: !1
-            } ],
-            house_type: [ {
-                id: 0,
-                parm: 1,
-                title: "公寓",
-                active: !1
-            }, {
-                id: 1,
-                parm: 2,
-                title: "别墅",
-                active: !1
-            }, {
-                id: 2,
-                parm: 3,
-                title: "复式",
-                active: !1
-            }, {
-                id: 3,
-                parm: 4,
-                title: "农家乐",
-                active: !1
-            }, {
-                id: 4,
-                parm: 5,
-                title: "木屋",
-                active: !1
-            }, {
-                id: 5,
-                parm: 6,
-                title: "四合院",
-                active: !1
-            }, {
-                id: 6,
-                parm: 7,
-                title: "老洋房",
-                active: !1
-            }, {
-                id: 7,
-                parm: 8,
-                title: "客栈",
-                active: !1
-            } ],
-            service: [ {
-                id: 0,
-                parm: 9,
-                title: "无线网络",
-                active: !1,
-                icon: "icon-wifi"
-            }, {
-                id: 1,
-                parm: 18,
-                title: "全天热水",
-                active: !1,
-                icon: "icon-quantianreshui"
-            }, {
-                id: 2,
-                parm: 67,
-                title: "电梯",
-                active: !1,
-                icon: "icon-dianti"
-            }, {
-                id: 3,
-                parm: 13,
-                title: "洗衣机",
-                active: !1,
-                icon: "icon-xiyiji"
-            }, {
-                id: 4,
-                parm: 15,
-                title: "电视",
-                active: !1,
-                icon: "icon-dianshi"
-            }, {
-                id: 5,
-                parm: 11,
-                title: "空调",
-                active: !1,
-                icon: "icon-kongtiao"
-            }, {
-                id: 6,
-                parm: 14,
-                title: "冰箱",
-                active: !1,
-                icon: "icon-bingxiang"
-            }, {
-                id: 7,
-                parm: 53,
-                title: "微波炉",
-                active: !1,
-                icon: "icon-weibolu"
-            } ],
-            feature: [ {
-                id: 0,
-                parm: 1,
-                title: "做饭方便",
-                active: !1
-            }, {
-                id: 1,
-                parm: 2,
-                title: "长租首选",
-                active: !1
-            }, {
-                id: 2,
-                parm: 3,
-                title: "宠物同行",
-                active: !1
-            }, {
-                id: 3,
-                parm: 4,
-                title: "聚会轰趴",
-                active: !1
-            }, {
-                id: 4,
-                parm: 5,
-                title: "海景房",
-                active: !1
-            }, {
-                id: 5,
-                parm: 6,
-                title: "湖景房",
-                active: !1
-            }, {
-                id: 6,
-                parm: 7,
-                title: "江景房",
-                active: !1
-            }, {
-                id: 7,
-                parm: 8,
-                title: "山景房",
-                active: !1
-            } ]
+      bedRoom:[
+        {
+          text:"一居",
+          id:1,
+          active:false
         },
-        priceList: [ "￥0", "￥200", "￥300", "￥400", "￥500", "￥800", "不限" ],
-        stepper: {
-            stepper: 0,
-            min: 0,
-            max: 10,
-            size: "small"
+        {
+          text: "二居",
+          id: 2,
+          active: false
         },
-        result: "",
-        isActive: !1,
-        isQuery: !0
+        {
+          text: "三居",
+          id: 3,
+          active: false
+        },
+        {
+          text: "四居以以上",
+          id: 4,
+          active: false
+        }
+      ],
+      roomType:[
+        {
+          text:"公寓",
+          id:1,
+          active:false
+        },
+        {
+          text: "复式",
+          id: 2,
+          active: false
+        },
+        {
+          text: "别墅",
+          id: 3,
+          active: false
+        },
+        {
+          text: "客栈",
+          id: 4,
+          active: false
+        },
+        {
+          text: "农家乐",
+          id: 5,
+          active: false
+        },
+        {
+          text: "木屋",
+          id: 6,
+          active: false
+        },
+        {
+          text: "四合院",
+          id: 7,
+          active: false
+        },
+        {
+          text: "渔家乐",
+          id: 8,
+          active: false
+        },
+        {
+          text: "房车营地",
+          id: 9,
+          active: false
+        },
+        {
+          text: "树屋",
+          id: 10,
+          active: false
+        },
+        {
+          text: "帐篷营地",
+          id: 11,
+          active: false
+        }
+      ],
+      facilities:[
+        {
+          text: "无线网络",
+          id: 1,
+          icon:'icon-wifi',
+          active: false
+        },
+        {
+          text: "全天热水",
+          id: 2,
+          icon: 'icon-reshui',
+          active: false
+        },
+        {
+          text: "洗衣机",
+          id: 3,
+          icon: 'icon-xiyiji',
+          active: false
+        },
+        {
+          text: "电梯",
+          id: 4,
+          icon: 'icon-dianti',
+          active: false
+        },
+        {
+          text: "浴缸",
+          id: 5,
+          icon: 'icon-yugang',
+          active: false
+        },
+        {
+          text: "空调",
+          id: 6,
+          icon: 'icon-kongtiao',
+          active: false
+        },
+        {
+          text: "电视",
+          id: 7,
+          icon: 'icon-dianshi',
+          active: false
+        },
+        {
+          text: "冰箱",
+          id: 8,
+          icon: 'icon-bingxiang',
+          active: false
+        },
+      ]
     },
     onLoad: function(t) {
 
@@ -248,5 +138,9 @@ Page({
     },
     onUnload: function() {
        
+    },
+    changeHouse(e){
+      var index = e.currentTarget.dataset.index;
+      
     }
 });
