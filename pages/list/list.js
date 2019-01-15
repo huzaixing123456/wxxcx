@@ -6,8 +6,8 @@ import { HTTP } from '../../libs/const';
 Page({
   data: {
     form: {
-      startDate: "", //开始时间
-      endDate: "",   //结束时间,
+      checkInDate: "", //开始时间
+      checkOutDate: "",   //结束时间,
       sort: 0,        //排序方式
       pageNum: 1      //分页页码
     },
@@ -30,8 +30,8 @@ Page({
       console.log(start);
       this.setData({
         form: Object.assign(this.data.form, {
-          startDate: `${start.year}-${start.month}-${start.day}`,
-          endDate: `${end.year}-${end.month}-${end.day}`
+          checkInDate: `${start.year}-${start.month}-${start.day}`,
+          checkOutDate: `${end.year}-${end.month}-${end.day}`
         }),
         start: `${start.month}.${start.day}`,
         end: `${end.month}.${end.day}`
@@ -56,8 +56,8 @@ Page({
   },
   initParams() {
     return {
-      startDate: "", //开始时间
-      endDate: "",   //结束时间,
+      checkInDate: "", //开始时间
+      checkOutDate: "",   //结束时间,
       sort: 0,        //排序方式
       pageNum: 1      //分页页码
     }

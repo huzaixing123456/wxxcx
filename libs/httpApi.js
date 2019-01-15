@@ -33,7 +33,7 @@ function register(data) {
 
 //获取房屋列表
 function getRoomList(data) {
-  return http.get('/api/room/list', data);
+  return http.post('/api/room/list', data, { body: true });
 }
 
 //获取房屋列表
