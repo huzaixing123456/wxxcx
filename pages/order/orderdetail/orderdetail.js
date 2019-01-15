@@ -1,4 +1,9 @@
 
+import httpApi from '../../../libs/httpApi';
+import util from '../../../libs/util';
+import LocalStorage from '../../../libs/localStorage';
+import { HTTP } from '../../../libs/const.js';
+
 Page({
     data: {
         order: {
@@ -19,7 +24,18 @@ Page({
         isShow: !1
     },
     onReady: function() {},
-    onShow: function() {},
+    onShow: function() {
+      // httpApi.getOrderDetail({
+      //   orderId: 16655793587748864
+      // })
+      // httpApi.refundOrder({
+      //   orderId: 16655793587748864
+      // })
+      httpApi.deleteOrder({
+        orderId: 16655793587748864
+      })
+
+    },
     onHide: function() {},
     onUnload: function() {},
     onPullDownRefresh: function() {},

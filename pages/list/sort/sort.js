@@ -1,3 +1,4 @@
+import LocalStorage from '../../../libs/localStorage';
 Page({
   data: {
     items: [{
@@ -35,6 +36,9 @@ Page({
     }) 
     this.setData({
       items
+    });
+    LocalStorage.set('sort', items[index]).then(res => {
+      wx.navigateBack();
     })
   },
   onLoad: function(e) {

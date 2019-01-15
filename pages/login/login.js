@@ -20,6 +20,10 @@ Page({
         hasCheckImageCode:false //是否经过图片验证码验证      
     },
     onLoad: function() {
+      // LocalStorage.set('user', {
+      //   token: 'b14eb91d-e617-406c-85cc-9e36b740fd65',
+      //   telephone: 18611985439
+      // })
       util.getLogin().then(res=>{
           console.log("code值是"+res);
       });
@@ -150,8 +154,8 @@ Page({
             code:code
           }).then(res=>{
             console.log(res);
-            LocalStorage.set(user, {
-              token: 'aa001ef9-2eab-4fd7-9a34-c55f0b1a6032',
+            LocalStorage.set('user', {
+              token: 'b14eb91d-e617-406c-85cc-9e36b740fd65',
               telephone: phone
             })
           })

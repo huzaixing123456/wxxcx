@@ -44,15 +44,24 @@ Page({
     },
     onLoad: function(e) {
       httpApi.submitOrder({
-        checkInDate:'2019-01-14',
-        checkOutDate:'2019-01-15',
-        guestNum:'3', 
-        idNo:'421181198706078010',  
-        idType:0 ,
-        mobile:'18611985439',
-        name :'胡再兴', 
-        roomId :28, 
-        roomNum :1
+        // checkInDate:'2019-01-14',
+        // checkOutDate:'2019-01-15',
+        // guestNum:'3', 
+        // idNo:'421181198706078010',  
+        // idType:0 ,
+        // mobile:'18611985439',
+        // name :'胡再兴', 
+        // roomId :28, 
+        // roomNum :1
+        "checkInDate": "2019-06-17",
+        "checkOutDate": "2019-06-29",
+        "guestNum": 1,
+        "idNo": "421181198706078010",
+        "idType": 0,
+        "mobile": "12222222222",
+        "name": "zhangsan",
+        "roomId": 30,
+        "roomNum": 1
       }).then(res=>{
         console.log(res);
       })

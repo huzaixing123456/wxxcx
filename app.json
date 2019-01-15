@@ -1,19 +1,21 @@
 {
   "pages": [
     "pages/list/list",
-    "pages/index/index",
-    "pages/detail/submit/submit",
-    "pages/order/order",
     "pages/list/filter/filter",
+    "pages/list/location/location",
+    "pages/index/index",
+    "pages/order/orderdetail/orderdetail",
+    "pages/detail/submit/submit",
     "pages/login/login",
+    
+    "pages/order/order",
     "pages/list/sort/sort",
     "pages/people/people",
     "pages/center/center",
-    "pages/list/location/location",
     "pages/city/city",
     "pages/detail/detail",
-    "pages/date/date",
-    "pages/order/orderdetail/orderdetail"
+    "pages/date/date"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

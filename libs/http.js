@@ -27,7 +27,7 @@ class Http {
       'url': dataUrl,
       'method': method,
       'header': {
-        'authorization': 'Bearer aa001ef9-2eab-4fd7-9a34-c55f0b1a6032'
+        'authorization': 'Bearer 85200af1-5111-4802-9f86-9f7aa0194bd8'
       },
     };
     var user = LocalStorage.get('user');
@@ -81,3 +81,22 @@ function showError() {
 }
 
 export default new Http();
+
+// { access_token: "85200af1-5111-4802-9f86-9f7aa0194bd8", token_type: "bearer", … }
+// access_token
+// :
+// "85200af1-5111-4802-9f86-9f7aa0194bd8"
+// expires_in
+// :
+// 431999
+// refresh_token
+// :
+// "92e3a34a-3622-4b5f-8f86-79376f216930"
+// scope
+// :
+// "read write"
+// token_type
+// :
+// "bearer"
+
+//16655793587748864
