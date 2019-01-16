@@ -1,10 +1,26 @@
 Page({
-    data: {
-      bedRoom:[
+  data: {
+   
+  },
+  onLoad: function (t) {
+    this.init();
+  },
+  onShow: function () {
+
+  },
+  onUnload: function () {
+
+  },
+  init(){
+    var data = {
+      suitPeople:'',
+      bedAmount:'',
+      flag:false,
+      bedRoom: [
         {
-          text:"一居",
-          id:1,
-          active:false
+          text: "一居",
+          id: 1,
+          active: false
         },
         {
           text: "二居",
@@ -22,11 +38,11 @@ Page({
           active: false
         }
       ],
-      roomType:[
+      roomType: [
         {
-          text:"公寓",
-          id:1,
-          active:false
+          text: "公寓",
+          id: 1,
+          active: false
         },
         {
           text: "复式",
@@ -79,11 +95,11 @@ Page({
           active: false
         }
       ],
-      facilities:[
+      facilities: [
         {
           text: "无线网络",
           id: 1,
-          icon:'icon-wifi',
+          icon: 'icon-wifi',
           active: false
         },
         {
@@ -129,18 +145,99 @@ Page({
           active: false
         },
       ]
-    },
-    onLoad: function(t) {
-
-    },
-    onShow: function() {
-
-    },
-    onUnload: function() {
-       
-    },
-    changeHouse(e){
-      var index = e.currentTarget.dataset.index;
-      
     }
+    var initData = this.data;
+    this.setData(Object.assign({}, initData, data));
+  },
+  changeHouse(e) {
+    var { bedRoom } = this.data;
+    var index = e.currentTarget.dataset.index;
+    bedRoom[index]['active'] = !bedRoom[index]['active']
+    this.setData({
+      bedRoom
+    })
+    this.checkData();
+  },
+  changeType(e) {
+    var { roomType } = this.data;
+    var index = e.currentTarget.dataset.index;
+    roomType[index]['active'] = !roomType[index]['active']
+    this.setData({
+      roomType
+    })
+    this.checkData();
+  },
+  changeAssort(e){
+    var { facilities } = this.data;
+    var index = e.currentTarget.dataset.index;
+    facilities[index]['active'] = !facilities[index]['active']
+    this.setData({
+      facilities
+    })
+    this.checkData();
+  },
+  changeBed(e){
+    var tag = parseInt(e.currentTarget.dataset.tag);
+    var { bedAmount } = this.data;
+    if (tag){
+      if (bedAmount >= 10) return;
+      bedAmount = bedAmount ? bedAmount+1:1
+    }else{
+      if (!bedAmount) return;
+      bedAmount = bedAmount ? bedAmount - 1 : ''
+    }
+    this.setData({
+      bedAmount
+    })
+    this.checkData();
+  },
+  changePeople(e){
+    var tag = parseInt(e.currentTarget.dataset.tag);
+    var { suitPeople } = this.data;
+    if (tag) {
+      if (suitPeople>=10) return;
+      suitPeople = suitPeople ? suitPeople + 1 : 1
+    } else {
+      if (!suitPeople) return;
+      suitPeople = suitPeople ? suitPeople - 1 : ''
+    }
+    this.setData({
+      suitPeople
+    })
+    this.checkData();
+  },
+  checkData(){
+    var flag = false;
+    var { bedRoom, roomType, facilities, suitPeople, bedAmount} = this.data;
+    if (suitPeople){
+      flag = true;
+    }
+    if (bedAmount){
+      flag = true;
+    }
+    var bed = bedRoom.find(item=>{
+      return item.active;
+    })
+    if(bed){
+      flag = true;
+    }
+    var room = roomType.find(item => {
+      return item.active;
+    })
+    if (room) {
+      flag = true;
+    }
+    var facilt = facilities.find(item => {
+      return item.active;
+    })
+    if (facilt) {
+      flag = true;
+    }
+    this.setData({
+      flag
+    })
+  },
+  reset(){
+    this.init();
+  }
 });

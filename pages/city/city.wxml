@@ -17,10 +17,11 @@
     scroll-y
     bindscrolltoupper="upper"
     bindscrolltolower="lower"
+    scroll-into-view="{{toView}}"
     style="paddingTop:{{city?'175rpx':0}}"
     class="list">
       <view class="item" wx:for="{{list}}" wx:key='*this'>
-      <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName'>
+      <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName' id="{{index}}">
         <view class="letter">{{index}}</view>
         <view class="city_name" bindtap='changeCity'  wx:for="{{itemName}}" wx:for-item="itemCity" wx:key='*this'>{{itemCity.city}}</view>
       </view>
@@ -28,7 +29,7 @@
     </scroll-view>
     <view class="fixed-letters">
       <view wx:for="{{list}}" wx:key='*this'>
-        <view wx:for="{{item}}" wx:key='*this'>{{index}}</view>
+        <view wx:for="{{item}}" wx:key='*this' data-name="{{index}}" bindtap='changeView'>{{index}}</view>
       </view>
     </view>
   </view>

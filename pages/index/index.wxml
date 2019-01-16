@@ -6,16 +6,12 @@
   <view class="info">
     <view class="location">
       <view bindtap="navigatorToCity" class="font32">
-        <text>{{city.address}}</text>
-        <text>{{place}}</text>
+        <text>{{city.name}}</text>
       </view>
-      <view  class="right" hidden="{{!isHide}}">
+      <view  class="right">
         <text class="iconfont icon-dingwei color"></text>
         <view class="font22">我的位置</view>
       </view>
-      <!-- <view hidden="{{isHide}}">
-        <text class="font22">定位中...</text>
-      </view> -->
     </view>
 
     <view class="date" bindtap="navigatorToCalendar">
@@ -25,7 +21,7 @@
     </view>
 
     <view class="person" bindtap='navigatorToPeople'>
-      <text>{{peopleNum}}</text>
+      <text>{{peopleNum?peopleNum:'请选择入住人数'}}</text>
       <text class="iconfont icon-xiangyoujiantou"></text>
     </view>
 

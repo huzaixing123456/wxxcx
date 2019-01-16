@@ -69,35 +69,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('load');
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log('ready');
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var people = LocalStorage.getSync('people');
+    if(people){
+      var { list } = this.data;
+      var index = list.findIndex(item=>{
+        return item.num == people.num
+      })
+      if(index){
+        list[index] = people;
+        this.setData({
+          list
+        })
+      }
+    }
   },
   
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('hide');
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('unload');
   },
 
   /**
