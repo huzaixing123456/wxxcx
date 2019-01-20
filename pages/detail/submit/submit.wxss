@@ -157,3 +157,11 @@
 .btnHover {
     background: rgb(255,185,142);
 }
+
+.choose text{
+  margin-left:25rpx;
+}
+
+.choose .c1,.choose .c3{
+  font-size:40rpx;
+}

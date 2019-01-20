@@ -66,7 +66,6 @@ Page({
                 days
             });
         },()=>{
-          console.log("11111");
           var current = util.getCurrentDate();
           var tomorrow = util.getTomorrowDate();
           this.setData({
