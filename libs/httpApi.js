@@ -91,6 +91,11 @@ function applyRefundOrder(data) {
   return http.post('/oauth-api/order/applyRefund', data);
 }
 
+//订单列表
+function getOrderList(data){
+  return http.post('/oauth-api/order/list',data);
+}
+
 
 export default {
   getAllCity,
@@ -110,5 +115,6 @@ export default {
   refundOrder,
   deleteOrder,
   leaveOrder,
-  applyRefundOrder
+  applyRefundOrder,
+  getOrderList
 }

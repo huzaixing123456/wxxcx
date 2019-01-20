@@ -32,28 +32,16 @@
 .wrap2 .t3 {
     padding: 20rpx 30rpx;
     display: flex;
-    line-height: 70rpx;
+    line-height: 50rpx;
     justify-content: space-between;
+    border-bottom: 2rpx solid #f4f4f4;
 }
 
-.wrap2 .t4 {
-    padding: 20rpx 30rpx;
-    display: flex;
-    justify-content: space-between;
-    border-top: 2rpx solid #f4f4f4;
-}
-
-.wrap2 .t5 {
-    padding: 20rpx 30rpx;
-    display: flex;
-    border-top: 2rpx solid f4f4f4;
-}
-
-.wrap2 .t5 input {
+.wrap2 .t3 input {
     width: 100%;
 }
 
-.wrap2 .t5 .width3 {
+.wrap2 .t3 .width3 {
     width: 33%;
     line-height: 50rpx;
 }

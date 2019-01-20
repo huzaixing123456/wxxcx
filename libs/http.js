@@ -25,13 +25,13 @@ class Http {
     var dataUrl = HTTP['prefix'] + url;
     var requestObj = {
       'url': dataUrl,
-      'method': method,
-      'header': {
-        'authorization': 'Bearer 85200af1-5111-4802-9f86-9f7aa0194bd8'
-      },
+      'method': method
     };
-    var user = LocalStorage.get('user');
-    console.log(user);
+    var user = LocalStorage.getSync('user');
+    if(user){
+      requestObj['header'] = {};
+      requestObj['header']['authorization'] = 'Bearer ' + user['token']
+    }
     if (method == "POST" && config && config['body']) {
       requestObj['data'] = data;
     } else {

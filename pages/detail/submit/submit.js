@@ -1,7 +1,7 @@
 import httpApi from '../../../libs/httpApi';
 import util from '../../../libs/util';
 import LocalStorage from '../../../libs/localStorage';
-import { HTTP } from '../../../libs/const.js';
+import { REGEXP } from '../../../libs/const.js';
 Page({
   data: {
     dataList: {
@@ -11,40 +11,12 @@ Page({
     endDate:'',
     days:'',
     roomCount:1,
-
-    price: "",
-    name: "",
-    phone: "",
-    id_card: "",
-    otherList: ["限时退：取消订单，将收取100%房费作为违约金支付给房东；入住后若提前退房，将收取100%的剩余房费作为违约金支付给房东。", "请根据实际入住人数填写，人数不同房屋报价也有所不同"],
-    stepper: {
-      stepper: 1,
-      min: 1,
-      max: 1,
-      size: "small"
-    },
-    stepper2: {
-      stepper: 1,
-      min: 1,
-      max: 1,
-      size: "small"
-    },
-    array: ["身份证", "军官证", "护照"],
-    objectArray: [{
-      id: 0,
-      name: "身份证"
-    }, {
-      id: 1,
-      name: "军官证"
-    }, {
-      id: 2,
-      name: "护照"
-    }],
-    index: 0,
-    isShow: !1,
-    baoxian: "未使用",
-    peopleCount: 1,
-    isDisabled: !1
+    peopleCount:1,
+    name:'',
+    phone: '',
+    idCard:'',
+    cardIndex: 0,
+    cardList: ["身份证", "军官证", "护照"]
   },
   onLoad: function (e) {
     var checkDate = LocalStorage.getSync('checkDate')
@@ -52,9 +24,13 @@ Page({
     var start = util.getDateByNum(startDate);
     var end = util.getDateByNum(endDate);
     var days = util.getCountDay(start, end);
+    var checkInDate = util.getDateByNum(startDate,'-');
+    var checkOutDate = util.getDateByNum(endDate,'-');
     this.setData({
-      startDate: `${start.month}月${start.day}`,
-      endDate: `${end.month}月${end.day}`,
+      startDate: parseInt(start.month) + '月' + parseInt(start.day)+'日',
+      endDate: parseInt(end.month) + '月' + parseInt(end.day) + '日',
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
       days
     });
 
@@ -62,25 +38,53 @@ Page({
 
   },
   submit() {
+    var { checkInDate, checkOutDate, roomCount, peopleCount, name, phone, idCard, cardIndex} = this.data;
+    if(!name){
+      util.toast({ title: "请输入入住人姓名" });
+      return;
+    }
+    if (!REGEXP.TELEPHONE.test(phone)) {
+      util.toast({ title: "请输入正确的手机号码" });
+      return;
+    }
+    if (cardIndex == 0){
+      if (!REGEXP.IDCARD1.test(idCard) && !REGEXP.IDCARD2.test(idCard)) {
+        util.toast({ title: "请输入正确的身份证号码" });
+        return;
+      }
+    }
+    if (cardIndex == 1) {
+      if (!REGEXP.PASSPORT.test(idCard)) {
+        util.toast({ title: "请输入正确的军官证号码" });
+        return;
+      }
+    }
+    if (cardIndex == 2) {
+      if (!REGEXP.OFFICER.test(idCard)) {
+        util.toast({ title: "请输入正确的护照号码" });
+        return;
+      }
+    }
     httpApi.submitOrder({
-      "checkInDate": "2019-06-17",
-      "checkOutDate": "2019-06-29",
-      "guestNum": 1,
-      "idNo": "421181198706078010",
-      "idType": 0,
-      "mobile": "12222222222",
-      "name": "zhangsan",
+      "checkInDate": checkInDate,
+      "checkOutDate": checkOutDate,
+      "guestNum": peopleCount,
+      "idNo": idCard ,
+      "idType": cardIndex,
+      "mobile": phone,
+      "name": name,
       "roomId": 30,
-      "roomNum": 1
+      "roomNum": roomCount
     }).then(res => {
       console.log(res);
     })
   },
   chooseRoom(e){
     console.log(e);
-    var tag = e.currentTarget.dataset.tag;
+    var { tag, max } = e.currentTarget.dataset;
     var { roomCount } = this.data;
     if(tag>0){
+      if (roomCount >= max) return;
       this.setData({
         roomCount: ++roomCount
       })
@@ -91,6 +95,44 @@ Page({
         })
       }
     }
+  },
+  choosePeople(e) {
+    console.log(e);
+    var {tag,max} = e.currentTarget.dataset;
+    var { peopleCount } = this.data;
+    if (tag > 0) {
+      if (peopleCount>=max)return;
+      this.setData({
+        peopleCount: ++peopleCount
+      })
+    } else {
+      if (peopleCount > 1) {
+        this.setData({
+          peopleCount: --peopleCount
+        })
+      }
+    }
+  },
+  getName(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+  getPhone(e){
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+  getIdCard(e){
+    this.setData({
+      idCard: e.detail.value
+    })
+  },
+  bindCardChange(e){
+    var index = e.detail.value;
+    this.setData({
+      cardIndex:index
+    })
   },
   onShow: function () {
 

@@ -1,42 +1,36 @@
 <block wx:if="{{isLogin}}">
     <view class="nav">
-      <view wx:for="{{list}}" class='item'>
-        {{item.title}}
+      <view wx:for="{{nav}}" class='item' bindtap='changeNav' data-index="{{index}}">
+        <text class='{{item.active?"active":""}}'>{{item.title}}</text>
       </view>
     </view>
-    <view hidden="{{orderList.length==0}}">
-        <view class="order-item" data-id="{{item.orderId}}" wx:for="{{orderList}}" bindtap="navigatorToOrderDetail">
-            <view class="order-t1">
-                <text>订单号：{{item.orderNumber}}</text>
-                <text class="text1">{{item.orderStatusLabel}}</text>
-            </view>
-            <view class="order-t2">
-                <view class="font26">{{item.unitName}}</view>
-                <view class="text2">
-                    <text>入住：{{item.checkInDate}}</text>
-                    <text>退房：{{item.checkOutDate}}</text>
-                </view>
-            </view>
-            <view class="order-t3">
-                <view class="left">
-                    <view>总房费：<text class="text3">￥{{item.totalUnitAmount}}</text></view>
-                    <view>订金：<text class="text3">￥{{item.preAmount}}</text></view>
-                </view>
-                <view class="right">
-                    <view catchtap="{{item.payStatus==0?'contactOwner':'cancleOrder'}}" class="btn bt1" data-id="{{item.orderId}}" data-pho="{{item.masterPhone}}" hoverClass="colorf2" wx:if="{{item.orderStatus!=9}}">{{item.payStatus==0?'联系房东':'取消'}}</view>
-                    <view catchtap="{{item.payStatus==0?'navigatorToPay':'contactOwner'}}" class="btn bt2" data-pho="{{item.masterPhone}}" data-value="{{item.orderId}}" hoverClass="btn-click" wx:if="{{item.orderStatus!=9}}">{{item.payStatus==0?'付款':'联系房东'}}</view>
-                </view>
-            </view>
+    <view class='list'>
+      <view class='item' wx:for="{{orderList}}" wx:key="*this" >
+        <view class='t1'>
+          <text class="t2">{{item.roomName}}</text>
+          <text class="t3">{{item.orderStatusName}}</text>
         </view>
-
-        <view class="more" hidden="{{isHideLoadMore}}">
-
+        <view class='t4'>
+          <image src="{{item.coverPic}}"></image>
+          <view class='t5'>
+            <view class="t6">
+              <view class='t11'>
+                <view class="t7">9月1日</view>
+                <view class="t8">周五 00:00</view>
+              </view>
+              <view><text class="iconfont icon-iconset0416 color"></text></view>
+              <view class='t11'>
+                <view class="t7">9月3日</view>
+                <view class="t8">周日 12:00</view>
+              </view>
+            </view>
+            <view class="t9">
+              <view class="t7">支付总价</view>
+              <view class="t10">¥960.00</view>
+            </view>
+          </view>
         </view>
-        <view class="noData" wx:if="{{orderList.length==total}}">这里是最后一条啦~</view>
-    </view>
-    <view class="noOrder" hidden="{{orderList.length!=0}}">
-        <text class="null-icon daoke-icon icon-meiyoujieguo color"></text>
-        <text class="font26">您目前尚无此类订单~</text>
+      </view>
     </view>
 </block>
 <block wx:else>

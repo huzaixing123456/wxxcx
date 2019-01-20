@@ -1,43 +1,80 @@
+import httpApi from '../../libs/httpApi';
+import util from '../../libs/util';
+import LocalStorage from '../../libs/localStorage';
+import { HTTP } from '../../libs/const';
 
 Page({
-    data: {
-        list: [ {
-            id: 8,
-            title: "全部"
-        }, {
-            id: 0,
-            title: "待支付"
-        }, {
-            id: 1,
-            title: "待入住"
-        } ],
-        orderList: [
-          {
-            orderId:123456789,
-            orderNumber:55555,
-            orderStatusLabel:22222,
-            unitName:"测试数据",
-            checkInDate:20181101,
-            checkOutDate:20181102,
-            totalUnitAmount:999,
-            preAmount:220
-          }
-        ],
-        selectedId: 8,
-        curr_page: 1,
-        isLogin: true,
-        total: "",
-        isHideLoadMore: !0
-    },
-    onLoad: function(t) {
-     
-    },
-    onShow: function() {
-       
-    },
-    navigatorToOrderDetail:function(){
-      wx.navigateTo({
-        url: "./orderdetail/orderdetail"
+  data: {
+    nav: [{
+      id: 0,
+      title: "全部",
+      active: true
+    }, {
+      id: 1,
+      title: "待支付",
+      active: false
+    }, {
+      id: 2,
+      title: "待入住",
+      active: false
+    }],
+    orderList: [],
+    isLogin: true,
+    total: "",
+    isHideLoadMore: !0
+  },
+  onLoad: function (t) {
+    this.getData();
+  },
+  getData(){
+    var { nav } = this.data;
+    var index = nav.findIndex(item=>{
+      return item['active'];
+    });
+    var orderStatus;
+    switch(index){
+      case 0:
+        orderStatus = 'all';
+        break;
+      case 1:
+        orderStatus = 'forPay';
+        break;
+      case 2:
+        orderStatus = 'forCheck';
+        break;
+    };
+    httpApi.getOrderList({
+      orderStatus,
+      pageNum: 1
+    }).then(res => {
+      var data = res;
+      data.forEach(item => {
+        item.coverPic = HTTP.imgPath + item.coverPic
+        item.coverPic = 'https://wx.longmenkezhan.com/images/rooms/201901021411439610.jpg'
       });
-    }
+      this.setData({
+        orderList: data
+      })
+    })
+  },
+  onShow: function () {
+
+  },
+  changeNav(e) {
+    var index = e.currentTarget.dataset.index;
+    var {nav} = this.data;
+    if (nav[index]['active']) return;
+    nav.forEach((item,i)=>{
+      item['active'] = (index == i) ? true :false;
+    })
+    this.setData({
+      nav
+    });
+    this.getData();
+  },
+  navigatorToOrderDetail: function () {
+    wx.navigateTo({
+      url: "./orderdetail/orderdetail"
+    });
+  }
 });
