@@ -13,7 +13,7 @@
         <view class="t3">
             <text>房屋数量</text>
             <view class="choose">
-              <text class='c1 color9 {{roomCount>1:"color":""}}' bindtap='chooseRoom' data-tag='0'>-</text>
+              <text class='c1 color9 {{roomCount>1?"color":""}}' bindtap='chooseRoom' data-tag='0'>-</text>
               <text class='c2'>{{roomCount}} 套</text>
               <text class='c3 color' bindtap="chooseRoom" data-tag='1'>+</text>
             </view>
