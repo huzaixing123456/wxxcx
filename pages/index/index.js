@@ -10,8 +10,8 @@ Page({
         current:0,    //当前索引
         days: "",     //入住天数
         city: {
-          name: "",
-          address: "北京市",
+          name: "请选择",
+          address: "",
           latitude: "",
           longitude: ""
         },
@@ -21,7 +21,6 @@ Page({
     },
     onLoad: function(a) {
       util.getLocation().then(data => {
-        console.log('允许定位啦');
         LocalStorage.set('trapeze', data); //保存经纬度
         return httpApi.getCityInfo(data).then(data => {
           var cityData = {
@@ -54,7 +53,6 @@ Page({
       });
     },
     onShow(){
-      console.log("显示了");
         LocalStorage.get('checkDate').then(res=>{
             var {startDate,endDate} = res;
             var start = util.getDateByNum(startDate);

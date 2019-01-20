@@ -21,38 +21,39 @@ Page({
     filter: []
   },
   onShow() {
-    var data = LocalStorage.getSync('checskDate');
-    console.log(data);
-    LocalStorage.get('checkDate').then(res => {
-      var { startDate, endDate } = res;
-      var start = util.getDateByNum(startDate);
-      var end = util.getDateByNum(endDate);
-      console.log(start);
+    var sort = LocalStorage.getSync('sort');
+    if (sort) {
       this.setData({
-        form: Object.assign(this.data.form, {
-          checkInDate: `${start.year}-${start.month}-${start.day}`,
-          checkOutDate: `${end.year}-${end.month}-${end.day}`
-        }),
-        start: `${start.month}.${start.day}`,
-        end: `${end.month}.${end.day}`
-      });
-      return LocalStorage.get('trapeze');
-    }).then(res => {
-      this.setData({
-        form: Object.assign(this.data.form, {
-          longitude: res.longitude,
-          latitude: res.latitude
-        })
-      });
-      return LocalStorage.get('cityData');
-    }).then(res => {
-      this.setData({
-        city: Object.assign(this.data.form, {
-          city: res['cityId']
-        })
-      });
-      this.getData();
-    })
+        sort
+      })
+    };
+    var checkDate = LocalStorage.getSync('checkDate');
+    var { startDate, endDate } = checkDate;
+    var start = util.getDateByNum(startDate);
+    var end = util.getDateByNum(endDate);
+    console.log(start);
+    this.setData({
+      form: Object.assign(this.data.form, {
+        checkInDate: `${start.year}-${start.month}-${start.day}`,
+        checkOutDate: `${end.year}-${end.month}-${end.day}`
+      }),
+      start: `${start.month}.${start.day}`,
+      end: `${end.month}.${end.day}`
+    });
+    var trapeze = LocalStorage.getSync('trapeze');
+    this.setData({
+      form: Object.assign(this.data.form, {
+        longitude: trapeze.longitude,
+        latitude: trapeze.latitude
+      })
+    });
+    var cityData = LocalStorage.getSync('cityData');
+    this.setData({
+      city: Object.assign(this.data.form, {
+        city: cityData['cityId']
+      })
+    });
+    this.getData();
   },
   initParams() {
     return {

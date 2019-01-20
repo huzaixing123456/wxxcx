@@ -38,6 +38,7 @@ page {
 
 .active {
     color: rgb(255,128,16);
+    box-shadow:0 0 5rpx 1rpx rgb(255,128,16) !important;
 }
 
 .wrap2 {
@@ -128,15 +129,7 @@ page {
     border-radius:50%;
     text-align:center;
     line-height:50rpx;
-}
-
-.count-item .minus{
-    background:#DDD;
-}
-
-.count-item .add{
-    background:#fd8238;
-    color:#FFF;
+     background:#DDD;
 }
 
 
@@ -205,6 +198,10 @@ page {
     text-align: center;
     line-height: 100rpx;
     width: 30%;
+}
+
+.wrap5 .color{
+  color:#fd8238
 }
 
 .wrap5 .t2 {
