@@ -2,7 +2,7 @@
     <view class="detail">
      <view class="swiper" wx:if="{{basic}}">
         <swiper circular bindchange="switchChange" class="item">
-            <swiper-item wx:for="{{basic.coverPic}}">
+            <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this">
                 <image bindtap="navigatorToPhoto" data-value="{{item}}" src="{{item}}"></image>
             </swiper-item>
         </swiper>
@@ -30,16 +30,19 @@
                 <view class="t3">
                   <text wx:if="{{basic.allowPet}}">可带宠物</text>
                   <text wx:if="{{basic.allowParty}}">聚会</text>
-                  <text wx:if="{{basic.allowCook}}">可带宠物</text>
+                  <text wx:if="{{basic.allowCook}}">做饭</text>
                 </view>
             </view>
             <view class="t2">
                 <text class="room-icon daoke-icon icon-chuang"></text>
                 <text class="font26">
-宜住{{basic.maxLive}}人 {{basic.maxLive}}床
-</text>
-                <text class="t4" wx:for="{{detailList.bedTypeList}}">{{item}}
-</text>
+宜住{{basic.maxLive}}人 {{basic.maxLive}}床</text>
+                <view class="t3" wx:if="{{basic.bedType}}">
+                  <text>{{basic.bedType}}</text>
+                </view>
+                <view class="t3" wx:if="{{basic.addBedNum}}">
+                  <text>可加床{{basic.addBedNum}}张</text>
+                </view>
             </view>
         </view>
 
@@ -63,8 +66,7 @@
                 </view>
                 <view class="t4 {{isView1?'zan-ellipsis--l3':''}}">
                     <text>{{location.address}}</text>
-                    <text class="color6">
-{{detailList.introduction.room_add}}</text>
+                    <view class="color6">{{location.traffic}}</view>
                 </view>
             </view>
         </view>
@@ -75,14 +77,14 @@
     <view class="t2 {{isView2?'zan-ellipsis--l3':''}}">
         房屋描述
         <view>
-            <text class="t3">{{location['remark']}}</text>
+            <text class="t3">{{location['roomFeature']}}</text>
         </view>
     </view>
 
     <view class="t4 {{isView2?'zan-ellipsis--l3':''}}">
         周边介绍
         <view>
-            <text class="t3">{{location['roomFeature']}}</text>
+            <text class="t3">{{location['vicinity']}}</text>
         </view>
     </view>
 </view>
@@ -161,11 +163,11 @@
 
                 <view class="text pay">
                     <view class="view1">付款方式:</view>
-                    <view class="view2">{{rules}}</view>
+                    <view class="view2">{{rules.payment}}</view>
                 </view>
                 <view class="text">
                     <view class="view1">最少入住:</view>
-                    <view class="view2">{{rules.minDays}}</view>
+                    <view class="view2">{{rules.minDays}}天</view>
                 </view>
                 <view class="text">
                     <view class="view1">入住押金:</view>

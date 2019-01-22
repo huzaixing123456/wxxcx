@@ -16,7 +16,7 @@
     wx:if="{{list.length!=0}}">
     <view 
       bindtap="navigatorToHouseDetail" 
-      data-id="{{item.room_id}}" 
+      data-id="{{item.id}}" 
       hoverClass="colorf2" 
       wx:for="{{list}}"
       wx:key="*this">
@@ -33,7 +33,7 @@
                 {{item.roomName}}
             </view>
             <view class="t5">
-                {{item.bedNum}}居{{item.bedNum}}床{{item.bedNum}}宜住{{item.distance}} · {{item.address}}
+                {{item.bedroom}}居／{{item.bedAmount}}床／{{item.bedNum}}宜住{{item.suitPeople}}人 · {{item.provinceName == item.cityName ? "" : item.provinceName }}{{item.cityName}}{{item.address}}
             </view>
         </view>
     </view>

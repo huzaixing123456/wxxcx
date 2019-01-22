@@ -4,6 +4,7 @@ class LocalStorage {
   }
 
   get(key) {
+    console.log(key);
     return new Promise((reslove, reject) => {
       wx.getStorage({
         key,
@@ -16,6 +17,7 @@ class LocalStorage {
   }
 
   getSync(key) {
+    console.log(key);
     try {
       const value = wx.getStorageSync(key);
       if (value) {

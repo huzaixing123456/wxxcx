@@ -19,6 +19,7 @@ Page({
       active: false
     }],
     orderList: [],
+    page:'',
     isLogin: true,
     total: "",
     isHideLoadMore: !0
@@ -27,7 +28,7 @@ Page({
     this.getData();
   },
   getData(){
-    var { nav } = this.data;
+    var { nav ,page } = this.data;
     var index = nav.findIndex(item=>{
       return item['active'];
     });
@@ -45,8 +46,9 @@ Page({
     };
     httpApi.getOrderList({
       orderStatus,
-      pageNum: 1
+      pageNum:page||1
     }).then(res => {
+      console.log(res);
       var data = res;
       data.forEach(item => {
         item.coverPic = HTTP.imgPath + item.coverPic
@@ -68,9 +70,13 @@ Page({
       item['active'] = (index == i) ? true :false;
     })
     this.setData({
-      nav
+      nav,
+      page:''
     });
     this.getData();
+  },
+  onReachBottom: function () {
+    console.log('底部加载了');
   },
   navigatorToOrderDetail: function () {
     wx.navigateTo({

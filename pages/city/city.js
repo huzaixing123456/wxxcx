@@ -14,6 +14,7 @@ Page({
   },
   getData() {
     httpApi.getAllCity().then(res => {
+      console.log(res);
       this.setData({
         list: res
       })
@@ -26,8 +27,14 @@ Page({
       })
     })
   },
-  changeCity() {
-
+  changeCity(e) {
+    var data = e.currentTarget.dataset.item;
+    var cityData = {
+      name: data['city'],
+      cityId: data['did']
+    }
+    LocalStorage.set("cityData", cityData);
+    wx.navigateBack();
   },
   changeView(e){
     var name = e.currentTarget.dataset.name;

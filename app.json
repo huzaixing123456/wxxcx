@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/order/order",
     "pages/index/index",
     "pages/list/list",
+    
+    "pages/city/city",
+    "pages/order/order",
     "pages/order/orderdetail/orderdetail",
     "pages/detail/detail",
     "pages/detail/submit/submit",
@@ -12,7 +14,6 @@
     "pages/login/login",
     "pages/list/sort/sort",
     "pages/center/center",
-    "pages/city/city",
     "pages/date/date"
   ],
   "window": {

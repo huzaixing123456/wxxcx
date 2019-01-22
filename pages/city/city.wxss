@@ -43,7 +43,6 @@
 
 .list{
   height:100vh;
-  padding-top:175rpx;
   box-sizing:border-box;
 }
 

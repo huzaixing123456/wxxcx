@@ -70,6 +70,19 @@ Page({
    */
   onLoad: function (options) {
     console.log('load');
+    var people = LocalStorage.getSync('people');
+    if (people) {
+      var { list } = this.data;
+      var index = list.findIndex(item => {
+        return item.num == people.num
+      })
+      if (index) {
+        list[index] = people;
+        this.setData({
+          list
+        })
+      }
+    }
   },
 
   /**
@@ -83,19 +96,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var people = LocalStorage.getSync('people');
-    if(people){
-      var { list } = this.data;
-      var index = list.findIndex(item=>{
-        return item.num == people.num
-      })
-      if(index){
-        list[index] = people;
-        this.setData({
-          list
-        })
-      }
-    }
+    
   },
   
   /**

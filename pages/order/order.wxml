@@ -15,18 +15,18 @@
           <view class='t5'>
             <view class="t6">
               <view class='t11'>
-                <view class="t7">9月1日</view>
-                <view class="t8">周五 00:00</view>
+                <view class="t7">{{item.checkInMonthDay}}</view>
+                <view class="t8">{{item.checkInWeekDay}} {{item.checkInHour}}</view>
               </view>
               <view><text class="iconfont icon-iconset0416 color"></text></view>
               <view class='t11'>
-                <view class="t7">9月3日</view>
-                <view class="t8">周日 12:00</view>
+                <view class="t7">{{item.checkOutMonthDay}}</view>
+                <view class="t8">{{item.checkOutWeekDay}} {{item.checkOutHour}}</view>
               </view>
             </view>
             <view class="t9">
               <view class="t7">支付总价</view>
-              <view class="t10">¥960.00</view>
+              <view class="t10">¥{{item.amount}}</view>
             </view>
           </view>
         </view>

@@ -57,7 +57,7 @@
             <view class="query-loading">
                 <zan-loading color="black" type="circle"></zan-loading>
             </view>
-            <text>查询中</text>
+            <text>查询中（共300套）</text>
         </view>
     </view>
 </view>

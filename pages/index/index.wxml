@@ -10,7 +10,7 @@
       </view>
       <view  class="right">
         <text class="iconfont icon-dingwei color"></text>
-        <view class="font22">我的位置</view>
+        <view class="font22" bindtap='getLocation'>我的位置</view>
       </view>
     </view>
 
@@ -29,7 +29,7 @@
 
   </view>
 
-  <view class="box">
+  <view class="box" wx:if="{{rooms}}">
     <view class="title">热门房源</view>
     <view class="img">
       <swiper autoplay circular class="swiper">
@@ -45,7 +45,7 @@
       </swiper>
     </view>
   </view>
-  <view class="introdution">
+  <view class="introdution" wx:if="{{headImg}}">
     <image src="{{headImg}}"></image>
   </view>
 </view>

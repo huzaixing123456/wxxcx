@@ -20,7 +20,6 @@ function getLocation() {
       fail: reject
     })
   }).then(data => {
-    console.log(data)
     let { latitude, longitude } = data;
     return {
       latitude,

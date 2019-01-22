@@ -18,6 +18,7 @@ Page({
     noMoreData: false,
     location: '',
     sort: '',
+    maxPage:'',
     filter: []
   },
   onShow() {
@@ -74,6 +75,7 @@ Page({
     var parmas = this.data.form;
     parmas['pageNum'] = page;
     httpApi.getRoomList(parmas).then(data => {
+      var data = data['content'];
       let listData = this.data.list;
       if (listData.length == 0 && data.length == 0) {
         this.setData({
@@ -96,33 +98,29 @@ Page({
     })
   },
   toPlace: function () {
-    var e = this;
     wx.navigateTo({
       url: "location/location"
     });
   },
   toSort: function () {
-    var e = this;
     wx.navigateTo({
       url: "sort/sort"
     });
   },
   toFilter: function () {
-    var e = this;
     wx.navigateTo({
       url: "filter/filter"
     });
   },
   toCalendar: function () {
-    var e = this;
     wx.navigateTo({
       url: "../date/date"
     });
   },
-  navigatorToHouseDetail: function () {
-    var e = this;
+  navigatorToHouseDetail: function (e) {
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: "../detail/detail"
+      url: "../detail/detail?roomId=" + id
     });
   }
 });

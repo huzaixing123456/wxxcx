@@ -20,10 +20,6 @@ Page({
         hasCheckImageCode:false //是否经过图片验证码验证      
     },
     onLoad: function() {
-      // LocalStorage.set('user', {
-      //   token: 'b14eb91d-e617-406c-85cc-9e36b740fd65',
-      //   telephone: 18611985439
-      // })
       util.getLogin().then(res=>{
           console.log("code值是"+res);
       });
@@ -61,7 +57,6 @@ Page({
     getCode(){
       let { phone, imageCode, timestamp, codeParams, showImageCode, hasCheckImageCode} = this.data;
       if (codeParams['disable']) return;
-      console.log(phone);
       if (!phone) {
         util.toast({ title: "请输入手机号码" });
         return;
@@ -76,6 +71,13 @@ Page({
         })
         return;
       }
+    
+    },
+    stopTimer(){
+
+    },
+    setTimer(){
+      let { phone, imageCode, timestamp, codeParams } = this.data;
       var time = 60;
       var tagData = {
         disable: true,
@@ -84,8 +86,8 @@ Page({
       this.setData({
         codeParams: Object.assign({}, codeParams, tagData)
       });
-      var timer = setInterval(()=>{
-        if(time == 0){
+      var timer = setInterval(() => {
+        if (time == 1) {
           var tagData = {
             disable: false,
             timeText: ''
@@ -95,7 +97,7 @@ Page({
           });
           clearInterval(timer)
           timer = null;
-        }else{
+        } else {
           time--;
           var tagData = {
             disable: true,
@@ -105,13 +107,16 @@ Page({
             codeParams: Object.assign({}, codeParams, tagData)
           });
         }
-      },1000);
+      }, 1000);
       httpApi.getMessageCode({
-          mobile:phone,
-          captcha:imageCode,
-          timestamp
-      }).then(res=>{
-
+        mobile: phone,
+        captcha: imageCode,
+        timestamp
+      }).then(res => {
+        var {code} = res;
+        if(code == 4001){
+          this.stopTimer();
+        }
       })
     },
     checkImageCode(){
@@ -129,6 +134,7 @@ Page({
         showImageCode: false,
         hasCheckImageCode: true
       });
+      this.setTimer();
     },
     login(){
         let {phone,imageCode,code} = this.data;
@@ -155,7 +161,7 @@ Page({
           }).then(res=>{
             console.log(res);
             LocalStorage.set('user', {
-              token: 'b14eb91d-e617-406c-85cc-9e36b740fd65',
+              token: res['token'],
               telephone: phone
             })
           })

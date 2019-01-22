@@ -28,7 +28,7 @@ class Http {
       'method': method
     };
     var user = LocalStorage.getSync('user');
-    if(user){
+    if (user) {
       requestObj['header'] = {};
       requestObj['header']['authorization'] = 'Bearer ' + user['token']
     }
@@ -49,32 +49,42 @@ class Http {
     console.log(requestObj);
     return new Promise((resolve, reject) => {
       var callback = {
-        success: resolve,
-        fail: reject
+        success: (data) => {
+          console.log(data);
+          wx.hideLoading();
+          console.log(data['data']);
+          if (data['statusCode'] == 200) {
+            var tagetData = data['data'];
+            if (tagetData.hasOwnProperty('code')){
+              if (tagetData['code'] == 1) {
+                resolve(tagetData['data']);
+              } else {
+                resolve(tagetData);
+              }
+            }else{
+              resolve(tagetData);
+            }
+          } else if (data['statusCode'] == 401) { //token过期
+            reject({ msg: 'token已过期，请重新登录' });
+          } else {
+            reject();
+          }
+        },
+        fail: () => {
+          reject({ msg: '网络错误' });
+        }
       };
       wx.request(Object.assign({}, requestObj, callback));
-    }).then(data => {
-      wx.hideLoading();
-      console.log(data);
-      var data = data['data'];
-      if (!data) {
-        showError();
-        return Promise.reject();
-      } else {
-        if (data['code'] == 1) {
-          return data['data'];
-        }
-      }
-    }, error => {
-      showError();
-      console.log("加载错误");
+    }).catch(error => {
+      showError(error['msg'])
+      return Promise.reject();
     })
   }
 }
 
-function showError() {
+function showError(msg = "网络错误") {
   wx.showToast({
-    title: '网络错误',
+    title: msg,
     icon: 'none',
     duration: 2000
   })
@@ -82,21 +92,3 @@ function showError() {
 
 export default new Http();
 
-// { access_token: "85200af1-5111-4802-9f86-9f7aa0194bd8", token_type: "bearer", … }
-// access_token
-// :
-// "85200af1-5111-4802-9f86-9f7aa0194bd8"
-// expires_in
-// :
-// 431999
-// refresh_token
-// :
-// "92e3a34a-3622-4b5f-8f86-79376f216930"
-// scope
-// :
-// "read write"
-// token_type
-// :
-// "bearer"
-
-//16655793587748864
