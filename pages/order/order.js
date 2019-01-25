@@ -22,7 +22,6 @@ Page({
     pageNum:1,
     maxPage: "",
     user: false,
-    noData:false,
     noMoreData:false
   },
   onLoad: function (t) {
@@ -50,13 +49,13 @@ Page({
       pageNum
     }).then(res => {
       var {content,pageNum,maxPage} = res;
-      content.forEach(item => {
-        item.coverPic = HTTP.imgPath + item.coverPic
-        item.coverPic = 'https://wx.longmenkezhan.com/images/rooms/201901021411439610.jpg'
-      });
-      this.setData({
-          noData:content.length == 0 && maxPage == 1 ? true:false
-      });
+      var {orderList} = this.data;
+      if(content.length>0){
+          content.forEach(item => {
+              item.coverPic = HTTP.imgPath + item.coverPic
+              item.coverPic = 'https://wx.longmenkezhan.com/images/rooms/201901021411439610.jpg'
+          });
+      }
       this.setData({
           noMoreData:pageNum == maxPage ? true:false
       })
@@ -74,20 +73,36 @@ Page({
         user
     })
   },
+  getInitParams(){
+      return {
+          orderList: [],
+          pageNum:1,
+          maxPage: "",
+          user: false,
+          noMoreData:false
+      }
+  },
   changeNav(e) {
     var index = e.currentTarget.dataset.index;
-    var {nav} = this.data;
+    var {nav,user} = this.data;
     if (nav[index]['active']) return;
     nav.forEach((item,i)=>{
       item['active'] = (index == i) ? true :false;
-    })
-    this.setData({
-      nav,
-      page:''
     });
+    var params = Object.assign({},this.getInitParams(),{nav,user});
+    this.setData(params);
     this.getData();
   },
   onReachBottom: function () {
+   let {pageNum,maxPage} = this.data;
+   if(pageNum>=maxPage){
+       return false;
+   }else{
+        this.setData({
+            pageNum:++pageNum
+        })
+       this.getData();
+   }
     console.log('底部加载了');
   },
   navigatorToOrderDetail: function () {
@@ -99,5 +114,11 @@ Page({
       wx.navigateTo({
           url: "../login/login"
       });
-  }
+  },
+    toOrderDetail(e){
+      var orderId = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: "./orderdetail/orderdetail?orderId=" + orderId
+        });
+    }
 });

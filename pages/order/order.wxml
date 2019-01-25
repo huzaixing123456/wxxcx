@@ -5,7 +5,7 @@
       </view>
     </view>
     <view class='list'>
-      <view class='item' wx:for="{{orderList}}" wx:key="*this" >
+      <view class='item' wx:for="{{orderList}}" wx:key="*this" bindtap="toOrderDetail" data-id="{{item.orderId}}">
         <view class='t1'>
           <text class="t2">{{item.roomName}}</text>
           <text class="t3">{{item.orderStatusName}}</text>
@@ -31,8 +31,8 @@
           </view>
         </view>
       </view>
-      <view class="noData" wx:if="{{noData}}">暂时没有订单哦</view>
-        <view class="more" wx:if="{{noMoreData}}">
+      <view class="noData" wx:if="{{orderList.length == 0}}">暂时没有订单哦</view>
+        <view class="more" wx:else="{{noMoreData}}">
             这里是最后一条啦~
         </view>
     </view>

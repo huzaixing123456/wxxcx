@@ -8,15 +8,18 @@ Page({
     data: {
         order:''
     },
-    onReady: function() {},
-    onShow: function() {
-      httpApi.getOrderDetail({
-        orderId: 18430869995782144
-      }).then(res=>{
-        this.setData({
-          order:res
+    onReady: function(options) {
+        let {orderId} = options;
+        httpApi.getOrderDetail({
+            orderId: orderId
+        }).then(res=>{
+            this.setData({
+                order:res
+            })
         })
-      })
+    },
+    onShow: function() {
+
       // httpApi.refundOrder({
       //   orderId: 16655793587748864
       // })
