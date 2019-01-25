@@ -113,10 +113,11 @@ Page({
         captcha: imageCode,
         timestamp
       }).then(res => {
-        var {code} = res;
-        if(code == 4001){
-          this.stopTimer();
-        }
+        console.log(res);
+        // var {code} = res;
+        // if(code == 4001){
+        //   this.stopTimer();
+        // }
       })
     },
     checkImageCode(){
@@ -161,9 +162,10 @@ Page({
           }).then(res=>{
             console.log(res);
             LocalStorage.set('user', {
-              token: res['token'],
+              token: res['access_token'],
               telephone: phone
             })
+            wx.navigateBack();
           })
         })        
     },

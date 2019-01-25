@@ -1,12 +1,12 @@
 <view class="header">
     <view class="t1">
-        <open-data type="userAvatarUrl" wx:if="{{isLogin}}"></open-data>
+        <open-data type="userAvatarUrl" wx:if="{{user}}"></open-data>
         <view class="unLogin" wx:else>
             <text class="iconfont icon-xiugaitouxiang icon-tx"></text>
         </view>
     </view>
     <view>
-        <view bindtap="toLogin" class="login" wx:if="{{!isLogin}}">登录/注册</view>
+        <view bindtap="toLogin" class="login" wx:if="{{!user}}">登录/注册</view>
         <view class="login" wx:else>
             <open-data class="username" type="userNickName"></open-data>
         </view>
@@ -15,7 +15,7 @@
 
 
 <view class="content">
-    <view class="item" hoverClass="colorf2">
+    <view class="item" hoverClass="colorf2" bindtap="navigateToOrder">
         <text class="icon iconfont icon-myorder"></text>
         <text class="title">我的订单</text>
         <text class="arrow daoke-icon icon-zhixiang"></text>
@@ -26,6 +26,6 @@
         <text class="arrow daoke-icon icon-zhixiang"></text>
     </view>
 
-    <view bindtap="exit" class="logout" hoverClass="colorf2">退出登录</view>
+    <view bindtap="exit" class="logout" hoverClass="colorf2" wx:if="{{!user}}">退出登录</view>
 </view>
 

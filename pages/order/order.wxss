@@ -22,8 +22,10 @@
 }
 
 .list{
-  margin-top:65rpx;
+  padding-top:65rpx;
+  box-sizing:border-box;
   padding-bottom:30rpx;
+  height:100vh;
 }
 
 .list .item image{
@@ -105,15 +107,17 @@
 
 .more {
     padding: 20rpx 0;
+    font-size:24rpx;
+    text-align:center;
     background: #f4f4f4;
 }
 
 .noData {
-    padding-top: 20rpx;
-    line-height: 1.6em;
-    text-align: center;
-    color: #ccc;
-    font-size:22rpx;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30rpx;
+    height:100%;
     background-color: #f4f4f4;
 }
 
@@ -166,7 +170,15 @@
 .icon-unlogin {
     font-size: 200rpx;
 }
-
+.not-login-btn {
+    margin: 70rpx 100rpx;
+    height:80rpx;
+    line-height:80rpx;
+    background:#FD8238;
+    text-align: center;
+    color:#FFF;
+    box-shadow: 1px 3px 6px 1px rgb(232,232,232);
+}
 
 
 

@@ -1,8 +1,21 @@
-getApp();
+import LocalStorage from '../../libs/localStorage';
 
 Page({
     data: {
-        isLogin: !1
+        user:''
+    },
+    onShow(){
+        var user = LocalStorage.getSync("user");
+        if(user){
+            this.setData({
+                user
+            })
+        }
+    },
+    navigateToOrder(){
+        wx.switchTab({
+            url: "../order/order"
+        });
     },
     toLogin:function(){
       wx.navigateTo({

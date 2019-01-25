@@ -19,16 +19,17 @@ Page({
       active: false
     }],
     orderList: [],
-    page:'',
-    isLogin: true,
-    total: "",
-    isHideLoadMore: !0
+    pageNum:1,
+    maxPage: "",
+    user: false,
+    noData:false,
+    noMoreData:false
   },
   onLoad: function (t) {
-    this.getData();
+
   },
   getData(){
-    var { nav ,page } = this.data;
+    var { nav ,pageNum } = this.data;
     var index = nav.findIndex(item=>{
       return item['active'];
     });
@@ -46,21 +47,32 @@ Page({
     };
     httpApi.getOrderList({
       orderStatus,
-      pageNum:page||1
+      pageNum
     }).then(res => {
-      console.log(res);
-      var data = res;
-      data.forEach(item => {
+      var {content,pageNum,maxPage} = res;
+      content.forEach(item => {
         item.coverPic = HTTP.imgPath + item.coverPic
         item.coverPic = 'https://wx.longmenkezhan.com/images/rooms/201901021411439610.jpg'
       });
       this.setData({
-        orderList: data
+          noData:content.length == 0 && maxPage == 1 ? true:false
+      });
+      this.setData({
+          noMoreData:pageNum == maxPage ? true:false
+      })
+      this.setData({
+        orderList: content
       })
     })
   },
   onShow: function () {
-
+    var user = LocalStorage.getSync('user');
+    if(user){
+      this.getData();
+    }
+    this.setData({
+        user
+    })
   },
   changeNav(e) {
     var index = e.currentTarget.dataset.index;
@@ -82,5 +94,10 @@ Page({
     wx.navigateTo({
       url: "./orderdetail/orderdetail"
     });
+  },
+  toLogin:function(){
+      wx.navigateTo({
+          url: "../login/login"
+      });
   }
 });

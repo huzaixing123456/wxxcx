@@ -1,10 +1,9 @@
 {
   "pages": [
+    "pages/order/order",
     "pages/index/index",
     "pages/list/list",
-    
     "pages/city/city",
-    "pages/order/order",
     "pages/order/orderdetail/orderdetail",
     "pages/detail/detail",
     "pages/detail/submit/submit",
