@@ -18,7 +18,7 @@
     bindscrolltoupper="upper"
     bindscrolltolower="lower"
     scroll-into-view="{{toView}}"
-    style="paddingTop:{{city?'175rpx':0}}"
+    style="padding-top:{{city?'175rpx':0}}"
     class="list">
       <view class="item" wx:for="{{list}}" wx:key='*this'>
       <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName' id="{{index}}">
