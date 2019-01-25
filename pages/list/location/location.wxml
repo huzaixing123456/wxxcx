@@ -1,12 +1,16 @@
 <view class='location'>
-  <view class='left'>
-    <view wx:for="{{items}}">
-      <text>{{item.text}}</text>
+    <view class='left'>
+        <view wx:for="{{items}}" wx:key="*this" bindtap="change" data-index="{{index}}"  class="{{activeIndex == index?'active':''}}">
+            <text>{{item.text}}</text>
+        </view>
     </view>
-  </view>
-  <view class='right'>
-     <view>
-      <text>白云山</text>
+    <view class='right'>
+        <view wx:if="{{activeIndex == 0}}">
+            <view wx:for="{{items[0]['children']}}" wx:key="*this" data-item="{{item}}" bindtap="changeBusiness">{{item}}</view>
+        </view>
+        <view wx:if="{{activeIndex == 1}}">
+            <view wx:for="{{items[1]['children']}}" data-id="{{item.did}}" wx:key="*this" data-item="{{item}}" bindtap="changeCity">{{item.district}}</view>
+        </view>
+
     </view>
-  </view>
 </view>

@@ -51,24 +51,24 @@
     </view>
 
 
-    <view class="wrap3">
-        <text>总房费：</text>
-        <text class="t1">￥{{filter.toFix(price*stepper.stepper)}}</text>
-        <view data-price="{{filter.toFix(price*stepper.stepper)}}">
-            <text class="t2">房费明细</text>
-        </view>
-    </view>
+    <!--<view class="wrap3">-->
+        <!--<text>总房费：</text>-->
+        <!--<text class="t1">￥{{filter.toFix(price*stepper.stepper)}}</text>-->
+        <!--<view data-price="{{filter.toFix(price*stepper.stepper)}}">-->
+            <!--<text class="t2">房费明细</text>-->
+        <!--</view>-->
+    <!--</view>-->
 
-    <view class="wrap4">
-        <view>
-            <text>待付金额：</text>
-            <text class="t1">￥{{roomDeatal.price}}</text>
-        </view>
-        <view class="t2">
-            <text class="color9">住房押金：</text>
-            <text class="t1 ">￥{{dataList.depositMoney}}</text>
-        </view>
-    </view>
+    <!--<view class="wrap4">-->
+        <!--<view>-->
+            <!--<text>待付金额：</text>-->
+            <!--<text class="t1">￥{{roomDeatal.price}}</text>-->
+        <!--</view>-->
+        <!--<view class="t2">-->
+            <!--<text class="color9">住房押金：</text>-->
+            <!--<text class="t1 ">￥{{dataList.depositMoney}}</text>-->
+        <!--</view>-->
+    <!--</view>-->
 
     <view class="wrap5">
         <view class="item" wx:for="{{otherList}}" wx:key="*this">

@@ -52,9 +52,11 @@ class Http {
         success: (data) => {
           console.log(data);
           wx.hideLoading();
-          console.log(data['data']);
           if (data['statusCode'] == 200) {
             var tagetData = data['data'];
+              if(!tagetData){
+                  reject({ msg: '网络错误' });
+              }
             if (tagetData.hasOwnProperty('code')){
               if (tagetData['code'] == 1) {
                 resolve(tagetData['data']);
@@ -67,7 +69,7 @@ class Http {
           } else if (data['statusCode'] == 401) { //token过期
             reject({ msg: 'token已过期，请重新登录' });
           } else {
-            reject();
+            reject({ msg: '网络错误' });
           }
         },
         fail: () => {

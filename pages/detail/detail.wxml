@@ -96,19 +96,19 @@
     </view>
 </view>
 
-    <view class="item7">
-         <view class='title'> 设施服务</view>
-        <view class="items">
-          <block wx:for="{{facility}}">
-            <view class="item" wx:if="{{!!item}}">
-              <block >
-                <text class="t2 daoke-icon icon-wifi color" ></text>
-                <text class="t3">{{item}}</text>
-              </block>
-            </view>
-          </block>
-        </view>
-    </view>
+    <!--<view class="item7">-->
+         <!--<view class='title'> 设施服务</view>-->
+        <!--<view class="items">-->
+          <!--<block wx:for="{{facility}}">-->
+            <!--<view class="item" wx:if="{{!!item}}">-->
+              <!--<block >-->
+                <!--<text class="t2 daoke-icon icon-wifi color" ></text>-->
+                <!--<text class="t3">{{item}}</text>-->
+              <!--</block>-->
+            <!--</view>-->
+          <!--</block>-->
+        <!--</view>-->
+    <!--</view>-->
 
         <view class="item8" wx:if="{{date}}">
             <text class="t1">可租日期</text>

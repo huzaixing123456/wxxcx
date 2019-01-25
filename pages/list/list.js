@@ -8,7 +8,6 @@ Page({
     form: {
       checkInDate: "", //开始时间
       checkOutDate: "",   //结束时间,
-      sort: 0,        //排序方式
       pageNum: 1      //分页页码
     },
     start: '',
@@ -19,15 +18,21 @@ Page({
     location: '',
     sort: '',
     maxPage:'',
-    filter: []
+    filter: {}
   },
   onShow() {
-    var sort = LocalStorage.getSync('sort');
-    if (sort) {
+    var sort = LocalStorage.getSync('sort')||'';
+    this.setData({
+      sort
+    })
+    var location = LocalStorage.getSync('location')||'';
+    this.setData({
+        location
+    })
+      var filter = LocalStorage.getSync('filter')||{};
       this.setData({
-        sort
+          filter
       })
-    };
     var checkDate = LocalStorage.getSync('checkDate');
     var { startDate, endDate } = checkDate;
     var start = util.getDateByNum(startDate);
@@ -108,8 +113,9 @@ Page({
     });
   },
   toFilter: function () {
+    var {form} = this.data;
     wx.navigateTo({
-      url: "filter/filter"
+      url: "filter/filter?params="+ JSON.stringify(form)
     });
   },
   toCalendar: function () {
@@ -122,5 +128,10 @@ Page({
     wx.navigateTo({
       url: "../detail/detail?roomId=" + id
     });
-  }
+  },
+    onUnload(){
+        LocalStorage.remove("filter");
+        LocalStorage.remove("location");
+        LocalStorage.remove("sort");
+    }
 });

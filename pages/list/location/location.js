@@ -3,15 +3,8 @@ import LocalStorage from '../../../libs/localStorage';
 
 Page({
     data: {
-        items: [ {
-            text: "热门推荐",
-            key: "观光景点",
-            children: []
-        }, {
-            text: "观光景点",
-            key: "观光景点",
-            children: []
-        }, {
+        items: [
+        {
             text: "商圈",
             key: "商圈",
             children: []
@@ -19,44 +12,37 @@ Page({
             text: "行政区",
             key: "行政区",
             children: []
-        }, {
-            text: "地铁线路",
-            key: "地铁线路",
-            children: []
-        }, {
-            text: "机场/车站",
-            key: "机场车站",
-            children: []
-        }, {
-            text: "高校",
-            key: "高校",
-            children: []
-        }, {
-            text: "医院",
-            key: "医院",
-            children: []
         } ],
-        mainActiveIndex: 0,
-        activeId: 0
+        activeIndex:0
     },
     onShow(){
       LocalStorage.get('cityData').then(res=>{
-        console.log(res);
         httpApi.getBusiness({
           did:res['cityId']
         }).then(res => {
-          console.log(res);
+            console.log(res);
+            var {items} = this.data;
+            items[0]['children'] = res['businessArea'];
+            items[1]['children'] = res['areaCodes'];
+            this.setData({
+                items
+            })
         })
       });
     },
-    handleNavClick: function(e) {
-        
+    change(e){
+        var index  = e.currentTarget.dataset.index;
+        this.setData({
+            activeIndex:index
+        })
     },
-    handleItemClick: function(e) {
-        
-    },
-    getPlace: function(i, n) {
-        
+    changeCity(e){
+        var item = e.currentTarget.dataset.item;
+        console.log(item);
+        LocalStorage.set('location',{
+           area:item['district']
+        });
+        wx.navigateBack();
     },
     onLoad: function(e) {
         

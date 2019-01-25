@@ -50,14 +50,11 @@
 <view class="wrap5">
     <view bindtap="reset" class="t1 {{flag?'color':''}}">清空</view>
     <view bindtap="confirm" class="t2">
-        <view hoverClass="btnHover" style="{{result=='0套'?'background:rgb(218,218,218)':''}}" wx:if="{{isQuery}}">
-            <text>确认查看({{result}})</text>
+        <view hoverClass="btnHover"  wx:if="{{!isLoading}}">
+            <text>查看房屋</text>
         </view>
         <view class="loading" wx:else>
-            <view class="query-loading">
-                <zan-loading color="black" type="circle"></zan-loading>
-            </view>
-            <text>查询中（共300套）</text>
+            <text>查询中</text>
         </view>
     </view>
 </view>

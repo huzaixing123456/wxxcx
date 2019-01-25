@@ -42,6 +42,10 @@ class LocalStorage {
       });
     })
   }
+
+  remove(key){
+      wx.removeStorageSync(key);
+  }
 }
 
 export default new LocalStorage();
