@@ -142,8 +142,7 @@
 .btn-wrap .btn{
     text-align: center;
     font-size: 28rpx;
-    width: 140rpx;
-    padding: 10rpx 0;
+    padding: 10rpx 20rpx;
     height: 35rpx;
     border-radius: 20rpx;
     line-height: 35rpx;

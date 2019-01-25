@@ -1,7 +1,7 @@
 <view class="nav">
   <view bindtap="toCalendar" class="nav-wrap">
     <view class="item">{{start}}-{{end}}<view class="arrow"></view></view>
-    <view bindtap="toPlace" class="item">{{location?location:'位置'}}<view class="arrow"></view></view>
+    <view bindtap="toLocation" class="item">{{location?location:'位置'}}<view class="arrow"></view></view>
     <view bindtap="toSort" class="item">{{sort?sort.name:'排序'}}<view class="arrow"></view></view>
     <view bindtap="toFilter" class="item">
       筛选{{filter.length>0?'.' + filter.length:''}}

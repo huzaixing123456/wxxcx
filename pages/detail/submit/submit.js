@@ -4,9 +4,7 @@ import LocalStorage from '../../../libs/localStorage';
 import { REGEXP } from '../../../libs/const.js';
 Page({
   data: {
-    dataList: {
-      imgUrl: "https://pic1.ajkimg.com/display/hj/d2d4fb3bb62a358d6ec0c671358eb690/240x180m.jpg"
-    },
+    roomDeatal:{},
     startDate:'',
     endDate:'',
     days:'',
@@ -18,8 +16,10 @@ Page({
     cardIndex: 0,
     cardList: ["身份证", "军官证", "护照"]
   },
-  onLoad: function (e) {
-    var checkDate = LocalStorage.getSync('checkDate')
+  onLoad: function (options) {
+    var checkDate = LocalStorage.getSync('checkDate');
+    var roomDeatal = LocalStorage.getSync('roomDeatal');
+    console.log(roomDeatal);
     var { startDate, endDate } = checkDate;
     var start = util.getDateByNum(startDate);
     var end = util.getDateByNum(endDate);
@@ -31,14 +31,12 @@ Page({
       endDate: parseInt(end.month) + '月' + parseInt(end.day) + '日',
       checkInDate: checkInDate,
       checkOutDate: checkOutDate,
-      days
+      days,
+      roomDeatal
     });
-
-
-
   },
   submit() {
-    var { checkInDate, checkOutDate, roomCount, peopleCount, name, phone, idCard, cardIndex} = this.data;
+    var { checkInDate, checkOutDate, roomCount, peopleCount, name, phone, idCard, cardIndex,roomDeatal } = this.data;
     if(!name){
       util.toast({ title: "请输入入住人姓名" });
       return;
@@ -73,10 +71,13 @@ Page({
       "idType": cardIndex,
       "mobile": phone,
       "name": name,
-      "roomId": 30,
+      "roomId": roomDeatal.roomId,
       "roomNum": roomCount
     }).then(res => {
       console.log(res);
+        wx.navigateTo({
+            url: "../../order/orderdetail/orderdetail?orderId=" + res['orderId']
+        });
     })
   },
   chooseRoom(e){

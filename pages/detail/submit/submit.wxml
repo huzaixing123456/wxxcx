@@ -1,7 +1,7 @@
-<view class="img" style="background-image: url({{dataList.imgUrl}})">{{dataList.title}}</view>
+<view class="img" style="background-image: url({{roomDeatal.coverPic}})">{{roomDeatal.roomName}}</view>
 
 <view class="wrap1">
-    <view class="t1">{{dataList.title}}</view>
+    <view class="t1">{{roomDeatal.roomName}}</view>
     <view class="font26">
         <text>入住：{{startDate}}</text>
         <text class="t2">离店：{{endDate}}</text>
@@ -62,7 +62,7 @@
     <view class="wrap4">
         <view>
             <text>待付金额：</text>
-            <text class="t1">￥{{dataList.is_deposit==1?filter.toFix( price*stepper.stepper+filter.parseToInt(dataList.depositMoney) ):filter.toFix(price*stepper.stepper)}}</text>
+            <text class="t1">￥{{roomDeatal.price}}</text>
         </view>
         <view class="t2">
             <text class="color9">住房押金：</text>
@@ -71,7 +71,7 @@
     </view>
 
     <view class="wrap5">
-        <view class="item" wx:for="{{otherList}}">
+        <view class="item" wx:for="{{otherList}}" wx:key="*this">
             <view>
                 <text class="prompt-icon daoke-icon icon-shoucang color"></text>
             </view>
@@ -83,7 +83,7 @@
 
     <view class="wrap6">
         <view class="t1">
-            <view class="font36 color">￥{{dataList.is_deposit==1?filter.toFix( price*stepper.stepper+filter.parseToInt(dataList.depositMoney) ):filter.toFix(price*stepper.stepper)}}</view>
+            <view class="font36 color">{{roomDeatal.price}}</view>
             <view class="font22 color9">待付金额</view>
         </view>
         <button class="t2 {{isDisabled?'disabled':''}}" bindtap="submit" disabled="{{isDisabled}}" formType="submit" hoverClass="btnHover" style="border-radius:0px;">{{isDisabled?'正在提交中':'提交订单'}}</button>

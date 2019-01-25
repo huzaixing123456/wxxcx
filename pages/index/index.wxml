@@ -33,7 +33,7 @@
     <view class="title">热门房源</view>
     <view class="img">
       <swiper autoplay circular class="swiper">
-        <swiper-item wx:for="{{rooms}}" bindtap="navigatorToList" wx:key='*this'>
+        <swiper-item wx:for="{{rooms}}" bindtap="navigatorToDeatail" wx:key='*this' data-id="{{item.id}}">
           <view class="t1">北京市</view>
           <view class="t2">{{item.address}}</view>
           <image bindtap="navigatorToPhoto"  data-path="{{item.coverPic}}" src="{{item.coverPic}}"></image>

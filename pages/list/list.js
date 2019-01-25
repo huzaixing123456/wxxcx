@@ -97,7 +97,7 @@ Page({
       });
     })
   },
-  toPlace: function () {
+    toLocation: function () {
     wx.navigateTo({
       url: "location/location"
     });

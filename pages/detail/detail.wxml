@@ -119,8 +119,8 @@
           </view>
 
             <calendar 
-              startDate='{{date.startDate}}'
-				      endDate='{{date.endDate}}'
+              startDate='{{date.startCalendar}}'
+				      endDate='{{date.endCalendar}}'
               year="{{date.year}}"
               month="{{date.month}}">
             </calendar>
@@ -285,7 +285,7 @@
 电话</text>
             </view>
         </view>
-        <view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click">
+        <view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click" data-id="{{roomId}}">
             <view class="t4">￥{{price}}</view>
             <view class="t8">立即预订</view>
         </view>

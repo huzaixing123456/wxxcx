@@ -25,7 +25,6 @@ Page({
   },
   getSort(e){
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     var {items} = this.data;
     items.forEach((item,i)=>{
       if(index == i){
@@ -40,6 +39,17 @@ Page({
     LocalStorage.set('sort', items[index]).then(res => {
       wx.navigateBack();
     })
+  },
+  onShow(){
+    var sort = LocalStorage.getSync('sort');
+    var {items} = this.data;
+    var activeIndex = items.findIndex(item=>{
+      return item.value == sort.value
+    })
+      items[activeIndex] = sort;
+      this.setData({
+          items
+      })
   },
   onLoad: function(e) {
 

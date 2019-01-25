@@ -8,7 +8,7 @@ Page({
     data: {
         order:''
     },
-    onReady: function(options) {
+    onLoad: function(options) {
         let {orderId} = options;
         httpApi.getOrderDetail({
             orderId: orderId
