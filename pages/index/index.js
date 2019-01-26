@@ -125,5 +125,10 @@ Page({
         wx.navigateTo({
             url: "../people/people"
         });
+    },
+    onUnload() {
+      var user = LocalStorage.getSync("user");
+      LocalStorage.clear();
+      LocalStorage.set('user',user);
     }
 });

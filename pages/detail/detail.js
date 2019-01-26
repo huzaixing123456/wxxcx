@@ -119,17 +119,26 @@ Page({
             });
             return;
         }else{
-          var {basic,roomId,price} = this.data;
+          var {basic,roomId,price,rules} = this.data;
           console.log(basic);
           LocalStorage.set('roomDeatal',{
               coverPic:basic.coverPic[0],
               roomId,
               price,
-              roomName:basic.roomName
+              roomName:basic.roomName,
+              maxLive: basic.maxLive,
+              roomCount: basic.roomAmount,
+              pledge: rules.pledge
           })
           wx.navigateTo({
               url: "./submit/submit"
           });
         }
-    }
+    },
+  markerUpPhone(){
+    wx.makePhoneCall({
+      phoneNumber: '4006001232' 
+    })
+  }
 });
+

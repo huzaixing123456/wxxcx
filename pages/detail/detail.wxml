@@ -26,7 +26,7 @@
                 <text class="font26">
 {{basic.bedroomNum}}室{{basic.parlorNum}}厅 {{basic.bathroomNum}}卫{{basic.bathroomNum}}厨
 </text>
-                <view class="t3">{{detailList.addExplanation}} {{detailList.roomArea}}平方</view>
+                <view class="t3">{{basic.houseArea}}平方</view>
                 <view class="t3">
                   <text wx:if="{{basic.allowPet}}">可带宠物</text>
                   <text wx:if="{{basic.allowParty}}">聚会</text>
@@ -140,12 +140,12 @@
                     </view>
                     <view class="item">
                         <view class="point"></view>
-                        <text class="color9">{{noPayDate}}入住前1天12:00</text>
+                        <text class="color9">{{noPayDate}}入住当天12:00</text>
                     </view>
                   </block>
                   <view class="item">
                       <view class="line"></view>
-                      <view class="text">取消订单 收取订金的50%</view>
+                      <view class="text">取消订单 收取订金的{{rules.refundPer + '%'}}</view>
                   </view>
                   <view class="item">
                       <view class="point"></view>
@@ -154,7 +154,7 @@
 
                   <view class="item">
                       <view class="line"></view>
-                      <view class="text">提前离店 收取剩余房费的50%</view>
+                      <view class="text">提前离店 收取剩余房费的{{rules.refundPer + '%'}}</view>
                   </view>
                   <view class="item">
                       <view class="point"></view>
@@ -186,73 +186,73 @@
           <view class="items">
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.receptionKid?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.receptionKid?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.receptionKid?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionKid?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 接待儿童
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.receptionOld?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.receptionOld?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.receptionOld?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionOld?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 接待老人
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.receptionForeign?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.receptionForeign?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.receptionForeign?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionForeign?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 接待外宾
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowAddGuest?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowAddGuest?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowAddGuest?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowAddGuest?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 加人
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowAddBed?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowAddBed?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowAddBed?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowAddBed?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 加床
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowSmoke?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowSmoke?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowSmoke?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowSmoke?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 吸烟
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowCook?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowCook?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowCook?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowCook?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 做饭
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowParty?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowParty?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowParty?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowParty?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 聚会
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowPet?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowPet?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowPet?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowPet?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 带宠物
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.allowShoot?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.allowShoot?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.allowShoot?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowShoot?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 商业拍摄
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.receptionMale?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.receptionMale?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.receptionMale?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionMale?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 男性
             </view>
             <view class="item">
                 <view>
-                    <text class="daoke-icon {{notice.receptionFemale?'icon-dagou':'icon-dacha'}}" style="margin-right:5rpx;color:{{notice.receptionFemale?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                    <text class="iconfont {{notice.receptionFemale?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionFemale?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
                 </view>
                 女性
             </view>
@@ -269,17 +269,17 @@
         </view>
         <view class="item10">
             <text class="font32">额外费用</text>
-            <view class="text">加床: <text class="color6">{{additional.addBedDesc}}</text></view>
-            <view class="text">做饭: <text class="color6">{{additional.cookDesc}}</text></view>
-            <view class="text">聚会: <text class="color6">{{additional.partyDesc}}</text></view>
-            <view class="text">摄影: <text class="color6">{{additional.shootDesc}}</text></view>
-            <view class="text">其它: <text class="color6">{{additional.otherTips}}</text></view>
+            <view class="text" wx:if="{{additional.addBedDesc}}">加床: <text class="color6">{{additional.addBedDesc}}</text></view>
+            <view class="text" wx:if="{{additional.cookDesc}}">做饭: <text class="color6">{{additional.cookDesc}}</text></view>
+            <view class="text" wx:if="{{additional.partyDesc}}">聚会: <text class="color6">{{additional.partyDesc}}</text></view>
+            <view class="text" wx:if="{{additional.shootDesc}}">摄影: <text class="color6">{{additional.shootDesc}}</text></view>
+            <view class="text" wx:if="{{additional.otherTips}}">其它: <text class="color6">{{additional.otherTips}}</text></view>
         </view>
         <view style="height:100rpx"></view>
     </view>
     <view class="item13">
         <view class="t1">
-            <view bindtap="markerUpPhone" class="t3" data-phone="{{detailList.house_detail.tel}}">
+            <view bindtap="markerUpPhone" class="t3">
                 <text class="daoke-icon icon-dianhua"></text>
                 <text>
 电话</text>

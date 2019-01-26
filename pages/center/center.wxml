@@ -26,6 +26,6 @@
         <text class="arrow daoke-icon icon-zhixiang"></text>
     </view>
 
-    <view bindtap="exit" class="logout" hoverClass="colorf2" wx:if="{{!user}}">退出登录</view>
+    <view bindtap="logout" class="logout" hoverClass="colorf2" wx:if="{{user}}">退出登录</view>
 </view>
 

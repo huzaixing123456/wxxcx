@@ -5,7 +5,7 @@ import LocalStorage from '../../libs/localStorage';
 
 Page({
     data: {
-        navId: 1,
+        navId: 0,
         phone:'',
         imageCodeUrl:'',
         imageCode:'',
@@ -20,9 +20,9 @@ Page({
         hasCheckImageCode:false //是否经过图片验证码验证      
     },
     onLoad: function() {
-      util.getLogin().then(res=>{
-          console.log("code值是"+res);
-      });
+      // util.getLogin().then(res=>{
+      //     console.log("code值是"+res);
+      // });
       this.getImage();
     },
     getImage(){
@@ -171,5 +171,19 @@ Page({
     },
     getPhoneNumber(e){
 
+    },
+    wxLogin(){
+      util.getLogin().then(res => {
+        console.log("code值是" + res);
+        var city = LocalStorage.getSync('cityData');
+        httpApi.codeLogin({
+          client_id: "wechat-client",
+          client_secret: "wechat-client",
+          grant_type: "wechat",
+          did: city['cityId'],
+          code: res
+        })
+      });
+      
     }
 });

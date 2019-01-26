@@ -4,7 +4,7 @@
     <view bindtap="toLocation" class="item">{{location?location.area:'位置'}}<view class="arrow"></view></view>
     <view bindtap="toSort" class="item">{{sort?sort.name:'排序'}}<view class="arrow"></view></view>
     <view bindtap="toFilter" class="item">
-      筛选{{Object.keys(filter).length>0?Object.keys(filter).length:''}}
+      筛选{{filter>0?-filter:''}}
           <view class="arrow"></view>
     </view>
   </view>

@@ -21,5 +21,8 @@ Page({
       wx.navigateTo({
         url: "../login/login"
       });
+    },
+    logout(){
+      
     }
 });

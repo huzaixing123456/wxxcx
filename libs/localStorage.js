@@ -46,6 +46,10 @@ class LocalStorage {
   remove(key){
       wx.removeStorageSync(key);
   }
+
+  clear(){
+    wx.clearStorageSync();
+  }
 }
 
 export default new LocalStorage();

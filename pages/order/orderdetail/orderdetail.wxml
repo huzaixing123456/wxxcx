@@ -93,10 +93,10 @@
 <view class='item7'>
   <view class='t1'>入住提示</view>
   <view class='t2'>
-    需2017-09-01 00:00:00办理入住，早到可能需要等待。
+    需{{order.checkInDate}} {{order.checkInHour}}办理入住，早到可能需要等待。
   </view>
   <view class='t2'>
-    需2017-09-01 00:00:00办理退房，如需延迟退房请与商户协商。
+    需{{order.checkOutDate}} {{order.checkOutHour}}办理退房，如需延迟退房请与商户协商。
   </view>
   <view class='t2'>
     在线支付押金，到店后无需再支付。离店后，如果房东不扣款，则押金会在离店次日18:00自动原路退还

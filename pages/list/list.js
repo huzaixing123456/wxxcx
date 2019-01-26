@@ -31,7 +31,7 @@ Page({
     })
       var filter = LocalStorage.getSync('filter')||{};
       this.setData({
-          filter
+        filter: Object.keys(filter).length
       })
     var checkDate = LocalStorage.getSync('checkDate');
     var { startDate, endDate } = checkDate;

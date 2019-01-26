@@ -39,9 +39,7 @@ Page({
     changeCity(e){
         var item = e.currentTarget.dataset.item;
         console.log(item);
-        LocalStorage.set('location',{
-           area:item['district']
-        });
+        LocalStorage.set('district',item['district']);
         wx.navigateBack();
     },
     onLoad: function(e) {

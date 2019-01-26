@@ -267,7 +267,11 @@ Page({
     })
     if(bed){
       flag = true;
-      data.bedRoom = bed['id'];
+      data.bedRoom = bedRoom.map(item=>{
+        return item.active?item.id:''
+      }).filter(i=>{
+        return !!i;
+      });
     }
 
     var room = roomType.find(item => {
@@ -276,7 +280,11 @@ Page({
     if (room) {
       console.log(room);
       flag = true;
-      data.roomType = room['id'];
+      data.roomType = roomType.map(item => {
+        return item.active ? item.id : ''
+      }).filter(i => {
+        return !!i;
+      });
     }
     var facilt = facilities.find(item => {
       return item.active;

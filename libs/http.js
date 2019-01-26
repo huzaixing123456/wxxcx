@@ -61,7 +61,8 @@ class Http {
               if (tagetData['code'] == 1) {
                 resolve(tagetData['data']);
               } else {
-                resolve(tagetData);
+                reject({ msg: tagetData.message});
+                //resolve(tagetData);
               }
             }else{
               resolve(tagetData);
