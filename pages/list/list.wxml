@@ -1,0 +1,46 @@
+<view class="nav">
+  <view class="nav-wrap">
+    <view class="item" bindtap="toCalendar">{{start}}-{{end}}<view class="arrow"></view></view>
+    <view bindtap="toLocation" class="item">{{district ? district.name ? district.name : district.business ? district.business:'':'位置'}}<view class="arrow"></view></view>
+
+    <view bindtap="toSort" class="item">{{sort?sort.name:'排序'}}<view class="arrow"></view></view>
+
+    <view bindtap="toFilter" class="item">
+      筛选{{filterLength>0?-filterLength:''}}
+          <view class="arrow"></view>
+    </view>
+  </view>
+</view>
+<scroll-view
+    scroll-y
+    bindscrolltolower="onBottomRefresh"
+    class="list-item" 
+    wx:if="{{list.length!=0}}">
+    <view 
+      bindtap="navigatorToHouseDetail" 
+      data-id="{{item.id}}" 
+      hoverClass="colorf2" 
+      wx:for="{{list}}"
+      wx:key="*this">
+        <view class="wrap1">
+            <image src="{{item.coverPic}}"></image>
+            <view class="t1">
+                <view class="price-top">
+                    <text class="font22">￥{{item.price}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="wrap2">
+            <view class="t4">
+                {{item.roomName}}
+            </view>
+            <view class="t5">
+                {{item.bedroom}}居／{{item.bedAmount}}床／{{item.bedNum}}宜住{{item.suitPeople}}人 · {{item.provinceName == item.cityName ? "" : item.provinceName }}{{item.cityName}}{{item.address}}
+            </view>
+        </view>
+    </view>
+    <view class="more" wx:if="{{noMoreData}}">
+      这里是最后一条啦~
+    </view>
+</scroll-view>
+<view class="noData" wx:if="{{noData}}">暂时没有数据~</view>

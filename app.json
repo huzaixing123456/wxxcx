@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    
+    "pages/list/list",
+    "pages/list/filter/filter",
+    
+    "pages/list/location/location",
+    "pages/order/order",
+    "pages/city/city",
+    "pages/order/orderdetail/orderdetail",
+    "pages/detail/detail",
+    "pages/detail/submit/submit",
+    "pages/people/people",
+    
+    "pages/list/sort/sort",
+    "pages/center/center",
+    "pages/date/date"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "龙门客栈精品民宿",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/index.png",
+        "selectedIconPath": "assets/index2.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "assets/order.png",
+        "selectedIconPath": "assets/order2.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "iconPath": "assets/profile.png",
+        "selectedIconPath": "assets/profile2.png"
+      }
+    ],
+    "selectedColor": "#FD8238"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "龙门客栈精品民宿想获取你的位置信息"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<view class="wrap3">
+  户型
+  <view class="items">
+        <view bindtap="changeHouse" data-index="{{index}}" class="item {{item.active==true?'active':''}} font26"  wx:for="{{bedRoom}}" wx:key="*this">{{item.text}}</view>
+    </view>
+</view>
+
+<view class="wrap3 count-wrap">
+    <view class="count-item">
+        人数
+        <view class="items">
+            <view class="minus {{suitPeople?'color':''}}" bindtap='changePeople' data-tag="0"> - </view>
+            <view>{{suitPeople?suitPeople>=10?'10人+':suitPeople+'人':'不限'}}</view>
+            <view class="add {{suitPeople<10?'color':''}}" bindtap='changePeople' data-tag="1"> + </view>
+        </view>
+    </view>
+    <view class="count-item">
+        床铺数
+        <view class="items">
+            <view class="minus {{bedAmount?'color':''}}" bindtap='changeBed' data-tag="0"> - </view>
+            <view>{{bedAmount?bedAmount>=10?'10床+':bedAmount+'床':'不限'}}</view>
+            <view class="add {{bedAmount<10?'color':''}}" bindtap='changeBed' data-tag="1"> + </view>
+        </view>
+    </view>
+</view>
+
+<view class="wrap3">
+房型
+<view class="items">
+    <view bindtap="changeType" data-index="{{index}}"  class="item {{item.active==true?'active':''}} font26" wx:for="{{roomType}}" wx:key="*this">{{item.text}}</view>
+</view>
+</view>
+
+
+<view class="wrap4">
+  配套
+    <view class="items">
+        <view bindtap="changeAssort" data-index="{{index}}" class="item" data-active="{{item.active}}" wx:for="{{facilities}}" wx:key="*this">
+            <view class="t1 {{item.active==true?'active':''}}">
+                <text class="t2 iconfont {{item.icon}}"></text>
+            </view>
+            <text class="{{item.active==true?'color':''}} font26">{{item.text}}</text>
+        </view>
+    </view>
+</view>
+
+<view class='wrap-height'>
+</view>
+
+<view class="wrap5">
+    <view bindtap="reset" class="t1 {{flag?'color':''}}">清空</view>
+    <view bindtap="confirm" class="t2">
+        <view hoverClass="btnHover"  wx:if="{{!isLoading}}" bindtap="lookRoom">
+            <text>查看房屋 {{(length != false)?length? '('+length+'套)':'暂无':''}}</text>
+        </view>
+        <view class="loading" wx:else>
+            <text>查询中</text>
+        </view>
+    </view>
+</view>

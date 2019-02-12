@@ -1,0 +1,294 @@
+<view class="wrap">
+    <view class="detail">
+     <view class="swiper" wx:if="{{basic}}">
+        <swiper circular bindchange="switchChange" class="item">
+            <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this">
+                <image bindtap="navigatorToPhoto" data-value="{{item}}" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="count">
+            <text class="daoke-icon icon-suolvetu"></text>
+            {{current+1}}/{{basic.coverPic.length}}
+        </view>
+        <view class="share">
+            <button openType="share">
+                <text class="share-icon daoke-icon icon-shangchuan"></text>
+            </button>
+        </view>
+    </view>
+        <view class="item1">
+            <text class="font36">{{basic.roomName}}</text>
+        </view>
+
+        <view class="item2">
+            <view class="t1">
+                <text class="iconfont icon-fangzi"></text>
+                <text class="font26">
+{{basic.bedroomNum}}室{{basic.parlorNum}}厅 {{basic.bathroomNum}}卫{{basic.bathroomNum}}厨
+</text>
+                <view class="t3">{{basic.houseArea}}平方</view>
+                <view class="t3">
+                  <text wx:if="{{basic.allowPet}}">可带宠物</text>
+                  <text wx:if="{{basic.allowParty}}">聚会</text>
+                  <text wx:if="{{basic.allowCook}}">做饭</text>
+                </view>
+            </view>
+            <view class="t2">
+                <text class="iconfont icon-jujia"></text>
+                <text class="font26">
+宜住{{basic.maxLive}}人 {{basic.maxLive}}床</text>
+                <view class="t3" wx:if="{{basic.bedType}}">
+                  <text>{{basic.bedType}}</text>
+                </view>
+                <view class="t3" wx:if="{{basic.addBedNum}}">
+                  <text>可加床{{basic.addBedNum}}张</text>
+                </view>
+            </view>
+        </view>
+
+
+        <view class="item4" wx:if="{{location}}" >
+            <view class="t1">房屋位置</view>
+            <view bindtap="navigatorToLocation" class="t2" data-lat="{{detailList.bdLat}}" data-lng="{{detailList.bdLng}}">
+                <map id="map"
+                     longitude="{{location.longitude}}"
+                     latitude="{{location.latitude}}"
+                     scale="18"
+                     enableZoom="false"
+                     enableScroll="false"
+                     enable-rotate
+                     bindtap="goLocation"
+                     style="width: 100%; height: 300px;"></map>
+            </view>
+            <view class="t3">
+                <view>
+                    <text class="map-icon iconfont icon-zhoubian"></text>
+                </view>
+                <view class="t4 {{isView1?'zan-ellipsis--l3':''}}">
+                    <text>{{location.address}}</text>
+                    <view class="color6">{{location.traffic}}</view>
+                </view>
+            </view>
+        </view>
+
+
+<view class="item5" wx:if="{{location}}">
+    房屋详情
+    <view class="t2 {{isView2?'zan-ellipsis--l3':''}}">
+        房屋描述
+        <view>
+            <text class="t3">{{location['roomFeature']}}</text>
+        </view>
+    </view>
+
+    <view class="t4 {{isView2?'zan-ellipsis--l3':''}}">
+        周边介绍
+        <view>
+            <text class="t3">{{location['vicinity']}}</text>
+        </view>
+    </view>
+</view>
+
+<!-- <view class="item6">
+    <text bindtap="viewChange" data-value="isView2">{{isView2==''?'收起':'展开全部'}}</text>
+    <view bindtap="viewChange" data-value="isView2">
+        <text class="zhankai-icon daoke-icon {{isView2==''?'icon-wangshang':'icon-down-trangle-copy-copy'}}"></text>
+    </view>
+</view> -->
+
+    <!--<view class="item7">-->
+         <!--<view class='title'> 设施服务</view>-->
+        <!--<view class="items">-->
+          <!--<block wx:for="{{facility}}">-->
+            <!--<view class="item" wx:if="{{!!item}}">-->
+              <!--<block >-->
+                <!--<text class="t2 daoke-icon icon-wifi color" ></text>-->
+                <!--<text class="t3">{{item}}</text>-->
+              <!--</block>-->
+            <!--</view>-->
+          <!--</block>-->
+        <!--</view>-->
+    <!--</view>-->
+
+        <view class="item8" wx:if="{{date}}">
+            <text class="t1">可租日期</text>
+            <view class="date" bindtap="navigatorToCalendar">
+              <view>{{date.startStr}}<text class="font22">入住</text></view>
+              <view class="count">共{{date.days}}晚</view>
+              <view>{{date.endStr}}<text class="font22">离店</text></view>
+          </view>
+
+            <calendar 
+              startDate='{{date.startCalendar}}'
+				      endDate='{{date.endCalendar}}'
+              year="{{date.year}}"
+              month="{{date.month}}">
+            </calendar>
+            <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view>
+        </view>
+
+        <view class="item9">
+            <view class="t1">
+                <view class='title'>交易规则</view>
+                  <view class="item">
+                      <view class="point"></view>
+                      <text class="color9">预定成功</text>
+                  </view>
+                  <block wx:if="{{rules.refundDay}}">
+                    <view class="item">
+                        <view class="line"></view>
+                        <view class="text">取消订单 订金全部替换</view>
+                    </view>
+                    <view class="item">
+                        <view class="point"></view>
+                        <text class="color9">{{noPayDate}}入住前{{rules.refundDay}}天12:00</text>
+                    </view>
+                  </block>
+                  <view class="item">
+                      <view class="line"></view>
+                      <view class="text">取消订单 收取订金的{{rules.refundPer*100 + '%'}}</view>
+                  </view>
+                  <view class="item">
+                      <view class="point"></view>
+                      <text class="color9">{{date.startDate}}入住当天12:00</text>
+                  </view>
+
+                  <view class="item">
+                      <view class="line"></view>
+                      <view class="text">提前离店 收取剩余房费的{{rules.refundPer*100 + '%'}}</view>
+                  </view>
+                  <view class="item">
+                      <view class="point"></view>
+                      <text class="color9">{{date.endDate}}离店当天</text>
+                  </view>
+
+                <view class="text pay">
+                    <view class="view1">付款方式:</view>
+                    <view class="view2">{{rules.payment}}</view>
+                </view>
+                <view class="text">
+                    <view class="view1">最少入住:</view>
+                    <view class="view2">{{rules.minDays}}天</view>
+                </view>
+                <view class="text">
+                    <view class="view1">入住押金:</view>
+                    <view bindtap="togglePopup" class="view2 flex">
+                      在线支付￥{{rules.pledge}}元
+                    <view>
+                            <!-- <text class="ruzhu-icon daoke-icon icon-gantanhao"></text> -->
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="item10">
+          <text class="font32">入住须知</text>
+          <view class="items">
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.receptionKid?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionKid?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                接待儿童
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.receptionOld?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionOld?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                接待老人
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.receptionForeign?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionForeign?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                接待外宾
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowAddGuest?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowAddGuest?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                加人
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowAddBed?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowAddBed?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                加床
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowSmoke?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowSmoke?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                吸烟
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowCook?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowCook?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                做饭
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowParty?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowParty?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                聚会
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowPet?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowPet?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                带宠物
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.allowShoot?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.allowShoot?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                商业拍摄
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.receptionMale?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionMale?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                男性
+            </view>
+            <view class="item">
+                <view>
+                    <text class="iconfont {{notice.receptionFemale?'icon-gou':'icon-x'}}" style="margin-right:5rpx;color:{{notice.receptionFemale?'rgb(53,53,53)':'rgb(193,193,193)'}}"></text>
+                </view>
+                女性
+            </view>
+
+          </view>
+            <view class="text">卫生打扫: <text class="color6">{{notice.clean}}</text>
+            </view>
+            <view class="text">被单更换: <text class="color6">{{notice.coverlet}}</text>
+            </view>
+            <view class="text">入住退房: <text class="color6">入住时间{{notice.checkInTime}}后 | 退房时间{{notice.checkOutTime}}前</text>
+            </view>
+            <view class="text">接待时间: <text class="color6">{{notice.receptionTime}}</text>
+            </view>
+        </view>
+        <view class="item10">
+            <text class="font32">额外费用</text>
+            <view class="text" wx:if="{{additional.addBedDesc}}">加床: <text class="color6">{{additional.addBedDesc}}</text></view>
+            <view class="text" wx:if="{{additional.cookDesc}}">做饭: <text class="color6">{{additional.cookDesc}}</text></view>
+            <view class="text" wx:if="{{additional.partyDesc}}">聚会: <text class="color6">{{additional.partyDesc}}</text></view>
+            <view class="text" wx:if="{{additional.shootDesc}}">摄影: <text class="color6">{{additional.shootDesc}}</text></view>
+            <view class="text" wx:if="{{additional.otherTips}}">其它: <text class="color6">{{additional.otherTips}}</text></view>
+        </view>
+        <view style="height:100rpx"></view>
+    </view>
+    <view class="item13">
+        <view class="t1">
+            <view bindtap="markerUpPhone" class="t3">
+                <text class="iconfont icon-dianhua"></text>
+                <text>
+电话</text>
+            </view>
+        </view>
+        <view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click" data-id="{{roomId}}">
+            <view class="t4">￥{{price}}</view>
+            <view class="t8">立即预订</view>
+        </view>
+    </view>
+</view>

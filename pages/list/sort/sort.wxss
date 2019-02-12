@@ -1,0 +1,10 @@
+.sort{
+  font-size:30rpx;
+  line-height:2.5;
+  padding:0 20rpx;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+}

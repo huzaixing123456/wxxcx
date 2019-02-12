@@ -1,0 +1,47 @@
+<block wx:if="{{user}}">
+    <view class="nav">
+      <view wx:for="{{nav}}" class='item' bindtap='changeNav' data-index="{{index}}">
+        <text class='{{item.active?"active":""}}'>{{item.title}}</text>
+      </view>
+    </view>
+    <view class='list'>
+      <view class='item' wx:for="{{orderList}}" wx:key="*this" bindtap="toOrderDetail" data-id="{{item.orderId}}">
+        <view class='t1'>
+          <text class="t2">{{item.roomName}}</text>
+          <text class="t3">{{item.orderStatusName}}</text>
+        </view>
+        <view class='t4'>
+          <image src="{{item.coverPic}}"></image>
+          <view class='t5'>
+            <view class="t6">
+              <view class='t11'>
+                <view class="t7">{{item.checkInMonthDay}}</view>
+                <view class="t8">{{item.checkInWeekDay}} {{item.checkInHour}}</view>
+              </view>
+              <view><text class="iconfont icon-iconset0416 color"></text></view>
+              <view class='t11'>
+                <view class="t7">{{item.checkOutMonthDay}}</view>
+                <view class="t8">{{item.checkOutWeekDay}} {{item.checkOutHour}}</view>
+              </view>
+            </view>
+            <view class="t9" wx:if="{{item.amount>0}}">
+              <view class="t7">支付总价</view>
+              <view class="t10">¥{{item.amount}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="noData" wx:if="{{orderList.length == 0}}">暂时没有订单哦</view>
+        <view class="more" wx:else="{{noMoreData}}">
+            这里是最后一条啦~
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <view class="not-login">
+        <text class="icon-unlogin daoke-icon icon-meiyoudingdan"></text>
+    </view>
+    <view class="not-login-tip">啊哦，您还没有登录哦！</view>
+    <view bindtap="toLogin" class="not-login-btn" hoverClass="btnHover">立即登录</view>
+</block>
+

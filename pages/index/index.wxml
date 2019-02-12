@@ -1,0 +1,57 @@
+<view class="wrap">
+  <view class="swiper" >
+    <image data-value="{{headImg}}" src="{{headImg}}"></image>
+  </view>
+
+  <view class="info">
+    <view class="location">
+      <view bindtap="navigatorToCity" class="font32">
+        <text>{{city.name}}</text>
+      </view>
+      <view  class="right">
+        <text class="iconfont icon-dingwei color"></text>
+        <view class="font22" bindtap='getLocation'>我的位置</view>
+      </view>
+    </view>
+
+    <view class="date" bindtap="navigatorToCalendar">
+        <view>{{startDate}}<text class="font22">入住</text></view>
+        <view class="count">共{{days}}晚</view>
+        <view>{{endDate}}<text class="font22">离店</text></view>
+    </view>
+
+    <view class="person" bindtap='navigatorToPeople'>
+      <text>{{peopleNum?peopleNum:'请选择入住人数'}}</text>
+      <text class="iconfont icon-xiangyoujiantou"></text>
+    </view>
+
+    <view bindtap="navigatorToList" class="btn-big" hoverClass="btn-big-click">查找美屋</view>
+
+  </view>
+
+  <view class="box" wx:if="{{rooms}}">
+    <view class="title">热门房源</view>
+    <view class="img">
+      <swiper autoplay circular class="swiper">
+        <swiper-item wx:for="{{rooms}}" bindtap="navigatorToDeatail" wx:key='*this' data-id="{{item.id}}">
+          <view class="t1">北京市</view>
+          <view class="t2">{{item.address}}</view>
+          <image bindtap="navigatorToPhoto"  data-path="{{item.coverPic}}" src="{{item.coverPic}}"></image>
+          <view class="t3">
+            <text>{{item.roomName}}</text>
+            <text>¥ {{item.price}}</text>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view class="introdution" wx:if="{{headImg}}">
+    <image src="{{headImg}}"></image>
+  </view>
+</view>
+
+
+<!-- <view class='notOpen' wx:if="{{!showNotOpen}}">
+  <view class="t1">当前定位的城市暂未开通，请在选择城市中，查看所有开通的城市</view>
+  <view class="t2" bindtap='closeNotOpen'>知道了</view>
+</view> -->

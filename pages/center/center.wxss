@@ -1,0 +1,90 @@
+.header {
+    display: flex;
+    background: #fd8238;
+    padding: 50rpx 30rpx 150rpx 30rpx;
+}
+
+.header .t1 {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 30rpx;
+}
+
+
+.unLogin {
+    background: #fff;
+    width: 120rpx;
+    height: 120rpx;
+    text-align: center;
+    line-height: 120rpx;
+}
+
+.username {
+    font-size: 43rpx;
+    color: #fff;
+}
+
+
+.tx-icon {
+    font-size: 50rpx;
+    color: rgb(256,138,56);
+}
+
+.login {
+    width: 480rpx;
+    color: #fff;
+    line-height: 110rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size:36rpx;
+}
+
+
+.content {
+    background: #fff;
+    margin: 0 30rpx;
+    line-height: 90rpx;
+    margin-top: -70rpx;
+    font-size:26rpx;
+}
+
+.item {
+    box-shadow: 1px 3px 6px 1px rgb(232,232,232);
+    margin-bottom: 25rpx;
+    padding: 0 40rpx;
+    border-top: 1px solid rgb(248,248,248);
+}
+
+.item .icon{
+  font-size:36rpx;
+  color:#666;
+}
+
+
+.item .title {
+    margin-left: 40rpx;
+}
+
+.arrow {
+    float: right;
+    font-size: 22rpx;
+}
+
+.item-icon {
+    color: rgb(253,130,56);
+}
+
+.logout {
+    margin: 70rpx 100rpx;
+    text-align: center;
+    color:#555;
+    box-shadow: 1px 3px 6px 1px rgb(232,232,232);
+}
+
+.icon-tx{
+  font-size: 40rpx;
+  color:#666;
+}

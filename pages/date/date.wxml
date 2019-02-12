@@ -1,0 +1,13 @@
+<view>
+	<view wx:for="{{date}}" wx:key="*this">
+		<calendar
+				year='{{item.year}}'
+				month='{{item.month}}'
+				startDate='{{startDate}}'
+				endDate='{{endDate}}'
+				bind:myevent="getDate"
+		></calendar>
+	</view>
+</view>
+
+

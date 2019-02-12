@@ -1,0 +1,195 @@
+.nav{
+    display:flex;
+    font-size: 30rpx;
+    height:65rpx;
+    position:fixed;
+    width:100%;
+    top:0;
+    background:#FFF;
+    z-index:10;
+}
+
+.nav .item{
+    flex:1;
+    text-align:center;
+    border-bottom:1rpx solid #EFEFEF;
+}
+
+.nav .item .active{
+  padding-bottom:20rpx;
+  color:#FD8238;
+  border-bottom:5rpx solid #FD8238;
+}
+
+.list{
+  padding-top:65rpx;
+  box-sizing:border-box;
+  padding-bottom:30rpx;
+  height:100vh;
+}
+
+.list .item image{
+  height:100%;
+  width:100%;
+}
+
+.list .item{
+  padding:0 50rpx;
+}
+
+.list .item .t1{
+  display:flex;
+  padding:40rpx 0 30rpx;
+  justify-content: space-between;
+}
+
+.list .item .t2{
+  font-size:34rpx;
+  color:#444;
+}
+
+.list .item .t3{
+  color:#999;
+  font-size:36rpx;
+}
+
+.list .item .t4{
+  border-radius:10rpx;
+  height:500rpx;
+  overflow:hidden;
+  position:relative;
+}
+
+.list .item .t5{
+  position:absolute;
+  width:100%;
+  bottom:0;
+  left:0;
+  right:0;
+  height:130rpx;
+  background:rgba(0,0,0,0.5);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#FFF;
+  flex-direction:row;
+}
+
+.list .item .t6{
+  flex:1;
+  display: flex;
+  flex-direction:row;
+  padding:0 20rpx;
+  justify-content:space-around;
+}
+
+.list .item .t7{
+  font-size:30rpx;
+}
+
+.list .item .t8{
+  font-size:26rpx;
+}
+
+.list .item .t9{
+  padding:0 50rpx;
+  text-align:center;
+  border-left:1rpx solid #FFF;
+  display: flex;
+  align-items:center;
+  flex-direction:column;
+}
+
+.list .item .t10{
+  color:#FD8238;
+  font-size:34rpx;
+}
+
+.more {
+    padding: 20rpx 0;
+    font-size:24rpx;
+    text-align:center;
+    background: #f4f4f4;
+}
+
+.noData {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30rpx;
+    height:100%;
+    background-color: #f4f4f4;
+}
+
+
+.noOrder {
+    margin: 300rpx 0 0 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noOrder image {
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.noOrder .null-icon {
+    font-size: 200rpx;
+}
+
+.not-login {
+    padding-top: 200rpx;
+    padding-bottom: 50rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.not-login-tip {
+    text-align: center;
+    font-size:26rpx;
+    color:#555;
+}
+
+.unlogin-btn {
+    padding: 20rpx 0;
+    margin: 0 40rpx;
+    background: #FD8238;
+    text-align: center;
+    color: #fff;
+    border-radius: 10rpx;
+    margin-top: 150rpx;
+    font-size:32rpx;
+}
+
+.btnHover {
+    background: #ffb98e;
+}
+
+.icon-unlogin {
+    font-size: 200rpx;
+}
+.not-login-btn {
+    margin: 70rpx 100rpx;
+    height:80rpx;
+    line-height:80rpx;
+    background:#FD8238;
+    text-align: center;
+    color:#FFF;
+    box-shadow: 1px 3px 6px 1px rgb(232,232,232);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

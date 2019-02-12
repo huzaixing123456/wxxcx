@@ -1,0 +1,6 @@
+<scroll-view class='wrap'>
+  <view wx:for="{{list}}" wx:key='*this' class='item' bindtap='changePeople' data-index="{{index}}">
+    <text class='{{item.active ? "active":""}}'>{{item.text}}</text>
+    <text class='iconfont icon-duihao color' wx:if="{{item.active}}"></text>
+  </view>
+</scroll-view>

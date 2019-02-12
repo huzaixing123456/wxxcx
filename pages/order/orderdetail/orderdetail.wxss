@@ -1,0 +1,159 @@
+.item1{
+  padding:30rpx 0;
+  text-align:center;
+}
+
+.item1 .t1{
+  font-size:40rpx;
+  color:#999;
+}
+
+.item1 .t2{
+  font-size:26rpx;
+  color:#999;
+  margin-top:15rpx;
+}
+
+.item2{
+  margin-top:20rpx;
+  display:flex;
+  padding:0 50rpx;
+  justify-content:space-between;
+}
+
+.item2 .block:nth-of-type(2){
+  text-align:right;
+}
+
+.item2 .t1{
+  font-size:26rpx;
+  color:#888;
+}
+
+.item2 .t2{
+  font-size:36rpx;
+  font-weight:bold;
+  margin-top:10rpx;
+}
+
+.item2 .t3{
+  font-size:26rpx;
+  margin-top:10rpx;
+}
+
+.item3{
+  margin:30rpx 20rpx 0;
+  padding:20rpx;
+  border-top:1rpx solid #EFEFEF;
+  display:flex;
+  justify-content:space-between;
+}
+
+.item3 .t2{
+  font-size: 36rpx;
+}
+.item3 .t3{
+  font-size:26rpx;
+  color:#999;
+}
+
+.item3 .t4 text{
+  color:#999;
+  font-size:36rpx;
+}
+
+.item4{
+  margin:0 20rpx;
+}
+
+
+.item4 .t1{
+  margin-top:30rpx;
+  padding:30rpx 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1rpx solid #EFEFEF;
+  border-bottom:1rpx solid #EFEFEF;
+}
+
+.item4 .t2{
+  font-size:30rpx;
+}
+
+.item4 .t3{
+  margin-right:100rpx;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  color:#FD8238;
+  font-size:26rpx;
+}
+
+.item .t4{
+  font-size:32rpx;
+}
+
+.item5{
+  margin:0 20rpx;
+  font-size:26rpx;
+  padding-bottom:20rpx;
+  border-bottom:1rpx solid #EFEFEF;
+}
+
+.item5 .t1{
+  padding-top:20rpx;
+}
+
+.item5 .t3{
+  margin-top:20rpx;
+  display:flex;
+  justify-content:space-between;
+}
+
+.item6{
+  margin:0 20rpx;
+  font-size:26rpx;
+  display:flex;
+  padding:30rpx 0;
+  justify-content:space-between;
+}
+
+.item7 .t1{
+  color:#000;
+  padding:30rpx 0 20rpx;
+}
+
+.item7{
+  margin:0 20rpx;
+  background:#EFEFEF;
+  padding:10rpx 30rpx;
+  font-size:26rpx;
+  color:#666;
+}
+
+.btn-wrap {
+    display: flex;
+    padding: 40rpx;
+    background-color: #fff;
+    justify-content: flex-end;
+}
+
+.btn-wrap .btn{
+    text-align: center;
+    font-size: 28rpx;
+    padding: 10rpx 20rpx;
+    height: 35rpx;
+    border-radius: 20rpx;
+    line-height: 35rpx;
+    margin-left: 20rpx;
+}
+
+.btn-wrap .btn.bt1 {
+    border: 1px solid #FD8238;
+}
+
+.btn-wrap .btn.bt2 {
+    background-color: #FD8238;
+    color: #fff;
+}
