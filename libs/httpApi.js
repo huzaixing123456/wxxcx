@@ -36,9 +36,14 @@ function getRoomList(data) {
   return http.post('/api/room/list', data, { body: true });
 }
 
-//获取房屋列表
+//获取房屋详情
 function getRoomDetail(data) {
   return http.get('/api/room/view', data);
+}
+
+//房屋图片
+function getRoomPicture(data){
+  return http.get('/api/room/img',data);
 }
 
 //获取openId
@@ -106,6 +111,7 @@ export default {
   register,
   getRoomList,
   getRoomDetail,
+  getRoomPicture,
   getOpenId,
   getRecommend,
   codeLogin,

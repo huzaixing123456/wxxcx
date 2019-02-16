@@ -20,7 +20,7 @@
         <text class="title">我的订单</text>
         <text class="arrow daoke-icon icon-zhixiang"></text>
     </view>
-    <view class="item" hoverClass="colorf2">
+    <view class="item" hoverClass="colorf2" bindtap='markerUpPhone'>
         <text class="icon iconfont icon-kefu"></text>
         <text class="title">联系客服</text>
         <text class="arrow daoke-icon icon-zhixiang"></text>

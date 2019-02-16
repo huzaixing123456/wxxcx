@@ -135,6 +135,11 @@ Page({
       cardIndex:index
     })
   },
+  toMoney(){
+    wx.navigateTo({
+      url: "../money/money"
+    });
+  },
   onShow: function () {
 
   }

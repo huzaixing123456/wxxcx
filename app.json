@@ -1,11 +1,10 @@
 {
   "pages": [
+    "pages/detail/picture/picture",
     "pages/index/index",
     "pages/login/login",
-    
     "pages/list/list",
     "pages/list/filter/filter",
-    
     "pages/list/location/location",
     "pages/order/order",
     "pages/city/city",
@@ -13,10 +12,11 @@
     "pages/detail/detail",
     "pages/detail/submit/submit",
     "pages/people/people",
-    
     "pages/list/sort/sort",
     "pages/center/center",
+    "pages/detail/money/money",
     "pages/date/date"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

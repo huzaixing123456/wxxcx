@@ -54,7 +54,7 @@
     <view class="wrap3">
         <text>总房费：</text>
         <text class="t1">￥{{roomDeatal.price*roomCount}}</text>
-        <view>
+        <view bindtap='toMoney'>
             <text class="t2">房费明细</text>
         </view>
     </view>

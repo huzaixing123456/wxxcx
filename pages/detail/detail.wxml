@@ -119,6 +119,7 @@
           </view>
 
             <calendar 
+              wx:if='{{date}}'
               startDate='{{date.startCalendar}}'
 				      endDate='{{date.endCalendar}}'
               year="{{date.year}}"

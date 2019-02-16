@@ -1,0 +1,16 @@
+.wrap{
+  padding:80rpx 0;
+  border-bottom: 1rpx solid #EEE;
+  text-align:center;
+}
+
+.c1{
+  color:#fd8238;
+  font-size:60rpx;
+}
+
+.c2{
+  margin-top:50rpx;
+  font-size:32rpx;
+  color:#666;
+}

@@ -19,7 +19,6 @@ Page({
         roomId:''
     },
     onShow(){
-      console.log(1111111,this.data);
       var checkDate = LocalStorage.getSync("checkDate");
       var { startDate, endDate } = checkDate;
       if (startDate) {

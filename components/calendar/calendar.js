@@ -22,7 +22,20 @@ Component({
     year:0,
     month:0
   },
+  ready(){
+    console.log("我准备好啦1");
+  },
+  created() {
+    console.log("我准备好啦2");
+  },
+  ready() {
+    console.log("我准备好啦3");
+  },
+  pageLifetimes() {
+    console.log("我准备好啦4");
+  },
   attached : function () {
+    console.log("调用进来了");
     let {year,month} = this.properties;
     var current = util.getCurrentDate();
     this.dateInit(year,month); 
@@ -45,6 +58,7 @@ Component({
           let arrLen = 0;
           let {nextYear,nextMonth} = util.getNextMonth(year,month);
           let startWeek = util.getWeek(year,month-1);
+          console.log("获取月天数", nextYear, nextMonth - 1)
           let dayNums = util.getDays(nextYear,nextMonth-1);
           let obj = {};
           let num = 0;

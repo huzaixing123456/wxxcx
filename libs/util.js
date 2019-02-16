@@ -94,7 +94,6 @@ function getDays(year, month) {
 
 //根据年月日字符串获取日期
 function getDateByNum(str, e) {
-  console.log(str);
   var original = str.toString();
   var year = parseInt(original.substr(0, 4));
   var month = parseInt(original.substr(4, 2));
@@ -120,10 +119,8 @@ function getStrByNum(year, month, date) {
 
 //计算两个日期之间相差天数
 function getCountDay(startDay, endDay) {
-  console.log(startDay, endDay)
   var start = (new Date(startDay['year'], +startDay['month']-1, startDay['day'])).getTime();
   var end = (new Date(endDay['year'], +endDay['month']-1, endDay['day'])).getTime();
-  console.log(start,end);
   var days = parseInt(Math.ceil((end - start) / 1000 / 60 / 60 / 24));
   return days;
 }

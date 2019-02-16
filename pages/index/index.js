@@ -23,6 +23,9 @@ Page({
     },
     onLoad: function (a) {
         console.log("load");
+        // httpApi.getRoomPicture({roomId:35}).then(res=>{
+        //   console.log(res);
+        // })
     },
     getDataByCity(cityId) {
         var params = cityId ? { did: cityId } : null;

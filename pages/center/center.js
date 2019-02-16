@@ -27,5 +27,10 @@ Page({
       this.setData({
         user:''
       })
+    },
+    markerUpPhone() {
+      wx.makePhoneCall({
+        phoneNumber: '4006001232'
+      })
     }
 });
