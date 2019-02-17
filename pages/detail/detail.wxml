@@ -1,7 +1,7 @@
 <view class="wrap">
     <view class="detail">
      <view class="swiper" wx:if="{{basic}}">
-        <swiper circular bindchange="switchChange" class="item">
+        <swiper circular bindchange="switchChange" class="item" bindtap='navigatorToPicture'>
             <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this">
                 <image bindtap="navigatorToPhoto" data-value="{{item}}" src="{{item}}"></image>
             </swiper-item>
@@ -96,19 +96,113 @@
     </view>
 </view> -->
 
-    <!--<view class="item7">-->
-         <!--<view class='title'> 设施服务</view>-->
-        <!--<view class="items">-->
-          <!--<block wx:for="{{facility}}">-->
-            <!--<view class="item" wx:if="{{!!item}}">-->
-              <!--<block >-->
-                <!--<text class="t2 daoke-icon icon-wifi color" ></text>-->
-                <!--<text class="t3">{{item}}</text>-->
-              <!--</block>-->
-            <!--</view>-->
-          <!--</block>-->
-        <!--</view>-->
-    <!--</view>-->
+    <view class="item7">
+         <view class='title'> 设施服务</view>
+         <block wx:if="{{facility.length>0}}">
+         <view class='t1'>基础设施</view>
+        <view class="items">
+          <block wx:for="{{facility}}">
+            <view class="item">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{bathroom.length>0}}">
+        <view class='t1'>卫浴设施</view>
+        <view class="items">
+          <block wx:for="{{bathroom}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{kitchen.length>0}}">
+        <view class='t1'>厨房设施</view>
+        <view class="items">
+          <block wx:for="{{kitchen}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{recreation.length>0}}">
+        <view class='t1'>娱乐设施</view>
+        <view class="items">
+          <block wx:for="{{recreation}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{safety.length>0}}">
+        <view class='t1'>安保设施</view>
+        <view class="items">
+          <block wx:for="{{safety}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{other.length>0}}">
+        <view class='t1'>特色以及其它</view>
+        <view class="items">
+          <block wx:for="{{other}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{circum.length>0}}">
+        <view class='t1'>周边500米</view>
+        <view class="items">
+          <block wx:for="{{circum}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+        <block wx:if="{{service.length>0}}">
+        <view class='t1'>服务设施</view>
+        <view class="items">
+          <block wx:for="{{service}}">
+            <view class="item" wx:if="{{!!item}}">
+              <block >
+                <text class="t2 iconfont {{item.class}}" ></text>
+                <view class="t3">{{item.name}}</view>
+              </block>
+            </view>
+          </block>
+        </view>
+        </block>
+    </view>
 
         <view class="item8" wx:if="{{date}}">
             <text class="t1">可租日期</text>

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/detail/picture/picture",
     "pages/index/index",
     "pages/login/login",
     "pages/list/list",
@@ -15,6 +14,7 @@
     "pages/list/sort/sort",
     "pages/center/center",
     "pages/detail/money/money",
+    "pages/detail/picture/picture",
     "pages/date/date"
     
   ],

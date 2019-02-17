@@ -239,7 +239,8 @@ button::after {
 .item7 .t1 {
     font-weight: normal;
     font-size:26rpx;
-    margin: 40rpx 20rpx 20rpx 0;
+    padding-top:20rpx;
+    border-top: 1rpx solid #EEE;
 }
 
 .item7 .t3 {
@@ -247,7 +248,7 @@ button::after {
     font-size:26rpx;
     white-space:nowrap;
     overflow: hidden;
-    margin-top:15rpx;
+    margin-top:20rpx;
 }
 
 .item7 .items {
@@ -257,16 +258,17 @@ button::after {
     border-bottom: 2rpx solid rgb(240,243,246);
 }
 
-.item7 .items .item text{
+
+.item7 .items .item .t2{
     display: block;
-    font-size:32rpx;
+    font-size:36rpx;
 }
 
 .item7 .items .icon {
     font-size: 60rpx;
 }
 
-.item7 .items view {
+.item7 .items .item {
     width: 25%;
     margin: 20rpx 0;
     font-weight: normal;

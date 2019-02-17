@@ -101,6 +101,10 @@ function getOrderList(data){
   return http.post('/oauth-api/order/list',data);
 }
 
+//获取房屋图片
+function getRoomImage(data) {
+  return http.get('/api/room/viewImages', data);
+}
 
 export default {
   getAllCity,
@@ -122,5 +126,6 @@ export default {
   deleteOrder,
   leaveOrder,
   applyRefundOrder,
-  getOrderList
+  getOrderList,
+  getRoomImage
 }

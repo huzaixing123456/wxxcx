@@ -7,7 +7,14 @@ Page({
         basic: '',     //基本信息
         current: 0,    //当前索引
         location: '',   //位置信息
-        facility: '',   //房屋设施
+        facility: '',   //基础设施
+        bathroom:'',    //卫浴设施
+        kitchen:'',     //厨房设施
+        recreation:'',  //娱乐设施
+        safety:'',      //安保设施
+        other:'',       //特色以及其它
+        circum:'',       //周边500米
+        service:'',      //服务设施
         date: '',        //入住时间
         rules: '',
         additional: '',   //额外费用
@@ -42,10 +49,42 @@ Page({
         var bedType = basic['bedType'].replace(/\[|\]|"/g, '').replace(/、/g, ' ');
         bedType = bedType + '张';
         basic['bedType'] = bedType;
+        var { basicFacility, bathroomFacility, kitchenFacility, recreationFacility, safetyFacility, otherFacility, circumFacility, serviceFacility} = res;
+        basicFacility = basicFacility.filter(item=>{
+          return item.active == 1;
+        })
+        bathroomFacility = bathroomFacility.filter(item => {
+          return item.active == 1;
+        })
+        kitchenFacility = kitchenFacility.filter(item => {
+          return item.active == 1;
+        })
+        recreationFacility = recreationFacility.filter(item => {
+          return item.active == 1;
+        })
+        safetyFacility = safetyFacility.filter(item => {
+          return item.active == 1;
+        })
+        otherFacility = otherFacility.filter(item => {
+          return item.active == 1;
+        })
+        circumFacility = circumFacility.filter(item => {
+          return item.active == 1;
+        })
+        serviceFacility = serviceFacility.filter(item => {
+          return item.active == 1;
+        })
         this.setData({
           basic: res.basic,
           location: res.location,
-          facility: res.facility,
+          facility: basicFacility,
+          bathroom: res.bathroomFacility,
+          kitchen: res.kitchenFacility,
+          recreation: res.recreationFacility,
+          safety: res.safetyFacility,
+          other: res.otherFacility,
+          circum: res.circumFacility,
+          service: res.serviceFacility,
           rules: res.rules,
           additional: res.additional,
           price: res.price,
@@ -143,6 +182,12 @@ Page({
   navigatorToCalendar: function () {
     wx.navigateTo({
       url: "../date/date"
+    });
+  },
+  navigatorToPicture: function () {
+    console.log(this.data.roomId);
+    wx.navigateTo({
+      url: "./picture/picture?roomId=" + this.data.roomId
     });
   },
   markerUpPhone(){
