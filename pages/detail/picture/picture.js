@@ -7,6 +7,7 @@ Page({
   data: {
     showSwiper:false,
     activeIndex:0,
+    current:1,
     activeData:[],
     list:[
       {
@@ -99,13 +100,15 @@ Page({
     this.changeData();
   },
   lookBigPicture(){
-    var { activeIndex, activeData} = this.data;
-
-  },
-  lookBigPicture(){
     this.setData({
       showSwiper:!this.data.showSwiper
     })
+  },
+  switchChange(e) {
+    console.log(e.detail.current);
+      this.setData({
+          current: e.detail.current
+      })
   },
   /**
    * 生命周期函数--监听页面隐藏

@@ -21,9 +21,22 @@ Page({
         hasCheckImageCode:false //是否经过图片验证码验证      
     },
     onLoad: function() {
-      // util.getLogin().then(res=>{
-      //     console.log("code值是"+res);
-      // });
+      util.getLogin().then(res=>{
+          console.log("code值是"+res);
+          httpApi.getOpenID({code:res}).then(result=>{
+              console.log(result);
+              httpApi.codeLogin({
+                  client_id:"wechat-client",
+                  client_secret:"wechat-client",
+                  grant_type:"smscode",
+                  mobile:18611985439,
+                  did:110100,
+                  code:code
+              }).then(result=>{
+                  console.log(result);
+              })
+          })
+      });
       this.getImage();
     },
     getImage(){
@@ -192,20 +205,21 @@ Page({
         })        
     },
     getPhoneNumber(e){
-
+        console.log(e);
+        //util.toast({ title: JSON.stringify(e.detail)});
     },
     wxLogin(){
-      util.getLogin().then(res => {
-        console.log("code值是" + res);
-        var city = LocalStorage.getSync('cityData');
-        httpApi.codeLogin({
-          client_id: "wechat-client",
-          client_secret: "wechat-client",
-          grant_type: "wechat",
-          did: city['cityId'],
-          code: res
-        })
-      });
+      // util.getLogin().then(res => {
+      //   console.log("code值是" + res);
+      //   var city = LocalStorage.getSync('cityData');
+      //   httpApi.codeLogin({
+      //     client_id: "wechat-client",
+      //     client_secret: "wechat-client",
+      //     grant_type: "wechat",
+      //     did: city['cityId'],
+      //     code: res
+      //   })
+      // });
       
     }
 });

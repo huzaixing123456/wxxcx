@@ -12,9 +12,9 @@
     </view>
   </view>
 
-  <view class='modal' wx:if="{{showSwiper}}" bindtap="lookBigPicture">
-    <view class='title'>1/28</view>
-    <swiper class='swiper'>
+  <view class='modal' wx:if="{{showSwiper}}" bindtap="lookBigPicture" >
+    <view class='title'>{{current+1}}/{{activeData.length}}</view>
+    <swiper class='swiper' bindchange="switchChange">
       <swiper-item wx:for="{{activeData}}" wx:key='*this'>
          <image src='{{item.link}}'></image>
       </swiper-item>

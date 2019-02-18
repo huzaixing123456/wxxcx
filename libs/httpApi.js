@@ -61,6 +61,11 @@ function codeLogin(data) {
   return http.post('/oauth/token', data);
 }
 
+//获取openID
+function getOpenID(data) {
+  return http.get('/api/wechat/jscode', data);
+}
+
 //获取商圈
 function getBusiness(data) {
   return http.get('/api/city/business', data);
@@ -127,5 +132,6 @@ export default {
   leaveOrder,
   applyRefundOrder,
   getOrderList,
+  getOpenID,
   getRoomImage
 }
