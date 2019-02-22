@@ -63,7 +63,7 @@ function codeLogin(data) {
 
 //获取openID
 function getOpenID(data) {
-  return http.get('/api/wechat/jscode', data);
+  return http.post('/api/wechat/jscode', data);
 }
 
 //获取商圈
@@ -111,6 +111,10 @@ function getRoomImage(data) {
   return http.get('/api/room/viewImages', data);
 }
 
+function getPayParams(data) {
+    return http.get('/oauth-api/order/toPay', data);
+}
+
 export default {
   getAllCity,
   getCityInfo,
@@ -133,5 +137,6 @@ export default {
   applyRefundOrder,
   getOrderList,
   getOpenID,
-  getRoomImage
+  getRoomImage,
+  getPayParams
 }

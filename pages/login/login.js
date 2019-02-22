@@ -23,19 +23,43 @@ Page({
     onLoad: function() {
       util.getLogin().then(res=>{
           console.log("code值是"+res);
-          httpApi.getOpenID({code:res}).then(result=>{
-              console.log(result);
-              httpApi.codeLogin({
-                  client_id:"wechat-client",
-                  client_secret:"wechat-client",
-                  grant_type:"smscode",
-                  mobile:18611985439,
-                  did:110100,
-                  code:code
-              }).then(result=>{
-                  console.log(result);
-              })
+          //util.toast({title:"code值是"+res});
+          // wx.request({
+          //     url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxf5247441cbca103f&secret=b3e053dc6f02acd37a28b15b8d599e46&js_code=' + res + '&grant_type=authorization_code',
+          //     data: {},
+          //     header: {
+          //         'content-type': 'json'
+          //     },
+          //     success: function (res) {
+          //         var openid = res.data.openid //返回openid
+          //         console.log('openid为' + openid);
+          //         util.toast({title:openid});
+          //     }
+          // })
+          wx.request({
+              url: 'https://wx.longmenkezhan.com/api/wechat/jscode?jscode=' + res, //接口地址
+              data: {},
+              header: {
+                  'content-type': 'application/json' //默认值
+              },
+              success: function (res) {
+                  console.log(res.data.data)
+              }
           })
+
+          // httpApi.getOpenID({jscode:res}).then(result=>{
+          //     console.log(result);
+          //     httpApi.codeLogin({
+          //         client_id:"wechat-client",
+          //         client_secret:"wechat-client",
+          //         grant_type:"smscode",
+          //         mobile:18611985439,
+          //         did:110100,
+          //         code:code
+          //     }).then(result=>{
+          //         console.log(result);
+          //     })
+          // })
       });
       this.getImage();
     },

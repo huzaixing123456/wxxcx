@@ -10,9 +10,9 @@ Page({
     days:'',
     roomCount:1,
     peopleCount:1,
-    name:'',
-    phone: '',
-    idCard:'',
+    name:'胡再兴',
+    phone: '18611985439',
+    idCard:'421181198706078010',
     cardIndex: 0,
     cardList: ["身份证", "军官证", "护照"]
   },
@@ -72,7 +72,8 @@ Page({
       "mobile": phone,
       "name": name,
       "roomId": roomDeatal.roomId,
-      "roomNum": roomCount
+      "roomNum": roomCount,
+      "openid":'oGH_m5WQXxIFde_StmsjPSh9AXxI'
     }).then(res => {
       console.log(res);
         wx.navigateTo({

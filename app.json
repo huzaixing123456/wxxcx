@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/index/index",
 
+    "pages/index/index",
+    "pages/login/login",
     "pages/list/list",
     "pages/list/filter/filter",
     "pages/list/location/location",
@@ -52,5 +52,9 @@
     "scope.userLocation": {
       "desc": "龙门客栈精品民宿想获取你的位置信息"
     }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
   }
 }
