@@ -56,11 +56,13 @@ Page({
               //item.coverPic = 'https://wx.longmenkezhan.com/images/rooms/201901021411439610.jpg'
           });
       }
+      var flag = (pageNum == maxPage) ? true : false;
       this.setData({
-          noMoreData:pageNum == maxPage ? true:false
+          noMoreData:flag
       })
       this.setData({
-        orderList: content
+        orderList: [].concat(this.data.orderList, content),
+        maxPage:maxPage
       })
     })
   },
@@ -94,7 +96,9 @@ Page({
     this.getData();
   },
   onReachBottom: function () {
+    console.log('底部加载了');
    let {pageNum,maxPage} = this.data;
+    console.log(this.data);
    if(pageNum>=maxPage){
        return false;
    }else{

@@ -21,46 +21,6 @@ Page({
         hasCheckImageCode:false //是否经过图片验证码验证      
     },
     onLoad: function() {
-      util.getLogin().then(res=>{
-          console.log("code值是"+res);
-          //util.toast({title:"code值是"+res});
-          // wx.request({
-          //     url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxf5247441cbca103f&secret=b3e053dc6f02acd37a28b15b8d599e46&js_code=' + res + '&grant_type=authorization_code',
-          //     data: {},
-          //     header: {
-          //         'content-type': 'json'
-          //     },
-          //     success: function (res) {
-          //         var openid = res.data.openid //返回openid
-          //         console.log('openid为' + openid);
-          //         util.toast({title:openid});
-          //     }
-          // })
-          wx.request({
-              url: 'https://wx.longmenkezhan.com/api/wechat/jscode?jscode=' + res, //接口地址
-              data: {},
-              header: {
-                  'content-type': 'application/json' //默认值
-              },
-              success: function (res) {
-                  console.log(res.data.data)
-              }
-          })
-
-          // httpApi.getOpenID({jscode:res}).then(result=>{
-          //     console.log(result);
-          //     httpApi.codeLogin({
-          //         client_id:"wechat-client",
-          //         client_secret:"wechat-client",
-          //         grant_type:"smscode",
-          //         mobile:18611985439,
-          //         did:110100,
-          //         code:code
-          //     }).then(result=>{
-          //         console.log(result);
-          //     })
-          // })
-      });
       this.getImage();
     },
     getImage(){
@@ -208,42 +168,49 @@ Page({
         if (!REGEXP.CODE.test(code)){
             util.toast({title:"请输入正确格式的验证码"});
         };
-        LocalStorage.get('cityData').then(res=>{
-          httpApi.codeLogin({
-            client_id:"wechat-client", 
-            client_secret:"wechat-client",
-            grant_type:"smscode",
-            mobile:phone,
-            did:res['cityId'],
-            code:code
-          }).then(res=>{
-            console.log(res);
-            LocalStorage.set('user', {
-              token: res['access_token'],
-              telephone: phone
+        util.getLogin().then(wxcode => {
+          console.log("code值是" + wxcode)
+          // httpApi.getOpenID({ jscode: res }).then(result => {
+          //   console.log(result);
+          // })
+          LocalStorage.get('cityData').then(res => {
+            httpApi.codeLogin({
+              client_id: "wechat-client",
+              client_secret: "wechat-client",
+              grant_type: "smscode",
+              mobile: phone,
+              did: res['cityId'],
+              code: code,
+              openId: wxcode
+            }).then(res => {
+              console.log(res);
+              LocalStorage.set('user', {
+                token: res['access_token'],
+                telephone: phone
+              })
+              wx.navigateBack();
+            }).catch(() => {
+              this.stopTimer();
             })
-            wx.navigateBack();
-          }).catch(()=>{
-            this.stopTimer();
-          })
-        })        
+          }) 
+        });       
     },
     getPhoneNumber(e){
         console.log(e);
         //util.toast({ title: JSON.stringify(e.detail)});
     },
     wxLogin(){
-      // util.getLogin().then(res => {
-      //   console.log("code值是" + res);
-      //   var city = LocalStorage.getSync('cityData');
-      //   httpApi.codeLogin({
-      //     client_id: "wechat-client",
-      //     client_secret: "wechat-client",
-      //     grant_type: "wechat",
-      //     did: city['cityId'],
-      //     code: res
-      //   })
-      // });
+      util.getLogin().then(res => {
+        console.log("code值是" + res);
+        var city = LocalStorage.getSync('cityData');
+        httpApi.codeLogin({
+          client_id: "wechat-client",
+          client_secret: "wechat-client",
+          grant_type: "wechat",
+          did: city['cityId'],
+          openid:'oGH_m5WQXxIFde_StmsjPSh9AXxI'
+        })
+      });
       
     }
 });

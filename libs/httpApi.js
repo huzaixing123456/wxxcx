@@ -46,10 +46,6 @@ function getRoomPicture(data){
   return http.get('/api/room/img',data);
 }
 
-//获取openId
-function getOpenId(data) {
-  return http.get('/api/wechat/openid', data);
-}
 
 //获取推荐房源
 function getRecommend(data) {
@@ -63,7 +59,7 @@ function codeLogin(data) {
 
 //获取openID
 function getOpenID(data) {
-  return http.post('/api/wechat/jscode', data);
+  return http.get('/api/wechat/jscode', data);
 }
 
 //获取商圈
@@ -125,7 +121,6 @@ export default {
   getRoomList,
   getRoomDetail,
   getRoomPicture,
-  getOpenId,
   getRecommend,
   codeLogin,
   getBusiness,
