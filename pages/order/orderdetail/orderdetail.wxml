@@ -109,19 +109,47 @@
 <view class="btn-wrap font26">
   <view bindtap="toPay" class="btn bt2" wx:if="{{order.orderStatus == 0}}">立即支付</view>
 
-<view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{order.orderStatus == 8}}">删除</view>
+<view bindtap="deleteOrder" class="btn bt2" wx:if="{{order.orderStatus == 8}}">删除</view>
 
-<view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{(order.orderStatus == 1 && order.paymentStatus == 1)||order.orderStatus == 2 }}">退款</view>
+<view bindtap="refundOrder" class="btn bt2" wx:if="{{(order.orderStatus == 1 && order.paymentStatus == 1)||order.orderStatus == 2 }}">退款</view>
 
-<view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{order.orderStatus == 3}}">离店</view>
+<view bindtap="leaveOrder" class="btn bt2" wx:if="{{order.orderStatus == 3}}">离店</view>
 <view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{order.orderStatus == 4 || order.orderStatus == 8}}">再次预定</view>
-     
      
 </view>
 
-<view class='dialog'>
+<view class='dialog' wx:if="{{applyRefundOrder}}">
+  <view class='content'>
+    <view class='t1'>按照此房屋的退款规则，您订单可退金额为</view>
+    <view class='t2'>¥ {{refundAmount}}</view>
+    <!-- <view class='t3'>88房款 500押金</view> -->
+    <view class='t4'>确定退款后将在1-2个工作日内原路返回</view>
+    <view class='t5'>
+      <view class='btn' bindtap='confrimRefundOrder'>坚持退款</view>
+      <view class='btn' bindtap='closeDialog'>取消</view>
+    </view>
+  </view>
+</view>
 
+<view class='dialog' wx:if="{{deleteOrderFlag}}">
+  <view class='content'>
+    <view class='t6'>确定删除订单</view>
+    <view class='t7'>删除订单将无法返回</view>
+     <view class='t5'>
+      <view class='btn' bindtap='closeDeleteDialog'>点错了</view>
+      <view class='btn' bindtap='confrimDeleteOrder'>删除</view>
+    </view>
+  </view>
+</view>
 
+<view class='dialog' wx:if="{{leaveOrderFlag}}">
+  <view class='content'>
+    <view class='t6'>确定离店吗</view>
+     <view class='t5'>
+      <view class='btn' bindtap='closeLeaveDialog'>点错了</view>
+      <view class='btn' bindtap='confrimLeaveOrder'>离店</view>
+    </view>
+  </view>
 </view>
 
 

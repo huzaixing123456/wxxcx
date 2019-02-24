@@ -5,13 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    time:'01:00:00'
+    time:'01:00:00',
+    orderId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
+    this.setData({
+      orderId:options['orderId']
+    })
     let timeMinutes = 60*60;
     this.timer = setInterval(()=>{
       timeMinutes--;
@@ -83,6 +88,8 @@ Page({
     });
   },
   navigateToDetail(){
-
+    wx.navigateTo({
+      url: "../orderdetail/orderdetail?orderId=" + this.data.orderId
+    });
   }
 })

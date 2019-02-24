@@ -32,7 +32,7 @@
         </view>
       </view>
       <view class="noData" wx:if="{{orderList.length == 0}}">暂时没有订单哦</view>
-      <view class="more" wx:if="{{noMoreData}}">
+      <view class="more" wx:if="{{orderList.length > 0 && noMoreData}}">
           这里是最后一条啦~
       </view>
     </view>

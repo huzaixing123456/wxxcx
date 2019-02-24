@@ -10,9 +10,9 @@ Page({
     days:'',
     roomCount:1,
     peopleCount:1,
-    name:'胡再兴',
-    phone: '18611985439',
-    idCard:'421181198706078010',
+    name:'',
+    phone: '',
+    idCard:'',
     cardIndex: 0,
     cardList: ["身份证", "军官证", "护照"]
   },
@@ -76,9 +76,6 @@ Page({
     }).then(res => {
       var params = JSON.parse(res);
       console.log(params);
-        // wx.navigateTo({
-        //     url: "../../order/orderdetail/orderdetail?orderId=" + res['orderId']
-        // });
       wx.requestPayment({
         'timeStamp': params['timeStamp'],
         'nonceStr': params['nonceStr'],
@@ -87,8 +84,12 @@ Page({
         'paySign': params['paySign'],
         'success': function (res) {
           console.log("成功了");
+          wx.navigateTo({
+            url: "../../order/orderTips/orderTips?orderId=" + params['orderId']
+          });
         },
         'fail': function (res) {
+          util.toast({title:'支付失败'});
           console.log("失败了", res);
         }
       })
