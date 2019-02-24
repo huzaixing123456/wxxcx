@@ -1,0 +1,11 @@
+<view class='wrap'>
+  <view class='time'>
+    <view class='t1'>{{time}}</view>
+    <view class='t2'>确认倒计时</view>
+  </view>
+  <view class='text'>请等待房客确认，如未在2小时内确认，您可申请全额退款</view>
+  <view class='button'>
+    <view class='btn' bindtap='navigateToIndex'>返回首页</view>
+    <view class='btn' bindtap='navigateToDetail'>查看订单</view>
+  </view>
+</view>

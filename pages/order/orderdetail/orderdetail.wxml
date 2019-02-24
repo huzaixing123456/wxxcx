@@ -107,7 +107,7 @@
 </view>
 
 <view class="btn-wrap font26">
-  <view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{order.orderStatus == 0}}">立即支付</view>
+  <view bindtap="toPay" class="btn bt2" wx:if="{{order.orderStatus == 0}}">立即支付</view>
 
 <view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{order.orderStatus == 8}}">删除</view>
 
@@ -118,3 +118,10 @@
      
      
 </view>
+
+<view class='dialog'>
+
+
+</view>
+
+

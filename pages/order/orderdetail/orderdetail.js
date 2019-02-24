@@ -36,6 +36,28 @@ Page({
       scale: 18
     })
   },
+
+  toPay(){
+    var orderId = this.data.order.orderId;
+
+    httpApi.getPayParams({orderId}).then(res=>{
+      var params = JSON.parse(res);
+      console.log(params);
+      wx.requestPayment({
+        'timeStamp': params['timeStamp'],
+        'nonceStr': params['nonceStr'],
+        'package': params['package'],
+        'signType': params['signType'],
+        'paySign': params['paySign'],
+        'success': function (res) {
+          console.log("成功了");
+        },
+        'fail': function (res) {
+          console.log("失败了", res);
+        }
+      })
+    });
+  },
     onHide: function() {},
     onUnload: function() {},
     onPullDownRefresh: function() {},

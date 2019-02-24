@@ -107,8 +107,9 @@ function getRoomImage(data) {
   return http.get('/api/room/viewImages', data);
 }
 
+//
 function getPayParams(data) {
-    return http.get('/oauth-api/order/toPay', data);
+    return http.post('/oauth-api/order/toPay', data);
 }
 
 export default {

@@ -1,14 +1,17 @@
 {
   "pages": [
-   
     "pages/index/index",
+    "pages/order/orderdetail/orderdetail",
+    
+    "pages/order/orderTips/orderTips",
+    "pages/order/order",
     "pages/login/login",
     "pages/list/list",
     "pages/list/filter/filter",
     "pages/list/location/location",
-    "pages/order/order",
+    
     "pages/city/city",
-    "pages/order/orderdetail/orderdetail",
+    
     "pages/detail/detail",
     "pages/detail/submit/submit",
     "pages/people/people",
@@ -17,7 +20,6 @@
     "pages/detail/money/money",
     "pages/detail/picture/picture",
     "pages/date/date"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

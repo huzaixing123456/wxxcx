@@ -157,3 +157,12 @@
     background-color: #FD8238;
     color: #fff;
 }
+
+.dialog{
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background:rgba(0,0,0,0.5);
+}
