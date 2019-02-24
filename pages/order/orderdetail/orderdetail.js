@@ -47,6 +47,23 @@ Page({
     httpApi.getPayParams({orderId}).then(res=>{
       var params = JSON.parse(res);
       console.log(params);
+      wx.requestPayment({
+        'timeStamp': params['timeStamp'],
+        'nonceStr': params['nonceStr'],
+        'package': params['package'],
+        'signType': params['signType'],
+        'paySign': params['paySign'],
+        'success': function (res) {
+          console.log("成功了");
+          wx.navigateTo({
+            url: "../../order/orderTips/orderTips?orderId=" + params['orderId']
+          });
+        },
+        'fail': function (res) {
+          util.toast({ title: '支付失败' });
+          console.log("失败了", res);
+        }
+      })
       
     });
   },

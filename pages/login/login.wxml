@@ -1,7 +1,7 @@
-<view class="nav">
+<!-- <view class="nav">
     <view bindtap="changeNav" data-navId = '0' class="{{navId==0?'active':''}}">一键授权登录</view>
     <view bindtap="changeNav" data-navId = '1' class="{{navId==1?'active':''}}">验证码登录</view>
-</view>
+</view> -->
 <view class="accout" wx:if="{{navId==0}}">
     <view class="accout-wrap">
         <view  class="item" bindtap="wxLogin">

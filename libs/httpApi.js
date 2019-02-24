@@ -107,7 +107,7 @@ function getRoomImage(data) {
   return http.get('/api/room/viewImages', data);
 }
 
-//
+//获取支付参数
 function getPayParams(data) {
     return http.post('/oauth-api/order/toPay', data);
 }
