@@ -460,8 +460,7 @@ button::after {
     display: flex;
     width: 100%;
     bottom: 0;
-    opacity: 1;
-    z-index: 100;
+    z-index: 10000;
     background-color: #fff;
 }
 
@@ -483,9 +482,10 @@ button::after {
     font-size:22rpx;
 }
 
-.item13 .t3 image {
-    width: 40rpx;
-    height: 40rpx;
+.item13 .t3 .tel {
+    width: 30rpx;
+    height: 30rpx;
+    display:inline-block;
 }
 
 
@@ -553,7 +553,6 @@ button::after {
   text-align: center;
   height: 75rpx;
   color: #fd8238;
-  border-bottom: 2rpx solid #fd8238;
 }
 
 .pay{

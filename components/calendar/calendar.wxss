@@ -63,12 +63,14 @@
 
 }
 .active .date-head{
-	width: 75rpx;
-	border-radius: 50%;
 	text-align: center;
 	color: #fff;
 	 background: #fd8238;
 	margin: 0 auto;
+}
+.middleActive .date-head{
+  background:rgba(255,107,8,0.65);
+  color: #fff;
 }
 .date-weight{
 	font-size: 22rpx;

@@ -53,12 +53,13 @@
                 <map id="map"
                      longitude="{{location.longitude}}"
                      latitude="{{location.latitude}}"
+                     markers='{{markers}}'
                      scale="18"
                      enableZoom="false"
                      enableScroll="false"
                      enable-rotate
                      bindtap="goLocation"
-                     style="width: 100%; height: 300px;"></map>
+                     style="width: 100%; height: 300px;z-index:1"></map>
             </view>
             <view class="t3">
                 <view>
@@ -373,17 +374,16 @@
         </view>
         <view style="height:100rpx"></view>
     </view>
-    <view class="item13">
-        <view class="t1">
-            <view bindtap="markerUpPhone" class="t3">
-                <text class="iconfont icon-dianhua"></text>
-                <text>
-电话</text>
-            </view>
-        </view>
-        <view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click" data-id="{{roomId}}">
-            <view class="t4">￥{{price}}</view>
-            <view class="t8">立即预订</view>
-        </view>
-    </view>
+    <cover-view class="item13">
+        <cover-view class="t1">
+            <cover-view bindtap="markerUpPhone" class="t3">
+                <cover-image class="tel" src="../../assets/tel.png" />
+                <cover-view>电话</cover-view>
+            </cover-view>
+        </cover-view>
+        <cover-view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click" data-id="{{roomId}}">
+            <cover-view class="t4">￥{{price}}</cover-view>
+            <cover-view class="t8">立即预订</cover-view>
+        </cover-view>
+    </cover-view>
 </view>

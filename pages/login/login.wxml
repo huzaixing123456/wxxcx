@@ -29,7 +29,7 @@
         <view class="message-code {{codeParams.disable?'disabled':''}}" bindtap="getCode">{{codeParams.disable?codeParams['timeText']:codeParams['initText']}}</view>
     </view>
     <view bindtap="login" class="btn" hoverClass="{{isFinished?'btn-click':''}}" style="color: {{isFinished?'#fff':''}}">登录</view>
-    <view class="tip">*未注册的手机号将自动创建为稻客民宿用户*</view>
+    <view class="tip">*未注册的手机号将自动创建为龙门客栈用户*</view>
 </view>
 
 <view class='model' wx:if="{{showImageCode}}">

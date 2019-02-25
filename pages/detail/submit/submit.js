@@ -19,6 +19,12 @@ Page({
   onLoad: function (options) {
     var checkDate = LocalStorage.getSync('checkDate');
     var roomDeatal = LocalStorage.getSync('roomDeatal');
+    var user = LocalStorage.getSync('user');
+    if(user){
+      this.setData({
+        phone:user['telephone']
+      })
+    }
     console.log(roomDeatal);
     var { startDate, endDate } = checkDate;
     var start = util.getDateByNum(startDate);

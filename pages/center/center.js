@@ -19,7 +19,7 @@ Page({
           var user = {
             token: res['access_token']
           };
-          LocalStorage.set({user});
+          LocalStorage.set('user',user);
           this.setData({user})
         }).catch(() => {
           var user = LocalStorage.getSync("user");
@@ -30,7 +30,6 @@ Page({
           }
         })
       }); 
-        
     },
     onLoad(){
 

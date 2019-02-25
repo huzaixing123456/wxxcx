@@ -19,29 +19,14 @@ Page({
         headImg: '',
         rooms: '',
         peopleNum: '', //入住人数
-        showNotOpen:false
+        showNotOpen:false,
+        allowLocation:true
     },
     onLoad: function (a) {
-      // var params = { "timeStamp": "1550924796", "package": "prepay_id=wx2320263638160627bb3d03352955030885", "paySign": "B322B31B819F8FF08E1E4F920922566D", "appId": "wxf5247441cbca103f", "signType": "MD5", "nonceStr": "AlJrY9GsvCmvK6rq" };
-      // console.log(params);
-      // console.log(params['appId'], params['timeStamp'], params['nonceStr'], params['package'], params['signType'], params['paySign'])
-      // wx.requestPayment({
-      //   'timeStamp': params['timeStamp'],
-      //   'nonceStr': params['nonceStr'],
-      //   'package': params['package'],
-      //   'signType': params['signType'],
-      //   'paySign': params['paySign'],
-      //   'success': function (res) {
-      //     console.log("成功了");
-      //   },
-      //   'fail': function (res) {
-      //     console.log("失败了",res);
-      //   }
-      // })
-        console.log("load");
-        // httpApi.getRoomPicture({roomId:35}).then(res=>{
-        //   console.log(res);
-        // })
+      var allowLocation = LocalStorage.getSync("allowLocation");
+      this.setData({
+        allowLocation
+      });
     },
     getDataByCity(cityId) {
         var params = cityId ? { did: cityId } : null;
@@ -71,13 +56,19 @@ Page({
                 };
                 this.setData({
                     city: cityData,
-                    showNotOpen: !!data['isOpen']
+                    showNotOpen: !data['isOpen'],
+                    allowLocation:true
                 });
+                LocalStorage.set('allowLocation', true);
                 LocalStorage.set('cityData', cityData);
                 this.getDataByCity(cityData.cityId);
             });
         }, () => {
             this.getDataByCity();
+            LocalStorage.set('allowLocation',false);
+          this.setData({
+            allowLocation:false
+          });
             console.log("我不允许定位");
         });
     },
@@ -156,7 +147,7 @@ Page({
     },
     closeNotOpen(){
       this.setData({
-        showNotOpen:true
+        showNotOpen:false
       })
     }
 });

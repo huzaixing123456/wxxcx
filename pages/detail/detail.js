@@ -23,7 +23,8 @@ Page({
         noPayDate: '',
         halfPayDate: '',
         leaveDate: '',
-        roomId:''
+        roomId:'',
+        markers:''
     },
     onShow(){
       var checkDate = LocalStorage.getSync("checkDate");
@@ -77,6 +78,14 @@ Page({
         this.setData({
           basic: res.basic,
           location: res.location,
+          markers: [{
+            iconPath: '../../assets/location.png',
+            id: 0,
+            latitude: res.location['latitude'],
+            longitude: res.location['longitude'],
+            width: 25,
+            height: 25
+          }],
           facility: basicFacility,
           bathroom: res.bathroomFacility,
           kitchen: res.kitchenFacility,

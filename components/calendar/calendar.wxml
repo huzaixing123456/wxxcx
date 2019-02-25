@@ -10,7 +10,7 @@
 	<view class='date-box'>
 		<view wx:for='{{dateArr}}'
           wx:key='*this'
-			    class='{{item.isToday < isToday ? "disabled":(item.isToday == startDate || item.isToday == endDate)? "active" : (isToday == item.isToday && !startDate && !endDate) ? "active": ""}}'
+			    class='{{item.isToday < isToday ? "disabled":(item.isToday == startDate || item.isToday == endDate)? "active" : (isToday == item.isToday && !startDate && !endDate) ? "active": (item.isToday > startDate &&item.isToday < endDate)?"middleActive":""}}'
 			    data-num='{{item.isToday}}'
 			    bindtap="setCurrent"
 		>

@@ -17,7 +17,7 @@ Page({
     this.setData({
       orderId:options['orderId']
     })
-    let timeMinutes = 60*60;
+    let timeMinutes = 2*60*60;
     this.timer = setInterval(()=>{
       timeMinutes--;
       var minutes = Math.floor(timeMinutes / 60);

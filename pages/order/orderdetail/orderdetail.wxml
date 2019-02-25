@@ -58,6 +58,7 @@
   <map id="map"
     longitude="{{order.longitude}}"
     latitude="{{order.latitude}}"
+    markers='{{markers}}'
     scale="18"
     enableZoom="false"
     enableScroll="false"

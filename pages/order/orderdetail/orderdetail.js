@@ -10,7 +10,8 @@ Page({
       applyRefundOrder:false,
       refundAmount:'',
       deleteOrderFlag:false,
-      leaveOrderFlag:false
+      leaveOrderFlag:false,
+      markers:''
     },
     onLoad: function(options) {
         let {orderId} = options;
@@ -18,7 +19,15 @@ Page({
             orderId: orderId
         }).then(res=>{
             this.setData({
-                order:res
+              order:res,
+              markers:[{
+                iconPath: '../../../assets/location.png',
+                id: 0,
+                latitude: res['latitude'],
+                longitude: res['longitude'],
+                width: 25,
+                height: 25
+              }],
             })
         })
     },

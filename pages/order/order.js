@@ -25,7 +25,13 @@ Page({
     noMoreData:false
   },
   onLoad: function (t) {
-
+    var user = LocalStorage.getSync('user');
+    if (user) {
+      this.getData();
+    }
+    this.setData({
+      user
+    })
   },
   getData(){
     var { nav ,pageNum } = this.data;
@@ -67,13 +73,7 @@ Page({
     })
   },
   onShow: function () {
-    var user = LocalStorage.getSync('user');
-    if(user){
-      this.getData();
-    }
-    this.setData({
-        user
-    })
+    
   },
   getInitParams(){
       return {
