@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    time:'01:00:00',
+    time:'02:00:00',
     orderId:''
   },
 
@@ -20,12 +20,14 @@ Page({
     let timeMinutes = 2*60*60;
     this.timer = setInterval(()=>{
       timeMinutes--;
-      var minutes = Math.floor(timeMinutes / 60);
+      var hour = Math.floor(timeMinutes/60/60)
+      hour = hour < 10 ? '0' + hour : hour;
+      var minutes = Math.floor((timeMinutes - parseInt(hour)*60*60)/ 60);
       minutes = minutes < 10 ? '0'+minutes:minutes;
       var seconds = Math.floor(timeMinutes % 60);
       seconds = seconds < 10 ? '0' + seconds : seconds;
       this.setData({
-        time: '00:' + minutes + ':' + seconds
+        time: hour + ':' + minutes + ':' + seconds
       })
       if (timeMinutes == 0){
         clearInterval(this.timer);
