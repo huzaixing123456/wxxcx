@@ -53,7 +53,7 @@
     }
   },
   "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
+    "request": 60000,
+    "downloadFile": 60000
   }
 }

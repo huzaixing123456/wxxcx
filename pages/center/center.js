@@ -45,10 +45,22 @@ Page({
       });
     },
     logout(){
+      var trapeze = LocalStorage.getSync('trapeze');
+      var allowLocation = LocalStorage.getSync('allowLocation');
+      var cityData = LocalStorage.getSync('cityData');
       LocalStorage.clear();
       this.setData({
         user:''
       })
+      if (trapeze){
+        LocalStorage.set('trapeze', trapeze);
+      }
+      if (allowLocation) {
+        LocalStorage.set('allowLocation', allowLocation);
+      }
+      if (cityData) {
+        LocalStorage.set('cityData', cityData);
+      }
     },
     markerUpPhone() {
       wx.makePhoneCall({
