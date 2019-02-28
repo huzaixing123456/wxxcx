@@ -69,6 +69,20 @@ class Http {
             }
           } else if (data['statusCode'] == 401) { //token过期
             reject({ msg: 'token已过期，请重新登录' });
+            var trapeze = LocalStorage.getSync('trapeze');
+            var allowLocation = LocalStorage.getSync('allowLocation');
+            LocalStorage.clear();
+            if (trapeze) {
+              LocalStorage.set('trapeze', trapeze);
+            }
+            if (allowLocation) {
+              LocalStorage.set('allowLocation', allowLocation);
+            }
+            setTimeout(()=>{
+              wx.navigateTo({
+                url: "/pages/login/login"
+              });
+            },1000);
           } else {
             reject({ msg: '网络错误' });
           }

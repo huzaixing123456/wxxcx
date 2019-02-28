@@ -22,18 +22,6 @@ Component({
     year:0,
     month:0
   },
-  ready(){
-    console.log("我准备好啦1");
-  },
-  created() {
-    console.log("我准备好啦2");
-  },
-  ready() {
-    console.log("我准备好啦3");
-  },
-  pageLifetimes() {
-    console.log("我准备好啦4");
-  },
   attached : function () {
     console.log("调用进来了");
     let {year,month} = this.properties;

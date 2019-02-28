@@ -102,7 +102,7 @@
          <block wx:if="{{facility.length>0}}">
          <view class='t1'>基础设施</view>
         <view class="items">
-          <block wx:for="{{facility}}">
+          <block wx:for="{{facility}}" wx:key="*this">
             <view class="item">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -115,7 +115,7 @@
         <block wx:if="{{bathroom.length>0}}">
         <view class='t1'>卫浴设施</view>
         <view class="items">
-          <block wx:for="{{bathroom}}">
+          <block wx:for="{{bathroom}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -128,7 +128,7 @@
         <block wx:if="{{kitchen.length>0}}">
         <view class='t1'>厨房设施</view>
         <view class="items">
-          <block wx:for="{{kitchen}}">
+          <block wx:for="{{kitchen}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -141,7 +141,7 @@
         <block wx:if="{{recreation.length>0}}">
         <view class='t1'>娱乐设施</view>
         <view class="items">
-          <block wx:for="{{recreation}}">
+          <block wx:for="{{recreation}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -154,7 +154,7 @@
         <block wx:if="{{safety.length>0}}">
         <view class='t1'>安保设施</view>
         <view class="items">
-          <block wx:for="{{safety}}">
+          <block wx:for="{{safety}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -167,7 +167,7 @@
         <block wx:if="{{other.length>0}}">
         <view class='t1'>特色以及其它</view>
         <view class="items">
-          <block wx:for="{{other}}">
+          <block wx:for="{{other}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -180,7 +180,7 @@
         <block wx:if="{{circum.length>0}}">
         <view class='t1'>周边500米</view>
         <view class="items">
-          <block wx:for="{{circum}}">
+          <block wx:for="{{circum}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -193,7 +193,7 @@
         <block wx:if="{{service.length>0}}">
         <view class='t1'>服务设施</view>
         <view class="items">
-          <block wx:for="{{service}}">
+          <block wx:for="{{service}}" wx:key="*this">
             <view class="item" wx:if="{{!!item}}">
               <block >
                 <text class="t2 iconfont {{item.class}}" ></text>
@@ -204,7 +204,6 @@
         </view>
         </block>
     </view>
-
         <view class="item8" wx:if="{{date}}">
             <text class="t1">可租日期</text>
             <view class="date" bindtap="navigatorToCalendar">

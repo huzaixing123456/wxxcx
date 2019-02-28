@@ -126,15 +126,12 @@ Page({
       }).then(res => {
         console.log(res);
         this.setData({
+          showImageCode: false,
           hasCheckImageCode:true
         })
-        // var {code} = res;
-        // if(code == 4001){
-        //   this.stopTimer();
-        // }
       }).catch(e=>{
         console.log('获取失败啦');
-        //this.stopTimer();
+        this.stopTimer();
       })
     },
     checkImageCode(){
@@ -148,24 +145,25 @@ Page({
         util.toast({ title: "请输入正确格式的图片验证码" });
         return;
       }
-      this.setData({
-        showImageCode: false,
-      });
       this.setTimer();
     },
     login(){
         let {phone,imageCode,code} = this.data;
         if(!phone){
             util.toast({title:"请输入手机号码"});
+            return;
         }
         if(!REGEXP.TELEPHONE.test(phone)){
             util.toast({title:"请输入正确的手机号码"});
+            return;
         }
         if(!code){
             util.toast({title:"请输入验证码"});
+            return;
         }
         if (!REGEXP.CODE.test(code)){
             util.toast({title:"请输入正确格式的验证码"});
+            return;
         };
         util.getLogin().then(wxcode => {
           var cityData = LocalStorage.getSync('cityData');

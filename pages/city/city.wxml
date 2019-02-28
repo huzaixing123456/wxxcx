@@ -1,6 +1,6 @@
 
   <view class="city">
-    <view class="current" wx:if="{{city}}">
+    <view class="current" wx:if="{{city}}" bindtap='getLocation'>
       <view class="icon">
         <text class="iconfont icon-dingwei color"></text>
       </view>
@@ -18,7 +18,7 @@
     bindscrolltoupper="upper"
     bindscrolltolower="lower"
     scroll-into-view="{{toView}}"
-    style="padding-top:{{city?'175rpx':0}}"
+    style="padding-top:{{city?city.address?'175rpx':'120rpx':0}}"
     class="list">
       <view class="item" wx:for="{{list}}" wx:key='*this'>
       <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName' id="{{index}}">

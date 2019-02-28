@@ -1,4 +1,6 @@
 import httpApi from '../../../libs/httpApi';
+import {HTTP} from '../../../libs/const';
+
 Page({
 
   /**
@@ -9,49 +11,8 @@ Page({
     activeIndex:0,
     current:1,
     activeData:[],
-    list:[
-      {
-        type:0,
-        name:'全部',
-        data:[]
-      },
-      {
-        type: 1,
-        name: '客厅',
-        data: [
-          {
-            name: '客厅',
-            id: "",
-            link: 'https://wx.longmenkezhan.com/images/rooms/201901222219338630.jpg'
-          },
-          {
-            name: '客厅',
-            id: "",
-            link: 'https://wx.longmenkezhan.com/images/rooms/201901222219338630.jpg'
-          }
-        ]
-      },
-      {
-        type: 2,
-        name: '卧室',
-        data: [
-          {
-            name: '卧室',
-            id: "",
-            link: 'https://wx.longmenkezhan.com/images/rooms/201901222219338630.jpg'
-          },
-          {
-            name: '卧室',
-            id: "",
-            link: 'https://wx.longmenkezhan.com/images/rooms/201901222219338630.jpg'
-          },
-          {
-            name: '卧室',
-            id: "",
-            link: 'https://wx.longmenkezhan.com/images/rooms/201901222219338630.jpg'
-          }
-        ]
-      }
+    listData:[
+     
     ]
   },
 
@@ -61,8 +22,48 @@ Page({
   onLoad: function (options) {
     console.log(options);
     let { roomId } = options;
-    httpApi.getRoomImage({roomId})
-
+    httpApi.getRoomImage({roomId}).then(res=>{
+      var { balconyPic_500, bathroomPic_500, bedroomPic_500, kitchenPic_500, parlorPic_500,otherPic_500} = res;
+      var listData = [{
+        name:"全部",
+        data:[]
+      }];
+      listData.push({
+        name:'阳台',
+        data:balconyPic_500
+      });
+      listData.push({
+        name: '浴室',
+        data: bathroomPic_500
+      });
+      listData.push({
+        name: '卧室',
+        data: bedroomPic_500
+      });
+      listData.push({
+        name: '厨房',
+        data: kitchenPic_500
+      });
+      listData.push({
+        name: '客厅',
+        data: parlorPic_500
+      });
+      listData.push({
+        name: '其它',
+        data: otherPic_500
+      });
+      listData.forEach(item=>{
+        var data = item.data.map(i=>{
+          i = HTTP.imgPath + i;
+          return i;
+        });
+        item['data'] = data;
+      })
+      this.setData({
+        listData
+      });
+      this.changeData();
+    })
   },
 
   /**
@@ -76,17 +77,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.changeData();
+    
   },
   changeData(){
-    var { activeIndex, list } = this.data;
+    var { activeIndex, listData } = this.data;
     var tagArray = [];
     if (activeIndex == 0) { //全部
-      list.forEach(item=>{
+      listData.forEach(item=>{
         tagArray = tagArray.concat(item.data);
       })
     }else{
-      tagArray = list[activeIndex]['data'];
+      tagArray = listData[activeIndex]['data'];
     }
     this.setData({
       activeData:tagArray
@@ -99,9 +100,17 @@ Page({
     })
     this.changeData();
   },
-  lookBigPicture(){
+  lookBigPicture(e){ 
+    var { index } = e.currentTarget.dataset; 
+    console.log(index);
     this.setData({
-      showSwiper:!this.data.showSwiper
+      showSwiper:true,
+      current: index
+    })
+  },
+  closBigPicture(){
+    this.setData({
+      showSwiper:false
     })
   },
   switchChange(e) {

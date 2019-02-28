@@ -27,6 +27,7 @@ Page({
         markers:''
     },
     onShow(){
+      console.log("详情页出来了");
       var checkDate = LocalStorage.getSync("checkDate");
       var { startDate, endDate } = checkDate;
       if (startDate) {

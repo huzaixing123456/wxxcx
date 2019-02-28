@@ -25,13 +25,7 @@ Page({
     noMoreData:false
   },
   onLoad: function (t) {
-    var user = LocalStorage.getSync('user');
-    if (user) {
-      this.getData();
-    }
-    this.setData({
-      user
-    })
+    
   },
   getData(){
     var { nav ,pageNum } = this.data;
@@ -59,21 +53,26 @@ Page({
       if(content.length>0){
           content.forEach(item => {
               item.coverPic = HTTP.imgPath + item.coverPic
-              //item.coverPic = 'https://wx.longmenkezhan.com/images/rooms/201901021411439610.jpg'
           });
       }
       var flag = (pageNum == maxPage) ? true : false;
       this.setData({
           noMoreData:flag
-      })
+      });
       this.setData({
-        orderList: [].concat(this.data.orderList, content),
+        orderList: [].concat((pageNum == 1)?[]:this.data.orderList, content),
         maxPage:maxPage
       })
     })
   },
   onShow: function () {
-    
+    var user = LocalStorage.getSync('user');
+    if (user) {
+      this.getData();
+    }
+    this.setData({
+      user
+    })
   },
   getInitParams(){
       return {

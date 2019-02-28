@@ -41,5 +41,29 @@ Page({
     this.setData({
       toView:name
     });
-  }
+  },
+  getLocation() {
+    util.getLocation().then(data => {
+      console.log(data);
+      LocalStorage.set('trapeze', data); //保存经纬度
+      httpApi.getCityInfo(data).then(data => {
+        var cityData = {
+          name: data['city'],
+          address: data['addRess'],
+          cityId: data['cid'],
+          isOpen: data['isOpen']
+        };
+        this.setData({
+          city: {
+            name: data['city'],
+            cityId: data['cid'],
+            address: data['addRess']
+          }
+        });
+        LocalStorage.set('cityData', cityData);
+      });
+    }, () => {
+      console.log("我不允许定位");
+    });
+  },
 });

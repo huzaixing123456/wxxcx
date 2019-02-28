@@ -1,22 +1,22 @@
 <view class='wrap'>
   <scroll-view class='nav' scroll-x>
     <view class='item {{index == activeIndex ? "active":""}}' 
-      wx:for="{{list}}" wx:key='*this' data-index="{{index}}" bindtap='changeNav'>{{item.name}}</view>
+      wx:for="{{listData}}" wx:if="{{index == 0 || item.data.length>0}}" wx:key='*this' data-index="{{index}}" bindtap='changeNav'>{{item.name}}</view>
   </scroll-view>
   <view class='content'>
-    <view class='item' wx:for="{{activeData}}" wx:key='*this'>
-      <view class='picture' bindtap="lookBigPicture">
-        <image src='{{item.link}}'></image>
-        <view class='title'>{{item.name}}</view>
+    <view class='item' wx:for="{{activeData}}" wx:key='*this' data-index="{{index}}" bindtap="lookBigPicture">
+      <view class='picture'>
+        <image src='{{item}}'></image>
+        <view class='title'>{{listData[activeIndex].name}}</view>
       </view>
     </view>
   </view>
 
-  <view class='modal' wx:if="{{showSwiper}}" bindtap="lookBigPicture" >
+  <view class='modal' wx:if="{{showSwiper}}" bindtap='closBigPicture'>
     <view class='title'>{{current+1}}/{{activeData.length}}</view>
     <swiper class='swiper' bindchange="switchChange">
       <swiper-item wx:for="{{activeData}}" wx:key='*this'>
-         <image src='{{item.link}}'></image>
+         <image src='{{item}}'></image>
       </swiper-item>
     </swiper>
   </view>
