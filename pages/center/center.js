@@ -7,6 +7,9 @@ Page({
         user:''
     },
     onShow(){
+      
+    },
+    onLoad(){
       util.getLogin().then(wxcode => {
         console.log("code值是" + wxcode);
         httpApi.codeLogin({
@@ -19,8 +22,8 @@ Page({
           var user = {
             token: res['access_token']
           };
-          LocalStorage.set('user',user);
-          this.setData({user})
+          LocalStorage.set('user', user);
+          this.setData({ user })
         }).catch(() => {
           var user = LocalStorage.getSync("user");
           if (user) {
@@ -30,9 +33,6 @@ Page({
           }
         })
       }); 
-    },
-    onLoad(){
-
     },
     navigateToOrder(){
         wx.switchTab({
@@ -47,7 +47,6 @@ Page({
     logout(){
       var trapeze = LocalStorage.getSync('trapeze');
       var allowLocation = LocalStorage.getSync('allowLocation');
-      var cityData = LocalStorage.getSync('cityData');
       LocalStorage.clear();
       this.setData({
         user:''
@@ -57,9 +56,6 @@ Page({
       }
       if (allowLocation) {
         LocalStorage.set('allowLocation', allowLocation);
-      }
-      if (cityData) {
-        LocalStorage.set('cityData', cityData);
       }
     },
     markerUpPhone() {

@@ -68,11 +68,9 @@ Page({
           showImageCode:true
         })
         return;
-      }
-      if (hasCheckImageCode){
+      }else{
         this.setTimer();
       }
-    
     },
     stopTimer(){
       var {timer} = this.data;
@@ -135,7 +133,8 @@ Page({
         //   this.stopTimer();
         // }
       }).catch(e=>{
-        this.stopTimer();
+        console.log('获取失败啦');
+        //this.stopTimer();
       })
     },
     checkImageCode(){
@@ -169,30 +168,23 @@ Page({
             util.toast({title:"请输入正确格式的验证码"});
         };
         util.getLogin().then(wxcode => {
-          console.log("code值是" + wxcode)
-          // httpApi.getOpenID({ jscode: res }).then(result => {
-          //   console.log(result);
-          // })
-          LocalStorage.get('cityData').then(res => {
-            httpApi.codeLogin({
-              client_id: "wechat-client",
-              client_secret: "wechat-client",
-              grant_type: "smscode",
-              mobile: phone,
-              did: res['cityId'],
-              code: code,
-              openId: wxcode
-            }).then(res => {
-              console.log(res);
-              LocalStorage.set('user', {
-                token: res['access_token'],
-                telephone: phone
-              })
-              wx.navigateBack();
-            }).catch(() => {
-              this.stopTimer();
+          var cityData = LocalStorage.getSync('cityData');
+          httpApi.codeLogin({
+            client_id: "wechat-client",
+            client_secret: "wechat-client",
+            grant_type: "smscode",
+            mobile: phone,
+            did: cityData ? cityData['cityId']:'',
+            code: code,
+            openId: wxcode
+          }).then(res => {
+            console.log(res);
+            LocalStorage.set('user', {
+              token: res['access_token'],
+              telephone: phone
             })
-          }) 
+            wx.navigateBack();
+          }); 
         });       
     },
     getPhoneNumber(e){

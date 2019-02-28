@@ -25,16 +25,18 @@
       <text class="iconfont icon-xiangyoujiantou"></text>
     </view>
 
-    <view bindtap="navigatorToList" class="btn-big" hoverClass="btn-big-click">查找美屋</view>
+    <view bindtap="navigatorToList" class="btn-big" hoverClass="btn-big-click">开始搜索</view>
 
   </view>
 
   <view class="box" wx:if="{{rooms}}">
     <view class="title">热门房源</view>
     <view class="img">
-      <swiper autoplay circular class="swiper">
+      <swiper autoplay circular class="swiper"  
+        indicator-dots="{{true}}"
+        indicator-active-color="{{'#fd8238'}}">
         <swiper-item wx:for="{{rooms}}" bindtap="navigatorToDeatail" wx:key='*this' data-id="{{item.id}}">
-          <view class="t1">北京市</view>
+          <view class="t1">{{item.cityName}}</view>
           <view class="t2">{{item.address}}</view>
           <image bindtap="navigatorToPhoto"  data-path="{{item.coverPic}}" src="{{item.coverPic}}"></image>
           <view class="t3">
@@ -45,8 +47,13 @@
       </swiper>
     </view>
   </view>
+
+  <view class="more" wx:if="{{rooms}}" bindtap="navigatorToList">
+    <view class='btn'>更多房源</view>
+  </view>
+
   <view class="introdution" wx:if="{{headImg}}">
-    <image src="{{headImg}}"></image>
+    <image src="https://wx.longmenkezhan.com/images/footer.jpg"></image>
   </view>
 </view>
 

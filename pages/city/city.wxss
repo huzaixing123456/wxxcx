@@ -48,12 +48,12 @@
 
 .item{
   font-size:26rpx;
-  line-height:60rpx;
+  line-height:75rpx;
 }
 
 .letter{
   background: #ebebeb;
-  line-height:60rpx;
+  line-height:75rpx;
   text-indent:20rpx;
   font-size:28rpx;
 }
