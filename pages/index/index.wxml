@@ -53,7 +53,7 @@
   </view>
 
   <view class="introdution" wx:if="{{headImg}}">
-    <image src="https://wx.longmenkezhan.com/images/footer.jpg"></image>
+    <image src="https://wx.longmenkezhan.com/images/footer.png"></image>
   </view>
 </view>
 

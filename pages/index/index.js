@@ -36,7 +36,8 @@ Page({
             rooms = rooms.map(item => {
                 item.coverPic = HTTP.imgPath + item.coverPic
             })
-            headImg = HTTP.imgPath + headImg;
+            
+          headImg = headImg?HTTP.imgPath + headImg:'https://wx.longmenkezhan.com/images/header.png';
             this.setData({
                 rooms: res.rooms,
                 headImg: headImg

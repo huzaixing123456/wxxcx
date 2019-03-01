@@ -61,6 +61,7 @@ Page({
           }
         });
         LocalStorage.set('cityData', cityData);
+        wx.navigateBack();
       });
     }, () => {
       console.log("我不允许定位");

@@ -21,6 +21,15 @@ Page({
     filter: {}, //帅选
     filterLength:''//涮选条件长度
   },
+  onLoad(){
+    var cityData = LocalStorage.getSync('cityData');
+    console.log(cityData);
+    if (cityData) {
+      wx.setNavigationBarTitle({
+        title: cityData.name
+      })
+    }
+  },
   onShow() {
     var sort = LocalStorage.getSync('sort')||'';
     this.setData({

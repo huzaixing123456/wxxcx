@@ -232,7 +232,7 @@
                   <block wx:if="{{rules.refundDay}}">
                     <view class="item">
                         <view class="line"></view>
-                        <view class="text">取消订单 订金全部替换</view>
+                        <view class="text">取消订单 订金全部退还</view>
                     </view>
                     <view class="item">
                         <view class="point"></view>

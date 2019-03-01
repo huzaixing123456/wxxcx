@@ -110,7 +110,6 @@ Page({
     onLoad: function (options) {
         var {roomId} = options;
         this.setData({roomId});
-        
     },
     getDate() {
         LocalStorage.get('checkDate').then(res => {

@@ -11,15 +11,20 @@ Page({
       refundAmount:'',
       deleteOrderFlag:false,
       leaveOrderFlag:false,
-      markers:''
+      markers:'',
+      range:false
     },
     onLoad: function(options) {
         let {orderId} = options;
         httpApi.getOrderDetail({
             orderId: orderId
         }).then(res=>{
+          let { orderTime } = res;
+          var times = (new Date().getTime()-orderTime) - 2 * 60 * 60 * 1000;
+          var range = times > 0 ? true : false;
             this.setData({
               order:res,
+              range: range,
               markers:[{
                 iconPath: '../../../assets/location.png',
                 id: 0,

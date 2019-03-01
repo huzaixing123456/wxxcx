@@ -14,7 +14,7 @@
 
   <view class='modal' wx:if="{{showSwiper}}" bindtap='closBigPicture'>
     <view class='title'>{{current+1}}/{{activeData.length}}</view>
-    <swiper class='swiper' bindchange="switchChange">
+    <swiper class='swiper' bindchange="switchChange" current='{{current}}'>
       <swiper-item wx:for="{{activeData}}" wx:key='*this'>
          <image src='{{item}}'></image>
       </swiper-item>

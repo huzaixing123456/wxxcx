@@ -127,7 +127,7 @@ Page({
         console.log(res);
         this.setData({
           showImageCode: false,
-          hasCheckImageCode:true
+          hasCheckImageCode:false
         })
       }).catch(e=>{
         console.log('获取失败啦');

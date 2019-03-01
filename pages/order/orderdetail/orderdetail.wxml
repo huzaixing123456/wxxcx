@@ -112,7 +112,7 @@
 
 <view bindtap="deleteOrder" class="btn bt2" wx:if="{{order.orderStatus == 8}}">删除</view>
 
-<view bindtap="refundOrder" class="btn bt2" wx:if="{{(order.orderStatus == 1 && order.paymentStatus == 1)||order.orderStatus == 2 }}">退款</view>
+<view bindtap="refundOrder" class="btn bt2" wx:if="{{(order.orderStatus == 1 && range)||order.orderStatus == 2 }}">退款</view>
 
 <view bindtap="leaveOrder" class="btn bt2" wx:if="{{order.orderStatus == 3}}">离店</view>
 <view bindtap="navigatorTohouseDetail" class="btn bt2" wx:if="{{order.orderStatus == 4 || order.orderStatus == 8}}">再次预定</view>

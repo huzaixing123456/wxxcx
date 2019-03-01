@@ -112,6 +112,16 @@ function getPayParams(data) {
     return http.post('/oauth-api/order/toPay', data);
 }
 
+//获取用户信息
+function getUserInfo(){
+  return http.get('/oauth-api/user/info');
+}
+
+//退出登录
+function logout(){
+  return http.get('/oauth-api/user/logout');
+}
+
 export default {
   getAllCity,
   getCityInfo,
@@ -134,5 +144,7 @@ export default {
   getOrderList,
   getOpenID,
   getRoomImage,
-  getPayParams
+  getPayParams,
+  getUserInfo,
+  logout
 }
