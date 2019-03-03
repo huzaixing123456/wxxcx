@@ -14,7 +14,9 @@ Page({
     phone: '',
     idCard:'',
     cardIndex: 0,
-    cardList: ["身份证", "军官证", "护照"]
+    cardList: ["身份证", "军官证", "护照"],
+    price:'', //金额
+    pledge:'' //押金
   },
   onLoad: function (options) {
     var checkDate = LocalStorage.getSync('checkDate');
@@ -32,7 +34,10 @@ Page({
       checkInDate: checkInDate,
       checkOutDate: checkOutDate,
       days,
-      roomDeatal
+      roomDeatal,
+      price: roomDeatal.price * this.data.roomCount,
+      pledge: roomDeatal.pledge,
+      total: parseFloat(roomDeatal.price * this.data.roomCount) + parseFloat(roomDeatal.pledge)
     });
   },
   submit(e) {
@@ -120,6 +125,12 @@ Page({
         })
       }
     }
+    var { roomCount, roomDeatal} = this.data;
+    this.setData({
+      price: roomDeatal.price * roomCount,
+      pledge: roomDeatal.pledge,
+      total: parseFloat(roomDeatal.price * roomCount) + parseFloat(roomDeatal.pledge)
+    })
   },
   choosePeople(e) {
     console.log(e);

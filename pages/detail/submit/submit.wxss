@@ -88,9 +88,6 @@
     border-bottom: 2rpx solid #f4f4f4;
 }
 
-.wrap4 .t2 {
-    border-top: 20rpx solid #f4f4f4;
-}
 
 .wrap4 .t1 {
     float: right;
@@ -101,6 +98,7 @@
 .wrap5 {
     background-color: #FFF;
     padding: 30rpx 30rpx 120rpx 30rpx;
+    border-top: 20rpx solid #f4f4f4;
 }
 .wrap5 .title{
   font-size:32rpx;

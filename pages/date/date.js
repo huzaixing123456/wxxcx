@@ -38,10 +38,9 @@ Page({
     })
   },
   getDate(data){
-    console.log("修改日期了");
       var {startDate,endDate} = this.data;
       var date = data['detail']['num'];
-      if(date == startDate || date == endDate) return;
+      // if(date == startDate || date == endDate) return;
       console.log(date);
       if(startDate && endDate){
           this.setData({

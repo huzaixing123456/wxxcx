@@ -158,7 +158,7 @@ Page({
     },
     navigatorToCommitOrder: function () {
         var {basic} = this.data;
-      if (basic.status != 1 || basic.roomNum == 0) return;
+        //if (basic.status != 1 || basic.roomNum == 0) return;
         var user = LocalStorage.getSync('user');
         if(!user){
             wx.navigateTo({

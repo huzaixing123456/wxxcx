@@ -8,7 +8,6 @@
         <text class="color9">共{{days}}晚</text>
     </view>
 </view>
-<form bindsubmit="formSubmit" reportSubmit="true">
     <view class="wrap2">
         <view class="t3">
             <text>房屋数量</text>
@@ -62,11 +61,11 @@
     <view class="wrap4">
         <view>
             <text>待付金额：</text>
-            <text class="t1">￥{{(roomDeatal.price)*roomCount + roomDeatal.pledge}}</text>
+            <text class="t1">￥{{total}}</text>
         </view>
         <view class="t2">
             <text class="color9">住房押金：</text>
-            <text class="t1 ">{{roomDeatal.pledge? '¥'+roomDeatal.pledge:'免押金'}}</text>
+            <text class="t1 ">{{pledge? '¥'+pledge:'免押金'}}</text>
         </view>
     </view>
 
@@ -88,7 +87,7 @@
 
     <view class="wrap6">
         <view class="t1">
-            <view class="font36 color">{{(roomDeatal.price+roomDeatal.pledge)*roomCount}}</view>
+            <view class="font36 color">{{price}}</view>
             <view class="font22 color9">待付金额</view>
         </view>
         <form bindsubmit="submit" report-submit='true'>
@@ -96,4 +95,3 @@
         </form>
         
     </view>
-</form>

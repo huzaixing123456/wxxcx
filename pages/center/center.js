@@ -50,6 +50,9 @@ Page({
       });
     },
     fapiaoTip(){
+      util.toast({
+        title:'发票请联系客服'
+      })
       this.setData({
         showFapiao:true
       })
@@ -57,7 +60,7 @@ Page({
         this.setData({
           showFapiao: false
         })
-      },100000)
+      },10000)
     },
     logout(){
       httpApi.logout().then(res=>{
