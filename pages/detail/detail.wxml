@@ -212,14 +212,14 @@
               <view>{{date.endStr}}<text class="font22">离店</text></view>
           </view>
 
-            <calendar 
+            <!-- <calendar 
               wx:if='{{date}}'
               startDate='{{date.startCalendar}}'
 				      endDate='{{date.endCalendar}}'
               year="{{date.year}}"
               month="{{date.month}}">
-            </calendar>
-            <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view>
+            </calendar> -->
+            <!-- <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view> -->
         </view>
 
         <view class="item9">

@@ -34,12 +34,7 @@ Page({
           });
           console.log(res);
         }).catch(() => {
-          var user = LocalStorage.getSync("user");
-          if (user) {
-            this.setData({
-              user
-            })
-          }
+          
         })
       }); 
     },

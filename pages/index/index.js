@@ -10,7 +10,7 @@ Page({
         current: 0,    //当前索引
         days: "",     //入住天数
         city: {
-            name: "请选择",
+            name: "选择城市",
             address: "",
             latitude: "",
             longitude: "",
@@ -126,6 +126,13 @@ Page({
         });
     },
     navigatorToList: function () {
+      var cityData = LocalStorage.getSync('cityData');
+      if (!cityData){
+        util.toast({
+          title:'请选择城市'
+        })
+        return false;
+      }
         wx.navigateTo({
             url: "../list/list"
         });

@@ -178,11 +178,20 @@ Page({
             openId: wxcode
           }).then(res => {
             console.log(res);
-            LocalStorage.set('user', {
-              token: res['access_token'],
-              telephone: phone
-            })
-            wx.navigateBack();
+            if(res.code == 401){
+              if (res.message == "SmsCodeError" ){
+                util.toast({title:'验证码错误'});
+              }
+              if (res.message == "MobileIsNull") {
+                util.toast({ title: '手机号码错误' });
+              }
+            }else{
+              LocalStorage.set('user', {
+                token: res['access_token'],
+                telephone: phone
+              })
+              wx.navigateBack();
+            }
           }); 
         });       
     },

@@ -84,7 +84,9 @@ class Http {
                 url: "/pages/login/login"
               });
             },1000);
-          } else {
+          } else if (data['statusCode'] == 403) {
+            resolve(data.data);
+          }else{
             reject({ msg: '网络错误' });
           }
         },
