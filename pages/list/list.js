@@ -50,26 +50,55 @@ Page({
     var start = util.getDateByNum(startDate);
     var end = util.getDateByNum(endDate);
     console.log(start);
+    var oData = {}
+    oData = {
+      checkInDate: `${start.year}-${start.month}-${start.day}`,
+      checkOutDate: `${end.year}-${end.month}-${end.day}`
+    }
     this.setData({
-      form: Object.assign(this.data.form, {
-        checkInDate: `${start.year}-${start.month}-${start.day}`,
-        checkOutDate: `${end.year}-${end.month}-${end.day}`
-      }),
+      form: Object.assign(this.data.form, oData),
       start: `${start.month}.${start.day}`,
       end: `${end.month}.${end.day}`
     });
     var trapeze = LocalStorage.getSync('trapeze');
-    this.setData({
-      form: Object.assign(this.data.form, {
-        longitude: trapeze.longitude,
-        latitude: trapeze.latitude
-      })
-    });
+    if (trapeze){
+      oData['longitude'] = trapeze.longitude;
+      oData['latitude'] = trapeze.latitude;
+    }
     var cityData = LocalStorage.getSync('cityData');
+    if (cityData){
+      oData['city'] = cityData['cityId']
+    }
+    if (district) {
+      if (district['id']) {
+        oData['district'] = district['id'];
+      }
+      if (district['business']) {
+        oData['businessArea'] = district['business'];
+      }
+    }
+    if (sort) {
+      oData['sort'] = sort['value'];
+    }
+    if (filter) {
+      if (filter.suitPeople) {
+        oData['suitPeople'] = filter.suitPeople;
+      }
+      if (filter.bedAmount) {
+        oData['bedAmount'] = filter.bedAmount;
+      }
+      if (filter.bedRoom) {
+        oData['bedRoom'] = filter.bedRoom;
+      }
+      if (filter.roomType) {
+        oData['roomType'] = filter.roomType;
+      }
+      if (filter.facilities) {
+        oData['facilities'] = filter.facilities;
+      }
+    }
     this.setData({
-      city: Object.assign(this.data.form, {
-        city: cityData['cityId']
-      })
+      form: oData
     });
     this.getData();
   },
@@ -92,34 +121,6 @@ Page({
     var parmas = this.data.form;
     var tagParam = Object.assign({}, parmas);
     var { district, sort, filter} = this.data;
-    if (district){
-      if (district['id']){
-        tagParam['district'] = district['id'];
-      }
-      if (district['business']){
-        tagParam['businessArea'] = district['business'];
-      }
-    }
-    if(sort){
-      tagParam['sort'] = sort['value'];
-    }
-    if (filter) {
-      if (filter.suitPeople){
-        tagParam['suitPeople'] = filter.suitPeople;
-      }
-      if (filter.bedAmount){
-        tagParam['bedAmount'] = filter.bedAmount;
-      }
-      if (filter.bedRoom) {
-        tagParam['bedRoom'] = filter.bedRoom;
-      }
-      if (filter.roomType) {
-        tagParam['roomType'] = filter.roomType;
-      }
-      if (filter.facilities) {
-        tagParam['facilities'] = filter.facilities;
-      }
-    }
     tagParam['pageNum'] = page;
     httpApi.getRoomList(tagParam).then(data => {
       var content = data['content'];

@@ -219,7 +219,7 @@
               year="{{date.year}}"
               month="{{date.month}}">
             </calendar> -->
-            <!-- <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view> -->
+            <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view>
         </view>
 
         <view class="item9">

@@ -566,6 +566,7 @@ button::after {
 .item8 .t2{
   font-size: 30rpx;
   text-align:center;
+  margin-top:20rpx;
 }
 
 .item8 .t3{
