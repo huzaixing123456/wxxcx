@@ -19,12 +19,6 @@ Page({
   onLoad: function (options) {
     var checkDate = LocalStorage.getSync('checkDate');
     var roomDeatal = LocalStorage.getSync('roomDeatal');
-    var user = LocalStorage.getSync('user');
-    if(user){
-      this.setData({
-        phone:user['mobile']
-      })
-    }
     console.log(roomDeatal);
     var { startDate, endDate } = checkDate;
     var start = util.getDateByNum(startDate);
@@ -172,6 +166,11 @@ Page({
     });
   },
   onShow: function () {
-
+var user = LocalStorage.getSync('user');
+    if(user){
+      this.setData({
+        phone:user['mobile']
+      })
+    }
   }
 });

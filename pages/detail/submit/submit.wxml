@@ -62,7 +62,7 @@
     <view class="wrap4">
         <view>
             <text>待付金额：</text>
-            <text class="t1">￥{{(roomDeatal.price+roomDeatal.pledge)*roomCount}}</text>
+            <text class="t1">￥{{(roomDeatal.price)*roomCount + roomDeatal.pledge}}</text>
         </view>
         <view class="t2">
             <text class="color9">住房押金：</text>

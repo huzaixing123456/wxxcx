@@ -53,7 +53,8 @@ Page({
         })
         bathroomFacility = bathroomFacility.filter(item => {
           return item.active == 1;
-        })
+        });
+        console.log(bathroomFacility)
         kitchenFacility = kitchenFacility.filter(item => {
           return item.active == 1;
         })
@@ -84,13 +85,13 @@ Page({
             height: 25
           }],
           facility: basicFacility,
-          bathroom: res.bathroomFacility,
-          kitchen: res.kitchenFacility,
-          recreation: res.recreationFacility,
-          safety: res.safetyFacility,
-          other: res.otherFacility,
-          circum: res.circumFacility,
-          service: res.serviceFacility,
+          bathroom: bathroomFacility,
+          kitchen: kitchenFacility,
+          recreation: recreationFacility,
+          safety: safetyFacility,
+          other: otherFacility,
+          circum: circumFacility,
+          service: serviceFacility,
           rules: res.rules,
           additional: res.additional,
           notice: res.notice
@@ -168,7 +169,7 @@ Page({
           var {basic,roomId,rules} = this.data;
           console.log(basic);
           LocalStorage.set('roomDeatal',{
-              coverPic:basic.coverPic[0],
+              coverPic:basic.coverPic,
               roomId,
               price: basic['sumRoomPrice'],
               roomName:basic.roomName,

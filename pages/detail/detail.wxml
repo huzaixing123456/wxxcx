@@ -268,7 +268,7 @@
                 <view class="text">
                     <view class="view1">入住押金:</view>
                     <view bindtap="togglePopup" class="view2 flex">
-                      在线支付￥{{rules.pledge}}元
+                      {{rules.pledge? '在线支付¥'+rules.pledgeMoney+'元':'免押金'}}
                     <view>
                             <!-- <text class="ruzhu-icon daoke-icon icon-gantanhao"></text> -->
                         </view>
