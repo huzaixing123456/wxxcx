@@ -1,15 +1,15 @@
 <view class="wrap">
     <view class="detail">
-     <view class="swiper" wx:if="{{basic}}">
-        <swiper circular bindchange="switchChange" class="item" bindtap='navigatorToPicture'>
-            <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this">
-                <image bindtap="navigatorToPhoto" data-value="{{item}}" src="{{item}}"></image>
-            </swiper-item>
-        </swiper>
-        <view class="count">
+     <view class="swiper" wx:if="{{basic}}" bindtap='navigatorToPicture'>
+        <!-- <swiper circular bindchange="switchChange" class="item" > -->
+            <!-- <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this"> -->
+                <image bindtap="navigatorToPhoto" data-value="{{item}}" src="{{basic.coverPic}}"></image>
+            <!-- </swiper-item> -->
+        <!-- </swiper> -->
+        <!-- <view class="count">
             <text class="daoke-icon icon-suolvetu"></text>
             {{current+1}}/{{basic.coverPic.length}}
-        </view>
+        </view> -->
         <view class="share">
             <button openType="share">
                 <text class="share-icon daoke-icon icon-shangchuan"></text>
@@ -381,8 +381,8 @@
             </cover-view>
         </cover-view>
         <cover-view bindtap="navigatorToCommitOrder" class="t2" hoverClass="btn-click" data-id="{{roomId}}">
-            <cover-view class="t4">￥{{price}}</cover-view>
-            <cover-view class="t8">立即预订</cover-view>
+            <cover-view class="t4">¥ {{basic.price}}</cover-view>
+            <cover-view class="t8">{{(basic.status != 1 || basic.roomNum == 0)?'已满房':'立即预订'}}</cover-view>
         </cover-view>
     </cover-view>
 </view>

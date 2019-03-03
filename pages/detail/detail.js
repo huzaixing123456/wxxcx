@@ -19,7 +19,6 @@ Page({
         rules: '',
         additional: '',   //额外费用
         notice: '',
-        price: '',
         noPayDate: '',
         halfPayDate: '',
         leaveDate: '',
@@ -43,10 +42,7 @@ Page({
       }).then(res => {
         console.log(res);
         var basic = res.basic;
-        var coverPic = basic['coverPic'].split(',');
-        coverPic = coverPic.map(item => {
-          return HTTP.imgPath + item;
-        })
+        var coverPic = HTTP.imgPath + basic['coverPic'];
         basic['coverPic'] = coverPic;
         var bedType = basic['bedType'].replace(/\[|\]|"/g, '').replace(/、/g, ' ');
         bedType = bedType + '张';
@@ -97,7 +93,6 @@ Page({
           service: res.serviceFacility,
           rules: res.rules,
           additional: res.additional,
-          price: res.price,
           notice: res.notice
         }, () => {
           if (res.rules.refundDay) {
@@ -151,9 +146,6 @@ Page({
             current: e.detail.current
         })
     },
-    onShareAppMessage: function (t) {
-
-    },
     goLocation() {
         var { longitude, latitude } = this.data.location;
         console.log(longitude);
@@ -164,6 +156,8 @@ Page({
         })
     },
     navigatorToCommitOrder: function () {
+        var {basic} = this.data;
+      if (basic.status != 1 || basic.roomNum == 0) return;
         var user = LocalStorage.getSync('user');
         if(!user){
             wx.navigateTo({
@@ -171,12 +165,12 @@ Page({
             });
             return;
         }else{
-          var {basic,roomId,price,rules} = this.data;
+          var {basic,roomId,rules} = this.data;
           console.log(basic);
           LocalStorage.set('roomDeatal',{
               coverPic:basic.coverPic[0],
               roomId,
-              price,
+              price: basic['sumRoomPrice'],
               roomName:basic.roomName,
               maxLive: basic.maxLive,
               roomCount: basic.roomAmount,
@@ -203,6 +197,14 @@ Page({
     wx.makePhoneCall({
       phoneNumber: '4006001232' 
     })
+  },
+  onShareAppMessage: function () {
+    var { basic, roomId} = this.data;
+    return {
+        title: basic.roomName,        
+        path:'pages/detail/detail?roomId='+roomId,
+　　　　 imageUrl: basic.coverPic
+      }
   }
 });
 

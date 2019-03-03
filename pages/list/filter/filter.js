@@ -310,7 +310,7 @@ Page({
           console.log(res);
           this.setData({
             isLoading:false,
-            length: res.content.length
+            length: res.maxRow
           });
         LocalStorage.set('filter',data);
         console.log(res);

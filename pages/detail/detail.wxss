@@ -2,7 +2,7 @@
     height: 500rpx;
 }
 
-.item image {
+.swiper image {
     width: 100%;
     height: 500rpx;
 }

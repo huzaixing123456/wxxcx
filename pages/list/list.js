@@ -14,6 +14,7 @@ Page({
     end: '',
     list: [],
     noData: '',
+    tips:'',
     noMoreData: false,
     district: '', //位置
     sort: '',     //排序
@@ -121,26 +122,26 @@ Page({
     }
     tagParam['pageNum'] = page;
     httpApi.getRoomList(tagParam).then(data => {
-      var data = data['content'];
+      var content = data['content'];
       let listData = this.data.list;
       if(page == 1){
         listData = [];
       }
-      if (listData.length == 0 && data.length == 0) {
+      if (data.maxRow == 0) {
         this.setData({
-          noData: true
+          noData: true,
+          tips: Object.keys(filter).length > 0 ? '当前筛选条件下无房，建议修改筛选条件' :'您附近无房或已客满'
         })
-        return;
       }
-      if (data.length < 10) {
+      if (content.length < 10) {
         this.setData({
           noMoreData: true
         })
       }
-      data.forEach(item => {
+      content.forEach(item => {
         item.coverPic = HTTP.imgPath + item.coverPic
       });
-      listData = listData.concat(data);
+      listData = listData.concat(content);
       this.setData({
         list: listData
       });

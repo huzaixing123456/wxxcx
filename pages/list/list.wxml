@@ -26,7 +26,7 @@
             <image src="{{item.coverPic}}"></image>
             <view class="t1">
                 <view class="price-top">
-                    <text class="font22">￥{{item.price}}</text>
+                    <text class="font22">{{(item.status != 1 || item.roomNum == 0)?'已满房':'¥ '+item.price}}</text>
                 </view>
             </view>
         </view>
@@ -43,4 +43,4 @@
       这里是最后一条啦~
     </view>
 </scroll-view>
-<view class="noData" wx:if="{{noData}}">暂时没有数据~</view>
+<view class="noData" wx:if="{{noData}}">{{tips}}~</view>

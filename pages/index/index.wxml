@@ -41,7 +41,7 @@
           <image bindtap="navigatorToPhoto"  data-path="{{item.coverPic}}" src="{{item.coverPic}}"></image>
           <view class="t3">
             <text>{{item.roomName}}</text>
-            <text>¥ {{item.price}}</text>
+            <text >{{(item.status != 1 || item.roomNum == 0)?'已满房':'¥ '+item.price}}</text>
           </view>
         </swiper-item>
       </swiper>
