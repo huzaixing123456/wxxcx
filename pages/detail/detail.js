@@ -174,7 +174,7 @@ Page({
               roomName:basic.roomName,
               maxLive: basic.maxLive,
               roomCount: basic.roomAmount,
-              pledge: rules.pledge,
+              pledge: rules.pledge > 0 ? rules.pledgeMoney:0,
               refundPer: rules.refundPer
           })
           wx.navigateTo({

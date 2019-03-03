@@ -88,3 +88,22 @@
   font-size: 40rpx;
   color:#666;
 }
+
+.tips{
+  position: fixed;
+  top:75%;
+  width:80%;
+  border-radius:15rpx;
+  border:1rpx solid #F2F2F2;
+  padding:80rpx 20rpx 40rpx;
+  left:50%;
+  transform:translateX(-50%) translateY(-50%);
+  background:#FFF;
+   text-align:center;
+}
+
+.tips .t1{
+  color:#666;
+  padding:0 40rpx;
+  font-size:28rpx;
+}

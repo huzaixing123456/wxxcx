@@ -363,7 +363,7 @@
             <view class="text">接待时间: <text class="color6">{{notice.receptionTime}}</text>
             </view>
         </view>
-        <view class="item10">
+        <view class="item10" wx:if="{{additional.addBedDesc ||additional.cookDesc||additional.partyDesc||additional.shootDesc|| additional.otherTips}}">
             <text class="font32">额外费用</text>
             <view class="text" wx:if="{{additional.addBedDesc}}">加床: <text class="color6">{{additional.addBedDesc}}</text></view>
             <view class="text" wx:if="{{additional.cookDesc}}">做饭: <text class="color6">{{additional.cookDesc}}</text></view>

@@ -20,13 +20,10 @@ Page({
         rooms: '',
         peopleNum: '', //入住人数
         showNotOpen:false,
-        allowLocation:true
+        showTips:false //没选择城市时
     },
     onLoad: function (a) {
-      var allowLocation = LocalStorage.getSync("allowLocation");
-      this.setData({
-        allowLocation
-      });
+      
     },
     getDataByCity(cityId) {
         var params = cityId ? { did: cityId } : null;
@@ -57,19 +54,13 @@ Page({
                 };
                 this.setData({
                     city: cityData,
-                    showNotOpen: !data['isOpen'],
-                    allowLocation:true
+                    showNotOpen: !data['isOpen']
                 });
-                LocalStorage.set('allowLocation', true);
                 LocalStorage.set('cityData', cityData);
                 this.getDataByCity(cityData.cityId);
             });
         }, () => {
             this.getDataByCity();
-            LocalStorage.set('allowLocation',false);
-          this.setData({
-            allowLocation:false
-          });
             console.log("我不允许定位");
         });
     },
@@ -128,9 +119,17 @@ Page({
     navigatorToList: function () {
       var cityData = LocalStorage.getSync('cityData');
       if (!cityData){
-        util.toast({
-          title:'请选择城市'
+        this.setData({
+          showTips:true
         })
+        util.toast({
+          title:'请先选择城市'
+        })
+        setTimeout(()=>{
+          this.setData({
+            showTips:false
+          })
+        },5000)
         return false;
       }
         wx.navigateTo({

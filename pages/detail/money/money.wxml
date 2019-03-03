@@ -1,4 +1,4 @@
 <view class='wrap'>
-  <view class='c1'><text class='font36'>¥</text> {{roomDeatal.price}}</view>
-  <text class='c2'>{{roomDeatal.roomName}}</text>
+  <view class='c1'><text class='font36'>¥</text> {{roomDeatal.money}}</view>
+  <text class='c2'>{{roomDeatal.name}}</text>
 </view>

@@ -33,8 +33,8 @@ Page({
     var checkInDate = util.getDateByNum(startDate,'-');
     var checkOutDate = util.getDateByNum(endDate,'-');
     this.setData({
-      startDate: parseInt(start.month) + '月' + parseInt(start.day)+'日',
-      endDate: parseInt(end.month) + '月' + parseInt(end.day) + '日',
+      startDate: parseInt(start.year) +'年'+ parseInt(start.month) + '月' + parseInt(start.day)+'日',
+      endDate: parseInt(start.year) + '年' + parseInt(end.month) + '月' + parseInt(end.day) + '日',
       checkInDate: checkInDate,
       checkOutDate: checkOutDate,
       days,
@@ -166,8 +166,9 @@ Page({
     })
   },
   toMoney(){
+    var { roomCount, roomDeatal} = this.data;
     wx.navigateTo({
-      url: "../money/money"
+      url: "../money/money?money=" + roomDeatal['price'] * roomCount + '&name=' + roomDeatal['roomName']
     });
   },
   onShow: function () {

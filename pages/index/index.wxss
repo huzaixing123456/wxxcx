@@ -35,6 +35,9 @@ page {
   line-height: 100rpx;
   border-bottom: 2rpx solid #F2F2F2;
 }
+.location.active{
+  box-shadow: 0 1rpx 0 #fd8238;
+}
 
 .location .right{
   font-size:26rpx;

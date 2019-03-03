@@ -4,11 +4,11 @@
   </view>
 
   <view class="info">
-    <view class="location">
+    <view class="location {{showTips?'active':''}}">
       <view bindtap="navigatorToCity" class="font32">
         <text>{{city.name}}</text>
       </view>
-      <view  class="right" wx:if="{{allowLocation}}">
+      <view  class="right" wx:if="{{city&&city['cityId']}}">
         <text class="iconfont icon-dingwei color"></text>
         <view class="font22" bindtap='getLocation'>我的位置</view>
       </view>
@@ -26,7 +26,6 @@
     </view>
 
     <view bindtap="navigatorToList" class="btn-big" hoverClass="btn-big-click">开始搜索</view>
-
   </view>
 
   <view class="box" wx:if="{{rooms}}">

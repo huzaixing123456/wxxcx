@@ -4,7 +4,8 @@ import util from '../../libs/util';
 
 Page({
     data: {
-        user:''
+        user:'',
+        showFapiao:false
     },
     onShow(){
       var user = LocalStorage.getSync('user');
@@ -48,10 +49,19 @@ Page({
         url: "../login/login"
       });
     },
+    fapiaoTip(){
+      this.setData({
+        showFapiao:true
+      })
+      setTimeout(()=>{
+        this.setData({
+          showFapiao: false
+        })
+      },100000)
+    },
     logout(){
       httpApi.logout().then(res=>{
         var trapeze = LocalStorage.getSync('trapeze');
-        var allowLocation = LocalStorage.getSync('allowLocation');
         LocalStorage.clear();
         this.setData({
           user: ''
@@ -59,14 +69,11 @@ Page({
         if (trapeze) {
           LocalStorage.set('trapeze', trapeze);
         }
-        if (allowLocation) {
-          LocalStorage.set('allowLocation', allowLocation);
-        }
       })
     },
     markerUpPhone() {
       wx.makePhoneCall({
         phoneNumber: '4006001232'
       })
-    }
+    },
 });
