@@ -131,6 +131,7 @@ Page({
         })
       }).catch(e=>{
         console.log('获取失败啦');
+        this.getImage();
         this.stopTimer();
       })
     },

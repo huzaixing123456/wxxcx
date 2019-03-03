@@ -28,8 +28,9 @@ class Http {
       'method': method
     };
     var user = LocalStorage.getSync('user');
+    requestObj['header'] = {};
+    requestObj['header']['Accept'] = 'application/json';
     if (user) {
-      requestObj['header'] = {};
       requestObj['header']['authorization'] = 'Bearer ' + user['token']
     }
     if (method == "POST" && config && config['body']) {

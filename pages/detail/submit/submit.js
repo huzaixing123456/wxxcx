@@ -22,7 +22,7 @@ Page({
     var user = LocalStorage.getSync('user');
     if(user){
       this.setData({
-        phone:user['telephone']
+        phone:user['mobile']
       })
     }
     console.log(roomDeatal);
@@ -41,7 +41,15 @@ Page({
       roomDeatal
     });
   },
-  submit() {
+  submit(e) {
+    var formId = e.detail.formId;
+    if (formId == 'the formId is a mock one') {
+      console.log(`模拟器中运行！`)
+      return false;
+    } if (formId.length == 0) {
+      console.log(`formId不能为空`)
+      return false;
+    }
     var { checkInDate, checkOutDate, roomCount, peopleCount, name, phone, idCard, cardIndex,roomDeatal } = this.data;
     if(!name){
       util.toast({ title: "请输入入住人姓名" });
@@ -78,7 +86,8 @@ Page({
       "mobile": phone,
       "name": name,
       "roomId": roomDeatal.roomId,
-      "roomNum": roomCount
+      "roomNum": roomCount,
+      "form_id": formId
     }).then(res => {
       var params = JSON.parse(res);
       console.log(params);

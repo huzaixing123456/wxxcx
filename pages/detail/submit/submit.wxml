@@ -87,6 +87,9 @@
             <view class="font36 color">{{(roomDeatal.price+roomDeatal.pledge)*roomCount}}</view>
             <view class="font22 color9">待付金额</view>
         </view>
-        <button class="t2 {{isDisabled?'disabled':''}}" bindtap="submit" disabled="{{isDisabled}}" formType="submit" hoverClass="btnHover" style="border-radius:0px;">{{isDisabled?'正在提交中':'提交订单'}}</button>
+        <form bindsubmit="submit" report-submit='true'>
+        <button class="t2"  formType="submit" hoverClass="btnHover" style="border-radius:0px;">提交订单</button>
+        </form>
+        
     </view>
 </form>
