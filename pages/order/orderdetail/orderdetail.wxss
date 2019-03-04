@@ -57,6 +57,11 @@
   color:#999;
 }
 
+.item3 .t4{
+  display:flex;
+  align-items:center;
+}
+
 .item3 .t4 text{
   color:#999;
   font-size:36rpx;
