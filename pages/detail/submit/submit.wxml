@@ -72,10 +72,10 @@
     <view class="wrap5">
         <view class='title'>温馨提示</view>
         <view class='t1'>
-          <text>*</text> 请在{{startDate}}后办理入住，早到可能需要等待。
+          <text>*</text> 请在{{startDate}} {{roomDeatal.checkInTime}}后办理入住，早到可能需要等待。
         </view>
         <view class='t1'>
-          <text>*</text> 需在{{endDate}}之前办理退房，如需延迟退房请与客服协商。
+          <text>*</text> 需在{{endDate}} {{roomDeatal.checkOutTime}}之前办理退房，如需延迟退房请与客服协商。
         </view>
         <view class='t1'>
           <text>*</text> 在线支付押金，到店无需再支付。离店后，验房若无扣款项目，押金会在2-5个工作日内自动原路退还。

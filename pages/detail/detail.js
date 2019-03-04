@@ -166,7 +166,7 @@ Page({
             });
             return;
         }else{
-          var {basic,roomId,rules} = this.data;
+          var {basic,roomId,rules,notice} = this.data;
           console.log(basic);
           LocalStorage.set('roomDeatal',{
               coverPic:basic.coverPic,
@@ -176,7 +176,9 @@ Page({
               maxLive: basic.maxLive,
               roomCount: basic.roomAmount,
               pledge: rules.pledge > 0 ? rules.pledgeMoney:0,
-              refundPer: rules.refundPer
+              refundPer: rules.refundPer,
+              checkInTime: notice['checkInTime'],
+              checkOutTime: notice['checkOutTime']
           })
           wx.navigateTo({
               url: "./submit/submit"

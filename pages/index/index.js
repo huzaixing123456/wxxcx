@@ -16,6 +16,7 @@ Page({
             longitude: "",
             isOpen:false
         },
+        locationCityData:'',
         headImg: '',
         rooms: '',
         peopleNum: '', //入住人数
@@ -54,9 +55,11 @@ Page({
                 };
                 this.setData({
                     city: cityData,
+                    locationCityData: cityData,
                     showNotOpen: !data['isOpen']
                 });
                 LocalStorage.set('locationCityData', cityData);
+                LocalStorage.set('cityData', cityData);
                 this.getDataByCity(cityData.cityId);
             });
         }, () => {
@@ -77,17 +80,17 @@ Page({
         }else{
             this.getLocation();
         }
-        LocalStorage.get('checkDate').then(res => {
-            var { startDate, endDate } = res;
-            var start = util.getDateByNum(startDate);
-            var end = util.getDateByNum(endDate);
-            var days = util.getCountDay(start, end);
-            this.setData({
-                startDate: `${start.month}月${start.day}`,
-                endDate: `${end.month}月${end.day}`,
-                days
-            });
-        }, () => {
+        // LocalStorage.get('checkDate').then(res => {
+        //     var { startDate, endDate } = res;
+        //     var start = util.getDateByNum(startDate);
+        //     var end = util.getDateByNum(endDate);
+        //     var days = util.getCountDay(start, end);
+        //     this.setData({
+        //         startDate: `${start.month}月${start.day}`,
+        //         endDate: `${end.month}月${end.day}`,
+        //         days
+        //     });
+        // }, () => {
             var current = util.getCurrentDate();
             var tomorrow = util.getTomorrowDate();
             this.setData({
@@ -99,7 +102,7 @@ Page({
                 startDate: util.getStrByNum(current.year, current.month, current.date),
                 endDate: util.getStrByNum(tomorrow.year, tomorrow.month, tomorrow.date)
             })
-        });
+        //});
         var people = LocalStorage.getSync('people');
         if (people){
             this.setData({
@@ -149,6 +152,9 @@ Page({
         });
     },
     onUnload() {
+      util.toast({
+        title:'我要清除缓存了'
+      })
       var user = LocalStorage.getSync("user");
       LocalStorage.clear();
       LocalStorage.set('user',user);

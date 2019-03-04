@@ -57,7 +57,7 @@
                 <view class="t3" wx:if="{{basic.bedType}}">
                   <text>{{basic.bedType}}</text>
                 </view>
-                <view class="t3" wx:if="{{basic.addBedNum}}">
+                <view class="t3" wx:if="{{basic.allowAddBed}}">
                   <text>可加床{{basic.addBedNum}}张</text>
                 </view>
             </view>
