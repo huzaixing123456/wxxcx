@@ -49,6 +49,7 @@
 .item{
   font-size:26rpx;
   line-height:75rpx;
+  width:95%;
 }
 
 .letter{

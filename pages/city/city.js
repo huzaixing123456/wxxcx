@@ -21,7 +21,7 @@ Page({
     });
   },
   getAddress() {
-    LocalStorage.get('cityData').then(data => {
+    LocalStorage.get('locationCityData').then(data => {
       this.setData({
         city: data
       })

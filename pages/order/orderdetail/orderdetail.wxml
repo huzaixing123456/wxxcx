@@ -46,7 +46,7 @@
   </view>
 </view>
 
-<view class='item3'>
+<view class='item3' bindtap="navigatorTohouseDetail">
   <view class='t1'>
     <view class='t2'>{{order.roomName}}</view>
     <view class='t3'>{{order.rentWay}} {{order.houseType}} {{order.houseArea}}平米 宜住{{order.maxLive}}人</view>
@@ -81,7 +81,6 @@
     <text class='color9'>线上支付</text>
     <view>
       <text>¥{{order.amount}}</text>
-      <text class="iconfont icon-xiangyoujiantou color9"></text>
     </view>
   </view>
 </view>
@@ -94,10 +93,10 @@
 <view class='item7'>
   <view class='t1'>温馨提示</view>
   <view class='t2'>
-    请在{{order.checkInDate}}后办理入住，早到可能需要等待。
+    请在{{order.checkInDate}} {{order.checkInHour}}后办理入住，早到可能需要等待。
   </view>
   <view class='t2'>
-    需在{{order.checkOutDate}}之前办理退房，如需延迟退房请与客服协商。
+    需在{{order.checkOutDate}} {{order.checkOutHour}}之前办理退房，如需延迟退房请与客服协商。
   </view>
   <view class='t2'>
     在线支付押金，到店无需再支付。离店后，验房若无扣款项目，押金会在2-5个工作日内自动原路退还。

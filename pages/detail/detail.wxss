@@ -96,19 +96,22 @@ button::after {
     line-height: 40rpx;
 }
 
-.item2 .t2 image {
-    width: 60rpx;
-    height: 60rpx;
+.item2 .t2 {
+   font-size:28rpx;
 }
 
 .item2 .t3 {
     color:#999;
-    font-size:22rpx;
+    font-size:24rpx;
 }
 
 .item2 .t4 {
     color:#999;
-    font-size:22rpx;
+    font-size:24rpx;
+}
+
+.item2 .iconfont{
+    font-size:20px;
 }
 
 
@@ -283,6 +286,7 @@ button::after {
 .item8 {
     padding: 40rpx;
     border-top: 10px solid rgb(247,249,251);
+    font-size:32rpx;
 }
 
 .item8 .t1{
@@ -545,7 +549,6 @@ button::after {
   line-height: 100rpx;
   border-bottom: 2rpx solid #F2F2F2;
   display:flex;
-  font-size:22rpx;
   justify-content: space-between;
 }
 

@@ -56,7 +56,7 @@ Page({
                     city: cityData,
                     showNotOpen: !data['isOpen']
                 });
-                LocalStorage.set('cityData', cityData);
+                LocalStorage.set('locationCityData', cityData);
                 this.getDataByCity(cityData.cityId);
             });
         }, () => {
@@ -67,6 +67,8 @@ Page({
     onShow() {
         console.log("show");
         var cityData = LocalStorage.getSync("cityData");
+        var locationCityData = LocalStorage.getSync("locationCityData");
+        var cityData  = cityData||locationCityData;
         if (cityData){
             this.setData({
                 city: cityData
@@ -75,7 +77,6 @@ Page({
         }else{
             this.getLocation();
         }
-
         LocalStorage.get('checkDate').then(res => {
             var { startDate, endDate } = res;
             var start = util.getDateByNum(startDate);
@@ -121,7 +122,7 @@ Page({
       if (!cityData){
         this.setData({
           showTips:true
-        })
+        });
         util.toast({
           title:'请先选择城市'
         })

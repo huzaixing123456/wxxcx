@@ -20,10 +20,27 @@
             <text class="font36">{{basic.roomName}}</text>
         </view>
 
+        <view class="item8" wx:if="{{date}}">
+            <view class="date" bindtap="navigatorToCalendar">
+                <view>{{date.startStr}}<text >入住</text></view>
+                <view class="count">共{{date.days}}晚</view>
+                <view>{{date.endStr}}<text>离店</text></view>
+            </view>
+
+            <!-- <calendar
+              wx:if='{{date}}'
+              startDate='{{date.startCalendar}}'
+				      endDate='{{date.endCalendar}}'
+              year="{{date.year}}"
+              month="{{date.month}}">
+            </calendar> -->
+            <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view>
+        </view>
+
         <view class="item2">
             <view class="t1">
                 <text class="iconfont icon-fangzi"></text>
-                <text class="font26">
+                <text class="t2">
 {{basic.bedroomNum}}室{{basic.parlorNum}}厅 {{basic.bathroomNum}}卫{{basic.bathroomNum}}厨
 </text>
                 <view class="t3">{{basic.houseArea}}平方</view>
@@ -204,23 +221,7 @@
         </view>
         </block>
     </view>
-        <view class="item8" wx:if="{{date}}">
-            <text class="t1">可租日期</text>
-            <view class="date" bindtap="navigatorToCalendar">
-              <view>{{date.startStr}}<text class="font22">入住</text></view>
-              <view class="count">共{{date.days}}晚</view>
-              <view>{{date.endStr}}<text class="font22">离店</text></view>
-          </view>
 
-            <!-- <calendar 
-              wx:if='{{date}}'
-              startDate='{{date.startCalendar}}'
-				      endDate='{{date.endCalendar}}'
-              year="{{date.year}}"
-              month="{{date.month}}">
-            </calendar> -->
-            <view class='t2' bindtap='navigatorToCalendar'><view class='t3'>修改日期</view></view>
-        </view>
 
         <view class="item9">
             <view class="t1">
@@ -354,13 +355,13 @@
             </view>
 
           </view>
-            <view class="text">卫生打扫: <text class="color6">{{notice.clean}}</text>
+            <view class="text" wx:if="{{notice.clean}}">卫生打扫: <text class="color6">{{notice.clean}}</text>
             </view>
-            <view class="text">被单更换: <text class="color6">{{notice.coverlet}}</text>
+            <view class="text" wx:if="{{notice.coverlet}}">被单更换: <text class="color6">{{notice.coverlet}}</text>
             </view>
-            <view class="text">入住退房: <text class="color6">入住时间{{notice.checkInTime}}后 | 退房时间{{notice.checkOutTime}}前</text>
+            <view class="text" wx:if="{{notice.clean}}">入住退房: <text class="color6">入住时间{{notice.checkInTime}}后 | 退房时间{{notice.checkOutTime}}前</text>
             </view>
-            <view class="text">接待时间: <text class="color6">{{notice.receptionTime}}</text>
+            <view class="text" wx:if="{{notice.receptionTime}}">接待时间: <text class="color6">{{notice.receptionTime}}</text>
             </view>
         </view>
         <view class="item10" wx:if="{{additional.addBedDesc ||additional.cookDesc||additional.partyDesc||additional.shootDesc|| additional.otherTips}}">

@@ -16,7 +16,7 @@
 
 <view class="content">
     <view class="item" hoverClass="colorf2" bindtap="navigateToOrder">
-        <text class="icon iconfont icon-myorder"></text>
+        <text class="icon iconfont icon-dingdan"></text>
         <text class="title">我的订单</text>
     </view>
     <view class="item" hoverClass="colorf2" bindtap='fapiaoTip'>
