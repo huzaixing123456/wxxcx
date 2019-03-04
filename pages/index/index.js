@@ -71,6 +71,11 @@ Page({
         console.log("show");
         var cityData = LocalStorage.getSync("cityData");
         var locationCityData = LocalStorage.getSync("locationCityData");
+        if(locationCityData){
+          this.setData({
+            locationCityData
+          })
+        }
         var cityData  = cityData||locationCityData;
         if (cityData){
             this.setData({
@@ -80,35 +85,38 @@ Page({
         }else{
             this.getLocation();
         }
-        // LocalStorage.get('checkDate').then(res => {
-        //     var { startDate, endDate } = res;
-        //     var start = util.getDateByNum(startDate);
-        //     var end = util.getDateByNum(endDate);
-        //     var days = util.getCountDay(start, end);
-        //     this.setData({
-        //         startDate: `${start.month}月${start.day}`,
-        //         endDate: `${end.month}月${end.day}`,
-        //         days
-        //     });
-        // }, () => {
-            var current = util.getCurrentDate();
-            var tomorrow = util.getTomorrowDate();
+        LocalStorage.get('checkDate').then(res => {
+            var { startDate, endDate } = res;
+            var start = util.getDateByNum(startDate);
+            var end = util.getDateByNum(endDate);
+            var days = util.getCountDay(start, end);
             this.setData({
-                startDate: `${current.month}月${current.date}`,
-                endDate: `${tomorrow.month}月${tomorrow.date}`,
-                days: 1
+                startDate: `${start.month}月${start.day}`,
+                endDate: `${end.month}月${end.day}`,
+                days
             });
-            LocalStorage.set('checkDate', {
-                startDate: util.getStrByNum(current.year, current.month, current.date),
-                endDate: util.getStrByNum(tomorrow.year, tomorrow.month, tomorrow.date)
-            })
-        //});
-        var people = LocalStorage.getSync('people');
-        if (people){
-            this.setData({
-                peopleNum: people['text']
-            })
-        }
+        }, () => {
+          this.setDefaultDate();
+        });
+        // var people = LocalStorage.getSync('people');
+        // if (people){
+        //     this.setData({
+        //         peopleNum: people['text']
+        //     })
+        // }
+    },
+    setDefaultDate(){
+      var current = util.getCurrentDate();
+      var tomorrow = util.getTomorrowDate();
+      this.setData({
+        startDate: `${current.month}月${current.date}`,
+        endDate: `${tomorrow.month}月${tomorrow.date}`,
+        days: 1
+      });
+      LocalStorage.set('checkDate', {
+        startDate: util.getStrByNum(current.year, current.month, current.date),
+        endDate: util.getStrByNum(tomorrow.year, tomorrow.month, tomorrow.date)
+      })
     },
     navigatorToCity: function () {
         wx.navigateTo({
@@ -152,9 +160,6 @@ Page({
         });
     },
     onUnload() {
-      util.toast({
-        title:'我要清除缓存了'
-      })
       var user = LocalStorage.getSync("user");
       LocalStorage.clear();
       LocalStorage.set('user',user);

@@ -21,6 +21,24 @@
   align-items:center;
 }
 
+.noLocation{
+  position:fixed;
+  top:0;
+  background:#FFF;
+  left:0;
+  z-index:1;
+  width:100%;
+  text-indent:30rpx;
+  height:120rpx;
+  line-height:120rpx;
+}
+
+.noLocation .t1{
+  font-size:26rpx;
+  margin-left:10rpx;
+  color:#666;
+}
+
 .city-c1{
   color:#333;
 }

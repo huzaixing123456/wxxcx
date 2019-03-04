@@ -2,12 +2,13 @@ import LocalStorage from './libs/localStorage';
 
 App({
   onLaunch: function() {
-
+    var user = LocalStorage.getSync("user");
+    LocalStorage.clear();
+    if (user) {
+      LocalStorage.set('user', user);
+    }
   },
   onUnload(){
-    var user = LocalStorage.getSync('user');
-    LocalStorage.clear();
-    LocalStorage.set('user',user);
 
   },
   globalData: {

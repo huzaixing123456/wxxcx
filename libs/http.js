@@ -70,11 +70,7 @@ class Http {
             }
           } else if (data['statusCode'] == 401) { //token过期
             //reject({ msg: 'token已过期，请重新登录' });
-            var trapeze = LocalStorage.getSync('trapeze');
             LocalStorage.clear();
-            if (trapeze) {
-              LocalStorage.set('trapeze', trapeze);
-            }
             setTimeout(()=>{
               wx.navigateTo({
                 url: "/pages/login/login"

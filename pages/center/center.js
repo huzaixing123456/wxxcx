@@ -64,19 +64,12 @@ Page({
     },
     logout(){
       httpApi.logout().then(res=>{
-        var trapeze = LocalStorage.getSync('trapeze');
         LocalStorage.clear();
-        this.setData({
-          user: ''
-        })
-        if (trapeze) {
-          LocalStorage.set('trapeze', trapeze);
-        }
       })
     },
     markerUpPhone() {
       wx.makePhoneCall({
         phoneNumber: '4006001232'
       })
-    },
+    }
 });
