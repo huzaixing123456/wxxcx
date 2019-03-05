@@ -7,13 +7,13 @@ Page({
     startDate:'',
     endDate:''
   },
-  onLoad: function () {
-      LocalStorage.get('checkDate').then(res=>{
-          this.setData({
-              startDate:res['startDate'],
-              endDate:res['endDate']
-          });
+  onLoad: function () {LocalStorage.get('checkDate').then(res=>{
+      this.setData({
+          startDate:res['startDate'],
+          endDate:res['endDate']
       });
+  });
+
     var {year ,month} = util.getCurrentDate();
     var date = [];
     for(var i = 0 ; i < 6 ; i++) {

@@ -187,7 +187,7 @@ Page({
     },
   navigatorToCalendar: function () {
     wx.navigateTo({
-      url: "../date/date"
+      url: "../date/date?roomId=" + this.data.roomId
     });
   },
   navigatorToPicture: function () {

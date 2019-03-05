@@ -122,6 +122,11 @@ function logout(){
   return http.get('/oauth-api/user/logout');
 }
 
+//日历组件
+function getCalendar(data){
+    return http.post('/api/schedule/price',{roomId:1});
+}
+
 export default {
   getAllCity,
   getCityInfo,
@@ -146,5 +151,6 @@ export default {
   getRoomImage,
   getPayParams,
   getUserInfo,
-  logout
+  logout,
+  getCalendar
 }

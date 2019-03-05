@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/calPrice/calPrice",
     "pages/index/index",
     "pages/order/orderdetail/orderdetail",
     "pages/order/orderTips/orderTips",
