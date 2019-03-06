@@ -23,7 +23,8 @@ Page({
         }).then(res => {
             if(res.code != 401 && res['access_token']){
                 var user = {
-                    token: res['access_token']
+                    token: res['access_token'],
+                    prefix:res['token_type']
                 };
                 LocalStorage.set('user', user).then(res=>{
                     httpApi.getUserInfo().then(res => {

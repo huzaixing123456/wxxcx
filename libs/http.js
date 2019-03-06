@@ -31,7 +31,7 @@ class Http {
     requestObj['header'] = {};
     requestObj['header']['Accept'] = 'application/json';
     if (user) {
-      requestObj['header']['authorization'] = 'Bearer ' + user['token']
+      requestObj['header']['authorization'] = user['prefix']+' '+ user['token']
     }
     if (method == "POST" && config && config['body']) {
       requestObj['data'] = data;

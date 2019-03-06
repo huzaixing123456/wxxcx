@@ -183,6 +183,7 @@ Page({
             }else{
               LocalStorage.set('user', {
                 token: res['access_token'],
+                prefix:res['token_type'],
                 telephone: phone
               })
               wx.navigateBack();
