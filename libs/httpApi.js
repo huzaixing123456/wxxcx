@@ -124,7 +124,7 @@ function logout(){
 
 //日历组件
 function getCalendar(data){
-    return http.post('/api/schedule/price',{roomId:1});
+    return http.post('/api/schedule/price',data);
 }
 
 export default {

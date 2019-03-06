@@ -38,7 +38,7 @@
     <view class='text' bindtap="getImage">换一个</view>
   </view>
   <view class='t2'>
-     <input bindinput="getImageCode" placeholder="请输入图形验证码" placeholderClass="font26"></input>
+     <input bindinput="getImageCode" placeholder="请输入图形验证码" placeholderClass="font26" type="number"></input>
   </view>
   <view class='t3' bindtap='checkImageCode'>确定</view>
 </view>

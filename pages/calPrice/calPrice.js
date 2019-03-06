@@ -9,54 +9,16 @@ Page({
    */
   data: {
     week:['一','二','三','四','五','六',' 七'],
-      startDate:'20190305',
-      endDate:'20190406',
+      startDate:'',
+      endDate:'',
       today:'',
-      isUse:false,
-      calData:[
-        {
-          date:201903,
-          data:[
-              {
-                date:20190305,
-                num:20
-              },
-              {
-                  date:20190306,
-                  num:30
-              }
-          ]
-        },
-        {
-            date:201904,
-            data:[
-                {
-                    date:20190401,
-                    num:0
-                },
-                {
-                    date:20190402,
-                    num:0
-                },
-                {
-                    date:20190403,
-                    num:30
-                }
-            ]
-        }
-    ]
+      calData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // LocalStorage.get('checkDate').then(res=>{
-      //     this.setData({
-      //         startDate:res['startDate'],
-      //         endDate:res['endDate']
-      //     });
-      // });
       var {roomId} = options;
       var {year,month,date} = util.getCurrentDate();
       month = month < 10 ? '0'+month:month;
@@ -64,9 +26,8 @@ Page({
       this.setData({
           today:year+''+month+''+date
       })
-      httpApi.getCalendar().then(res=>{
+      httpApi.getCalendar({roomId}).then(res=>{
           var date = JSON.parse(res);
-          console.log(date);
           this.calFormate(date);
       });
   },
@@ -98,50 +59,109 @@ Page({
               day:parseInt(i)
           });
       }
-      console.log(tagCalData);
       this.setData({
           calData:tagCalData
       });
-      this.checkUsed();
+      var {startDate,endDate} =  LocalStorage.getSync('checkDate');
+      if(startDate && endDate){
+          if(this.checkUsed(startDate,endDate)){
+              this.setData({
+                  startDate,
+                  endDate
+              });
+          }
+      }
   },
 
     setCurrent(e){
         var date = e.currentTarget.dataset.num;
         var item = e.currentTarget.dataset.item;
-        var {startDate,endDate} = this.data;
-        // if(date == startDate || date == endDate) return;
-        console.log(date);
-        if(startDate && endDate){
-            this.setData({
-                startDate:date,
-                endDate:''
-            })
-        }else{
-            let dateArr = [startDate,endDate,date];
-            console.log(dateArr);
-            var tagArr = dateArr.filter(item=>{
-                console.log(item);
-                return !!item;
-            }).sort(function (a,b) {
-                return a-b;
-            });
-            if(tagArr.length == 1){
-                this.setData({
-                    startDate:tagArr[0]
-                })
+        var {startDate,endDate,today} = this.data;
+        if(date<today){ //今天之前的不可选
+            return;
+        }
+        if(!startDate && !endDate){
+            if(item.num == 0){
+                util.toast({title:'选择的日期部分订满,请重新选择'});
+                return;
             }else{
-                var obj = {
-                    startDate:tagArr[0],
-                    endDate:tagArr[1]
-                };
-                this.setData(obj);
+                this.setData({
+                    startDate:date
+                })
             }
         }
-        this.checkUsed();
+        if(startDate && !endDate){
+            if(startDate == date){
+                return;
+            }else if(date<startDate){
+                if(item.num > 0){
+                    this.setData({
+                        startDate:date
+                    })
+                }else{
+                    util.toast({title:'选择的日期部分订满,请重新选择'});
+                }
+            }else {
+                if(this.checkUsed(startDate,date)){
+                    this.setData({
+                        endDate:date
+                    })
+                    LocalStorage.set('checkDate',{
+                        startDate:startDate,
+                        endDate:date
+                    }).then(res=>{
+                        util.toast({title:'选择成功'});
+                        wx.navigateBack();
+                    })
+                }else{
+                    util.toast({title:'选择的日期部分订满,请重新选择'});
+                }
+            }
+        }
+        if(startDate && endDate){
+            if(startDate == date || endDate == date) return;
+            if(item.num > 0){
+                this.setData({
+                    startDate:date,
+                    endDate:''
+                })
+            }else{
+                util.toast({title:'选择的日期部分订满,请重新选择'});
+            }
+        }
+        // if(date == startDate || date == endDate) return;
+        // console.log(date);
+        // if(startDate && endDate){
+        //     this.setData({
+        //         startDate:date,
+        //         endDate:''
+        //     })
+        // }else{
+        //     let dateArr = [startDate,endDate,date];
+        //     console.log(dateArr);
+        //     var tagArr = dateArr.filter(item=>{
+        //         console.log(item);
+        //         return !!item;
+        //     }).sort(function (a,b) {
+        //         return a-b;
+        //     });
+        //     if(tagArr.length == 1){
+        //         this.setData({
+        //             startDate:tagArr[0]
+        //         })
+        //     }else{
+        //         var obj = {
+        //             startDate:tagArr[0],
+        //             endDate:tagArr[1]
+        //         };
+        //         this.setData(obj);
+        //     }
+        // }
+        // this.checkUsed();
     },
 
-    checkUsed(){
-      var {calData,startDate,endDate} = this.data;
+    checkUsed(startDate,endDate){
+      var {calData} = this.data;
       if(!startDate||!endDate){
           this.setData({
               isUse:true
@@ -150,7 +170,7 @@ Page({
       var useArr = [];
       calData.forEach(item=>{
           item.data.forEach(i=>{
-            if(i.date>=startDate && i.date<=endDate){
+            if(i.date>=startDate && i.date<endDate){
                 useArr.push(i)
             }
           })
@@ -158,10 +178,8 @@ Page({
       console.log(useArr);
       var index = useArr.findIndex(item=>{
           return item.num == 0
-      })
-      this.setData({
-          isUse:index<0?true:false
-      })
+      });
+      return index<0?true:false
 
   },
 

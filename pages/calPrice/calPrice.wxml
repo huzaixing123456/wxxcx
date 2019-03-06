@@ -1,4 +1,4 @@
-<view class='wrap' wx:for='{{calData}}'>
+<view class='wrap' wx:for='{{calData}}' wx:key="*this">
     <view>
         <view class='date-show'>
             {{item.year}}/{{item.month}}
@@ -17,7 +17,7 @@
         </view>
         <view wx:for='{{item.data}}'
               wx:key='*this'
-              class='{{item.date < today?"outSide":(item.num == 0)?"disabled":isUse?(startDate == item.date||endDate == item.date)?"active":(startDate <item.date&&endDate > item.date)?"middleActive":"":""}}'
+              class='{{item.date < today?"outSide":(item.num == 0 && item.date!=endDate)?"disabled":(startDate == item.date||endDate == item.date)?"active":(startDate <item.date&&endDate > item.date)?"middleActive":""}}'
               data-num='{{item.date}}'
               data-today='{{today}}'
               data-item = '{{item}}'
@@ -25,9 +25,9 @@
         >
             <view class='date-head' data-id="{{item.date}}">
                 <view class="text">{{item.day}}</view>
-                <view class="tips" wx:if="{{item.date>today&&item.num == 0}}">无房</view>
-                <view class="tips" wx:if="{{isUse && item.date == startDate}}">入住</view>
-                <view class="tips" wx:if="{{isUse && item.date == endDate}}">离店</view>
+                <view class="tips" wx:if="{{item.date>today&&item.num == 0&&item.date!=endDate}}">无房</view>
+                <view class="tips" wx:if="{{item.date == startDate}}">入住</view>
+                <view class="tips" wx:if="{{item.date == endDate}}">离店</view>
             </view>
         </view>
     </view>

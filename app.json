@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/calPrice/calPrice",
+
     "pages/index/index",
     "pages/order/orderdetail/orderdetail",
     "pages/order/orderTips/orderTips",
@@ -17,7 +17,8 @@
     "pages/center/center",
     "pages/detail/money/money",
     "pages/detail/picture/picture",
-    "pages/date/date"
+    "pages/date/date",
+    "pages/calPrice/calPrice"
   ],
   "window": {
     "backgroundTextStyle": "light",

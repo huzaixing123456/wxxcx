@@ -7,7 +7,8 @@ Page({
     startDate:'',
     endDate:''
   },
-  onLoad: function () {LocalStorage.get('checkDate').then(res=>{
+  onLoad: function () {
+      LocalStorage.get('checkDate').then(res=>{
       this.setData({
           startDate:res['startDate'],
           endDate:res['endDate']
