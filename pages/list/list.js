@@ -24,7 +24,6 @@ Page({
   },
   onLoad(){
     var cityData = LocalStorage.getSync('cityData');
-    console.log(cityData);
     if (cityData) {
       wx.setNavigationBarTitle({
         title: cityData.name
@@ -49,8 +48,7 @@ Page({
     var { startDate, endDate } = checkDate;
     var start = util.getDateByNum(startDate);
     var end = util.getDateByNum(endDate);
-    console.log(start);
-    var oData = {}
+    var oData = {};
     oData = {
       checkInDate: `${start.year}-${start.month}-${start.day}`,
       checkOutDate: `${end.year}-${end.month}-${end.day}`
@@ -115,7 +113,6 @@ Page({
     var { noMoreData } = this.data;
     if (noMoreData) return;
     this.getData(++pageNum);
-    console.log("这是scroll的底部刷新了", pageNum);
   },
   getData(page = 1) {
     var parmas = this.data.form;

@@ -20,7 +20,6 @@ Page({
         httpApi.getBusiness({
           did:res['cityId']
         }).then(res => {
-            console.log(res);
             var {items} = this.data;
             items[0]['children'] = res['businessArea'];
             items[1]['children'] = res['areaCodes'];

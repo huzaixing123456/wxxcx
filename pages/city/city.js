@@ -14,7 +14,6 @@ Page({
   },
   getData() {
     httpApi.getAllCity().then(res => {
-      console.log(res);
       this.setData({
         list: res
       })
@@ -46,7 +45,6 @@ Page({
     var that = this;
     wx.getSetting({
       success: function (res) {
-        console.log(res);
         var statu = res.authSetting;
         if (!statu['scope.userLocation']) {
           wx.showModal({
@@ -95,7 +93,6 @@ Page({
   },
   getLocation() {
     util.getLocation().then(data => {
-      console.log(data);
       LocalStorage.set('trapeze', data); //保存经纬度
       httpApi.getCityInfo(data).then(data => {
         var cityData = {
@@ -112,7 +109,7 @@ Page({
         LocalStorage.set('cityData', cityData);
       });
     }, () => {
-      console.log("我不允许定位");
+
     });
   }
 });

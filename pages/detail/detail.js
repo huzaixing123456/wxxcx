@@ -26,7 +26,6 @@ Page({
         markers:''
     },
     onShow(){
-      console.log("详情页出来了");
       var checkDate = LocalStorage.getSync("checkDate");
       var { startDate, endDate } = checkDate;
       if (startDate) {
@@ -40,7 +39,6 @@ Page({
         checkOutDate: end,
         roomId:this.data.roomId
       }).then(res => {
-        console.log(res);
         var basic = res.basic;
         var coverPic = HTTP.imgPath + basic['coverPic'];
         basic['coverPic'] = coverPic;
@@ -54,7 +52,6 @@ Page({
         bathroomFacility = bathroomFacility.filter(item => {
           return item.active == 1;
         });
-        console.log(bathroomFacility)
         kitchenFacility = kitchenFacility.filter(item => {
           return item.active == 1;
         })
@@ -132,12 +129,9 @@ Page({
     },
     getNoPayDay() {
         var { refundDay, refundPer } = this.data.rules;
-      console.log(refundDay, refundPer)
       var { year, month, day } = util.getDateByNum(this.data.date.startCalendar);
-      console.log(year, month, day);
         var times = new Date(year, month - 1, day).getTime() - refundDay * 24 * 60 * 60 * 1000;
         var tagDate = new Date(times);
-      console.log(times);
         this.setData({
             noPayDate: tagDate.getFullYear() + '.' + (tagDate.getMonth() + 1) + '.' + tagDate.getDate()
         });
@@ -149,7 +143,6 @@ Page({
     },
     goLocation() {
         var { longitude, latitude } = this.data.location;
-        console.log(longitude);
         wx.openLocation({
             longitude: parseFloat(longitude),
             latitude: parseFloat(latitude),
@@ -167,7 +160,6 @@ Page({
             return;
         }else{
           var {basic,roomId,rules,notice} = this.data;
-          console.log(basic);
           LocalStorage.set('roomDeatal',{
               coverPic:basic.coverPic,
               roomId,
@@ -191,7 +183,6 @@ Page({
     });
   },
   navigatorToPicture: function () {
-    console.log(this.data.roomId);
     wx.navigateTo({
       url: "./picture/picture?roomId=" + this.data.roomId
     });

@@ -26,7 +26,6 @@ Page({
     getImage(){
       var timestamp = util.getRandomNumber(10);
       var imageCodeUrl = httpApi.getImageCode({random:timestamp});
-      console.log(imageCodeUrl);
       this.setData({
         imageCodeUrl,
         timestamp
@@ -124,20 +123,17 @@ Page({
         captcha: imageCode,
         timestamp
       }).then(res => {
-        console.log(res);
         this.setData({
           showImageCode: false,
           hasCheckImageCode:false
         })
       }).catch(e=>{
-        console.log('获取失败啦');
         this.getImage();
         this.stopTimer();
       })
     },
     checkImageCode(){
       let {imageCode} = this.data;
-      console.log(imageCode);
       if (!imageCode) {
         util.toast({ title: "请输入图形验证码" });
         return;
@@ -177,7 +173,6 @@ Page({
             code: code,
             openId: wxcode
           }).then(res => {
-            console.log(res);
             if(res.code == 401){
               if (res.message == "SmsCodeError" ){
                 util.toast({title:'验证码错误'});
@@ -196,12 +191,11 @@ Page({
         });       
     },
     getPhoneNumber(e){
-        console.log(e);
+
         //util.toast({ title: JSON.stringify(e.detail)});
     },
     wxLogin(){
       util.getLogin().then(res => {
-        console.log("code值是" + res);
         var city = LocalStorage.getSync('cityData');
         httpApi.codeLogin({
           client_id: "wechat-client",

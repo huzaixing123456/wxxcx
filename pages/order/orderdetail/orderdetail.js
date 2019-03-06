@@ -60,7 +60,6 @@ Page({
 
     httpApi.getPayParams({orderId}).then(res=>{
       var params = JSON.parse(res);
-      console.log(params);
       wx.requestPayment({
         'timeStamp': params['timeStamp'],
         'nonceStr': params['nonceStr'],
@@ -68,14 +67,12 @@ Page({
         'signType': params['signType'],
         'paySign': params['paySign'],
         'success': function (res) {
-          console.log("成功了");
           wx.navigateTo({
             url: "../../order/orderTips/orderTips?orderId=" + params['orderId']
           });
         },
         'fail': function (res) {
           util.toast({ title: '支付失败' });
-          console.log("失败了", res);
         }
       })
       
@@ -94,7 +91,6 @@ Page({
   confrimRefundOrder(){
     var orderId = this.data.order.orderId;
     httpApi.refundOrder({ orderId }).then(res => {
-      console.log(res);
       this.setData({
         applyRefundOrder:false
       })
@@ -124,7 +120,6 @@ Page({
   confrimDeleteOrder(){
     var orderId = this.data.order.orderId;
     httpApi.deleteOrder({ orderId }).then(res => {
-      console.log(res);
       this.setData({
         deleteOrderFlag: false
       });
@@ -178,10 +173,5 @@ Page({
     wx.navigateTo({
       url: "../../detail/detail?roomId=" + roomId
     });
-  },
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+  }
 });

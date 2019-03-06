@@ -25,7 +25,7 @@
         <input focus bindinput="getPhone" maxlength="11" placeholder="请输入手机号" placeholderClass="font26" type="number"></input>
     </view>
     <view class="item">
-        <input bindinput="setCode" maxlength="6" placeholder="请输入验证码" placeholderClass="font26" type="number"></input>
+        <input bindinput="setCode" maxlength="6" placeholder="请输入验证码" placeholderClass="font26"></input>
         <view class="message-code {{codeParams.disable?'disabled':''}}" bindtap="getCode">{{codeParams.disable?codeParams['timeText']:codeParams['initText']}}</view>
     </view>
     <view bindtap="login" class="btn" hoverClass="{{isFinished?'btn-click':''}}" style="color: {{isFinished?'#fff':''}}">登录</view>

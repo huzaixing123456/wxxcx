@@ -95,9 +95,7 @@ Page({
     this.getData();
   },
   onReachBottom: function () {
-    console.log('底部加载了');
    let {pageNum,maxPage} = this.data;
-    console.log(this.data);
    if(pageNum>=maxPage){
        return false;
    }else{
@@ -106,7 +104,6 @@ Page({
         })
        this.getData();
    }
-    console.log('底部加载了');
   },
   navigatorToOrderDetail: function () {
     wx.navigateTo({

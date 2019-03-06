@@ -21,7 +21,6 @@ Page({
   onLoad: function (options) {
     var checkDate = LocalStorage.getSync('checkDate');
     var roomDeatal = LocalStorage.getSync('roomDeatal');
-    console.log(roomDeatal);
     var { startDate, endDate } = checkDate;
     var start = util.getDateByNum(startDate);
     var end = util.getDateByNum(endDate);
@@ -89,7 +88,6 @@ Page({
       "form_id": formId
     }).then(res => {
       var params = JSON.parse(res);
-      console.log(params);
       wx.requestPayment({
         'timeStamp': params['timeStamp'],
         'nonceStr': params['nonceStr'],
@@ -97,20 +95,20 @@ Page({
         'signType': params['signType'],
         'paySign': params['paySign'],
         'success': function (res) {
-          console.log("成功了");
           wx.navigateTo({
             url: "../../order/orderTips/orderTips?orderId=" + params['orderId']
           });
         },
         'fail': function (res) {
           util.toast({title:'支付失败'});
-          console.log("失败了", res);
+            wx.switchTab({
+                url: "../../order/order"
+            });
         }
       })
     })
   },
   chooseRoom(e){
-    console.log(e);
     var { tag, max } = e.currentTarget.dataset;
     var { roomCount } = this.data;
     if(tag>0){
@@ -133,7 +131,6 @@ Page({
     })
   },
   choosePeople(e) {
-    console.log(e);
     var {tag,max} = e.currentTarget.dataset;
     var { peopleCount } = this.data;
     if (tag > 0) {

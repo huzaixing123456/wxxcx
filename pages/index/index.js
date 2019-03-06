@@ -29,7 +29,6 @@ Page({
     getDataByCity(cityId) {
         var params = cityId ? { did: cityId } : null;
         httpApi.getRecommend(params).then(res => {
-            console.log(res);
             let { rooms, headImg } = res;
             rooms = rooms.map(item => {
                 item.coverPic = HTTP.imgPath + item.coverPic
@@ -44,7 +43,6 @@ Page({
     },
     getLocation(){
         util.getLocation().then(data => {
-            console.log(data);
             LocalStorage.set('trapeze', data); //保存经纬度
             httpApi.getCityInfo(data).then(data => {
                 var cityData = {
@@ -64,11 +62,9 @@ Page({
             });
         }, () => {
             this.getDataByCity();
-            console.log("我不允许定位");
         });
     },
     onShow() {
-        console.log("show");
         var cityData = LocalStorage.getSync("cityData");
         var locationCityData = LocalStorage.getSync("locationCityData");
         if(locationCityData){

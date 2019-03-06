@@ -15,25 +15,24 @@ Page({
     },
     onLoad(){
       util.getLogin().then(wxcode => {
-        console.log("code值是" + wxcode);
         httpApi.codeLogin({
           client_id: "wechat-client",
           client_secret: "wechat-client",
           grant_type: "wechat",
           code: wxcode
         }).then(res => {
-          var user = {
-            token: res['access_token']
-          };
-          LocalStorage.set('user', user).then(res=>{
-            httpApi.getUserInfo().then(res => {
-              console.log(res);
-              user['mobile'] = res.mobile;
-              this.setData({ user });
-              LocalStorage.set('user', user);
-            })
-          });
-          console.log(res);
+            if(res.code != 401 && res['access_token']){
+                var user = {
+                    token: res['access_token']
+                };
+                LocalStorage.set('user', user).then(res=>{
+                    httpApi.getUserInfo().then(res => {
+                        user['mobile'] = res.mobile;
+                        this.setData({ user });
+                        LocalStorage.set('user', user);
+                    })
+                });
+            }
         }).catch(() => {
           
         })
@@ -64,6 +63,9 @@ Page({
     },
     logout(){
       httpApi.logout().then(res=>{
+        this.setData({
+            user:''
+        })
         LocalStorage.clear();
       })
     },

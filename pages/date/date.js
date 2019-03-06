@@ -41,8 +41,6 @@ Page({
   getDate(data){
       var {startDate,endDate} = this.data;
       var date = data['detail']['num'];
-      // if(date == startDate || date == endDate) return;
-      console.log(date);
       if(startDate && endDate){
           this.setData({
               startDate:date,
@@ -50,9 +48,7 @@ Page({
           })
       }else{
         let dateArr = [startDate,endDate,date];
-        console.log(dateArr);
         var tagArr = dateArr.filter(item=>{
-                console.log(item);
                 return !!item;
             }).sort(function (a,b) {
                 return a-b;

@@ -148,7 +148,6 @@ Page({
           var tagIndex = data['bedRoom'].findIndex(e => {
             return e.id == filter.bedRoom[i]
           })
-          console.log(tagIndex);
           if (tagIndex >= 0) {
             data['bedRoom'][tagIndex]['active'] = true;
           }
@@ -160,7 +159,6 @@ Page({
           var tagIndex = data['roomType'].findIndex(e => {
             return e.id == filter.roomType[i]
           })
-          console.log(tagIndex);
           if (tagIndex >= 0) {
             data['roomType'][tagIndex]['active'] = true;
           }
@@ -172,7 +170,6 @@ Page({
           var tagIndex = data['facilities'].findIndex(e => {
             return e.name == filter.facilities[i]
           })
-          console.log(tagIndex);
           if (tagIndex >= 0) {
             data['facilities'][tagIndex]['active'] = true;
           }
@@ -274,7 +271,6 @@ Page({
       return item.active;
     });
     if (room) {
-      console.log(room);
       flag = true;
       data.roomType = roomType.map(item => {
         return item.active ? item.id : ''
@@ -298,7 +294,6 @@ Page({
     this.setData({
       flag
     })
-    console.log(data);
     this.getData(data);
   },
   getData(data){
@@ -307,19 +302,16 @@ Page({
         isLoading:true
     });
       httpApi.getRoomList(Object.assign({},params,data)).then(res=>{
-          console.log(res);
           this.setData({
             isLoading:false,
             length: res.maxRow
           });
         LocalStorage.set('filter',data);
-        console.log(res);
       }).catch(error=>{
           this.setData({
               isLoading:false
           });
           LocalStorage.set('filter',data);
-        console.log(error);
       })
   },
   reset(){

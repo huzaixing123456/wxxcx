@@ -47,7 +47,6 @@ class Http {
       }
       requestObj['url'] = dataUrl;
     }
-    console.log(requestObj);
     return new Promise((resolve, reject) => {
       var callback = {
         success: (data) => {

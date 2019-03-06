@@ -23,7 +23,6 @@ Component({
     month:0
   },
   attached : function () {
-    console.log("调用进来了");
     let {year,month} = this.properties;
     var current = util.getCurrentDate();
     this.dateInit(year,month); 
@@ -46,7 +45,6 @@ Component({
           let arrLen = 0;
           let {nextYear,nextMonth} = util.getNextMonth(year,month);
           let startWeek = util.getWeek(year,month-1);
-          console.log("获取月天数", nextYear, nextMonth - 1)
           let dayNums = util.getDays(nextYear,nextMonth-1);
           let obj = {};
           let num = 0;

@@ -34,7 +34,6 @@ Page({
   calFormate(data){
       var tagCalData = data.slice(0,6);
       tagCalData.forEach((item,index)=>{
-          console.log(item);
           var year = item.date.toString().substr(0, 4);
           var month = item.date.toString().substr(4, 2);
           item.year = year;
@@ -47,7 +46,6 @@ Page({
           });
       });
       var firstDate = tagCalData[0]['data'][0]['date'];
-      console.log(firstDate);
       var {year,month,day} =util.getDateByNum(firstDate.toString());
       var count = parseInt(day);
       for(var i = (count-1)  ; i > 0 ; i--){
@@ -129,35 +127,6 @@ Page({
                 util.toast({title:'选择的日期部分订满,请重新选择'});
             }
         }
-        // if(date == startDate || date == endDate) return;
-        // console.log(date);
-        // if(startDate && endDate){
-        //     this.setData({
-        //         startDate:date,
-        //         endDate:''
-        //     })
-        // }else{
-        //     let dateArr = [startDate,endDate,date];
-        //     console.log(dateArr);
-        //     var tagArr = dateArr.filter(item=>{
-        //         console.log(item);
-        //         return !!item;
-        //     }).sort(function (a,b) {
-        //         return a-b;
-        //     });
-        //     if(tagArr.length == 1){
-        //         this.setData({
-        //             startDate:tagArr[0]
-        //         })
-        //     }else{
-        //         var obj = {
-        //             startDate:tagArr[0],
-        //             endDate:tagArr[1]
-        //         };
-        //         this.setData(obj);
-        //     }
-        // }
-        // this.checkUsed();
     },
 
     checkUsed(startDate,endDate){
@@ -175,60 +144,10 @@ Page({
             }
           })
       });
-      console.log(useArr);
       var index = useArr.findIndex(item=>{
           return item.num == 0
       });
       return index<0?true:false
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })
