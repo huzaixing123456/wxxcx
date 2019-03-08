@@ -67,7 +67,7 @@
     style="width: 100%; height: 300px;"></map>
     <view class='t1'>
       <view class='t2'>{{order.address}}</view>
-      <view class='t3'>
+      <view class='t3' bindtap="goLocation">
         <text class="iconfont icon-dingwei t4"></text>
         <view>导航</view>
       </view>

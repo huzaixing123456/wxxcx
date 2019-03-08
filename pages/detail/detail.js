@@ -23,7 +23,8 @@ Page({
         halfPayDate: '',
         leaveDate: '',
         roomId:'',
-        markers:''
+        markers:'',
+        flag:false
     },
     onShow(){
       var checkDate = LocalStorage.getSync("checkDate");

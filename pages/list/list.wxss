@@ -62,8 +62,9 @@ page {
     position: absolute;
     padding: 10px 20rpx;
     bottom: 0;
+    right:0;
     color: #fff;
-    background-color: rgb(41,34,28);
+    background: #fd8238;
     text-align: center;
     line-height: 40rpx;
     width:80rpx;

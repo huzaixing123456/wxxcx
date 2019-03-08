@@ -1,3 +1,7 @@
+.wrap{
+    padding-bottom:100rpx;
+}
+
 .date-show{
     position: relative;
     width: 250rpx;
@@ -113,4 +117,37 @@
 
 .tips{
     font-size:22rpx;
+}
+
+.date-btn{
+    position: fixed;
+    width:100%;
+    left:0;
+    bottom:0;
+    height:100rpx;
+    display: flex;
+    flex-direction:row;
+    font-size:36rpx;
+    align-items:center;
+    justify-content:center;
+    line-height:100rpx;
+    text-align:center;
+    background:#FFF;
+}
+
+.date-btn .cannel{
+    width:200rpx;
+    height:100%;
+}
+
+.date-btn .confrim{
+    flex:1;
+    height:100%;
+    background:#EEE ;
+    color:#999;
+}
+
+.date-btn .active{
+    background:#fd8238 ;
+    color:#FFF;
 }

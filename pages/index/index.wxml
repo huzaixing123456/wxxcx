@@ -5,7 +5,7 @@
 
   <view class="info">
     <view class="location {{showTips?'active':''}}">
-      <view bindtap="navigatorToCity" class="font32">
+      <view bindtap="navigatorToCity" class="font32 left">
         <text>{{city.name}}</text>
       </view>
       <view  class="right" wx:if="{{locationCityData&&locationCityData['cityId']}}">

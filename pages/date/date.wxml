@@ -1,4 +1,4 @@
-<view>
+<view class="wrap">
 	<view wx:for="{{date}}" wx:key="*this">
 		<calendar
 				year='{{item.year}}'
@@ -7,6 +7,14 @@
 				endDate='{{endDate}}'
 				bind:myevent="getDate"
 		></calendar>
+	</view>
+	<view class="date-btn">
+		<view class="cannel" bindtap="cannel">取消</view>
+		<view class="confrim {{startDate&&endDate?'active':''}}" bindtap="confrim">
+			{{
+				!startDate ? '请选择入住日期':!endDate?'请选择离店日期':'确定'
+			}}
+			</view>
 	</view>
 </view>
 

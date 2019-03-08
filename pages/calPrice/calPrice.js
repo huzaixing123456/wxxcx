@@ -104,13 +104,13 @@ Page({
                     this.setData({
                         endDate:date
                     })
-                    LocalStorage.set('checkDate',{
-                        startDate:startDate,
-                        endDate:date
-                    }).then(res=>{
-                        util.toast({title:'选择成功'});
-                        wx.navigateBack();
-                    })
+                    // LocalStorage.set('checkDate',{
+                    //     startDate:startDate,
+                    //     endDate:date
+                    // }).then(res=>{
+                    //     //util.toast({title:'选择成功'});
+                    //     wx.navigateBack();
+                    // })
                 }else{
                     util.toast({title:'选择的日期部分订满,请重新选择'});
                 }
@@ -149,5 +149,22 @@ Page({
       });
       return index<0?true:false
 
-  }
+  },
+
+    cannel(){
+        this.setData({
+            startDate:'',
+            endDate:''
+        })
+    },
+    confrim(){
+        var {startDate,endDate} = this.data;
+        if(!startDate || !endDate) return;
+        LocalStorage.set('checkDate',{
+            startDate,
+            endDate
+        }).then(res=>{
+            wx.navigateBack();
+        })
+    }
 })

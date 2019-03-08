@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "选择入离日期",
   "component": true,
   "usingComponents": {
     "calendar": "/components/calendar/calendar"

@@ -72,9 +72,9 @@
                      latitude="{{location.latitude}}"
                      markers='{{markers}}'
                      scale="18"
-                     enableZoom="false"
-                     enableScroll="false"
-                     enable-rotate
+                     enable-zoom="{{flag}}"
+                     enable-scroll="{{flag}}"
+                     enable-rotate="{{flag}}"
                      bindtap="goLocation"
                      style="width: 100%; height: 300px;z-index:1"></map>
             </view>

@@ -9,11 +9,11 @@ Page({
   },
   onLoad: function () {
       LocalStorage.get('checkDate').then(res=>{
-      this.setData({
-          startDate:res['startDate'],
-          endDate:res['endDate']
+          this.setData({
+              startDate:res['startDate'],
+              endDate:res['endDate']
+          });
       });
-  });
 
     var {year ,month} = util.getCurrentDate();
     var date = [];
@@ -60,13 +60,26 @@ Page({
         }else{
             var obj = {
                 startDate:tagArr[0],
-                endDate:tagArr[1]
+                endDate:tagArr[0] == tagArr[1]?'':tagArr[1]
             };
             this.setData(obj);
-            LocalStorage.set('checkDate',obj).then(res=>{
-                wx.navigateBack();
-            })
         }
       }
-  }
+  },
+    cannel(){
+        this.setData({
+            startDate:'',
+            endDate:''
+        })
+    },
+    confrim(){
+      var {startDate,endDate} = this.data;
+      if(!startDate || !endDate) return;
+        LocalStorage.set('checkDate',{
+            startDate,
+            endDate
+        }).then(res=>{
+            wx.navigateBack();
+        })
+    }
 })

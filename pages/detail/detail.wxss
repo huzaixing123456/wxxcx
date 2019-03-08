@@ -464,6 +464,7 @@ button::after {
     display: flex;
     width: 100%;
     bottom: 0;
+    height:110rpx;
     z-index: 10000;
     background-color: #fff;
 }

@@ -195,6 +195,12 @@ Page({
 
         //util.toast({ title: JSON.stringify(e.detail)});
     },
+    closeDialog(){
+        console.log(11111);
+        this.setData({
+            showImageCode:false
+        })
+    },
     wxLogin(){
       util.getLogin().then(res => {
         var city = LocalStorage.getSync('cityData');

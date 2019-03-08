@@ -32,13 +32,15 @@
     <view class="tip">*未注册的手机号将自动创建为龙门客栈用户*</view>
 </view>
 
+<view class="dialog" wx:if="{{showImageCode}}" bindtap="closeDialog"></view>
+
 <view class='model' wx:if="{{showImageCode}}">
-  <view class='t1'>
+<view class='t1'>
     <image class='imageCode' src="{{imageCodeUrl}}"></image>
-    <view class='text' bindtap="getImage">换一个</view>
-  </view>
-  <view class='t2'>
-     <input bindinput="getImageCode" placeholder="请输入图形验证码" placeholderClass="font26" type="number"></input>
-  </view>
-  <view class='t3' bindtap='checkImageCode'>确定</view>
+    <view class='text' catchtap="getImage">换一个</view>
+</view>
+<view class='t2'>
+    <input bindinput="getImageCode" placeholder="请输入图形验证码" placeholderClass="font26" type="number"></input>
+</view>
+<view class='t3' catchtap='checkImageCode'>确定</view>
 </view>
