@@ -84,6 +84,7 @@
 
 .item4 .t2{
   font-size:30rpx;
+  flex:1;
 }
 
 .item4 .t3{
@@ -92,6 +93,7 @@
   flex-direction:column;
   color:#FD8238;
   font-size:26rpx;
+  width:60rpx;
 }
 
 .item .t4{

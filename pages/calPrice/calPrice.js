@@ -117,7 +117,7 @@ Page({
             }
         }
         if(startDate && endDate){
-            if(startDate == date || endDate == date) return;
+            if(date == endDate && date.num == 0) return;
             if(item.num > 0){
                 this.setData({
                     startDate:date,

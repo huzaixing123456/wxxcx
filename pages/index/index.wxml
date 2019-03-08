@@ -51,8 +51,8 @@
     <view class='btn'>更多房源</view>
   </view>
 
-  <view class="introdution" wx:if="{{headImg}}">
-    <image src="https://wx.longmenkezhan.com/images/footer.png"></image>
+  <view class="introdution">
+    <image src="http://api.map.baidu.com/staticimage/v2?ak=E4805d16520de693a3fe707cdc962045&width=280&height=140&zoom=1"></image>
   </view>
 </view>
 
