@@ -22,7 +22,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "龙门客栈精品民宿",
+    "navigationBarTitleText": "龙门客栈轻精品民宿",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -50,7 +50,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "龙门客栈精品民宿想获取你的位置信息"
+      "desc": "龙门客栈轻精品民宿想获取你的位置信息"
     }
   },
   "networkTimeout": {

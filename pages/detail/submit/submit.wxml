@@ -29,7 +29,7 @@
             <view class="width3">
                 <text>入住人</text>
             </view>
-            <input bindinput="getName" placeholder="姓名"></input>
+            <input bindinput="getName" placeholder="姓名" value='{{name}}'></input>
         </view>
         <view class="t3">
             <view class="width3">
@@ -45,7 +45,7 @@
                     </view>
                 </picker>
             </view>
-            <input bindinput="getIdCard" placeholder="证件号码"></input>
+            <input bindinput="getIdCard" placeholder="证件号码" value='{{idCard}}'></input>
         </view>
     </view>
 

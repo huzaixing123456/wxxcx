@@ -24,7 +24,10 @@ Page({
         leaveDate: '',
         roomId:'',
         markers:'',
-        flag:false
+        flag:false,
+        imageWidth:'',
+        imageHeight:'',
+        mapURL:''
     },
     onShow(){
       var checkDate = LocalStorage.getSync("checkDate");
@@ -71,6 +74,32 @@ Page({
         serviceFacility = serviceFacility.filter(item => {
           return item.active == 1;
         })
+        var mapURL;
+        var that = this;
+        // let result = wx.getSystemInfoSync();
+        // util.toast({
+        //   title: JSON.stringify(result)
+        // })
+        // wx.getSystemInfo({
+        //   success: function (result) {
+            
+            //var { windowWidth, windowHeight, pixelRatio } = result;
+            // var imageWidth = windowWidth;
+            // var imageHeight = windowWidth/5*4;
+            var imageWidth = 375;
+            var imageHeight = 300;
+            var mapURL = `https://apis.map.qq.com/ws/staticmap/v2/?center=${res.location['latitude']},${res.location['longitude']}&zoom=18&size=${imageWidth*2}*${imageHeight*2}&maptype=roadmap&markers=size:large|color:0xFFCCFF|label:k|${res.location['latitude']},${res.location['longitude']}&key=27BBZ-BDO6D-S774S-PRFUD-T56O6-OJBSG`;
+            that.setData({
+              imageWidth,
+              imageHeight,
+              mapURL
+            });
+            // util.toast({
+            //   title:mapURL
+            // })
+          // }
+        // });
+       
         this.setData({
           basic: res.basic,
           location: res.location,
@@ -200,6 +229,9 @@ Page({
         path:'pages/detail/detail?roomId='+roomId,
 　　　　 imageUrl: basic.coverPic
       }
+  },
+  onready(){
+    
   }
 });
 

@@ -88,6 +88,12 @@ Page({
       "form_id": formId
     }).then(res => {
       var params = JSON.parse(res);
+      var user = LocalStorage.getSync('user');
+      user.name = name;
+      user.cardIndex = cardIndex;
+      user.idCard = idCard;
+      console.log(user);
+      LocalStorage.set('user', user);
       wx.requestPayment({
         'timeStamp': params['timeStamp'],
         'nonceStr': params['nonceStr'],
@@ -174,10 +180,13 @@ Page({
     });
   },
   onShow: function () {
-var user = LocalStorage.getSync('user');
+    var user = LocalStorage.getSync('user');
     if(user){
       this.setData({
-        phone:user['mobile']
+        phone:user['mobile'],
+        name: user['name']||'',
+        cardIndex: user['cardIndex']||0,
+        idCard: user['idCard'] || ''
       })
     }
   }

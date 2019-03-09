@@ -21,16 +21,19 @@ Page({
           grant_type: "wechat",
           code: wxcode
         }).then(res => {
+          var tempUser = {};
             if(res.code != 401 && res['access_token']){
-                var user = {
+              var tempUser = {
                     token: res['access_token'],
                     prefix:res['token_type']
                 };
-                LocalStorage.set('user', user).then(res=>{
+              var user = LocalStorage.getSync('user');
+              LocalStorage.set('user', tempUser).then(res=>{
                     httpApi.getUserInfo().then(res => {
-                        user['mobile'] = res.mobile;
-                        this.setData({ user });
-                        LocalStorage.set('user', user);
+                      tempUser['mobile'] = res.mobile;
+                      var tagUser = Object.assign({}, user, tempUser);
+                      LocalStorage.set('user', tagUser);
+                      this.setData({ user: tagUser });
                     })
                 });
             }
