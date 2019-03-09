@@ -66,7 +66,7 @@
 
         <view class="item4" wx:if="{{location}}" >
             <view class="t1">房屋位置</view>
-            <view bindtap="navigatorToLocation" class="t2" data-lat="{{detailList.bdLat}}" data-lng="{{detailList.bdLng}}">
+            <view bindtap="goLocation" class="t2">
                 <!-- <map id="map"
                      longitude="{{location.longitude}}"
                      latitude="{{location.latitude}}"
