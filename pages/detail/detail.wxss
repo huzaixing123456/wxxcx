@@ -1,3 +1,6 @@
+.swiper{
+  position:relative;
+}
 .swiper .item {
     height: 500rpx;
 }
@@ -10,14 +13,14 @@
 .swiper .count {
     font-size:26rpx;
     position: absolute;
-    width: 150rpx;
+    padding:5rpx 35rpx;
     text-align: center;
-    border-radius: 50rpx;
-    top: 370rpx;
+    border-radius: 45rpx;
+    bottom: 10rpx;
     background-color: rgba(17,15,15,0.753);
-    left: 75%;
+    right: 10rpx;
     color: #fff;
-    line-height: 80rpx;
+    line-height: 55rpx;
 }
 
 .swiper .count image {
@@ -553,11 +556,6 @@ button::after {
   justify-content: space-between;
 }
 
-.count {
-  text-align: center;
-  height: 75rpx;
-  color: #fd8238;
-}
 
 .pay{
   margin-top:20rpx;
