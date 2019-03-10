@@ -77,6 +77,9 @@
 <view class='item5'>
   <view class='t1'><text class='color9'>入住人 : </text>{{order.name}}</view>
   <view class='t2'><text class='color9'>手机号 : </text>{{order.mobile}}</view>
+  <view class='t2'><text class='color9'>证件类型 : </text>{{order.idType}}</view>
+  <view class='t2'><text class='color9'>证件号 : </text>{{order.idCard}}</view>
+  <view class='t2' wx:if="{{order.doorPwd}}"><text class='color9'>开门密码 : </text><text class='t4'>{{order.doorPwd}}</text></view>
   <view class='t3' wx:if="{{order.paymentStatus}}">
     <text class='color9'>线上支付</text>
     <view>

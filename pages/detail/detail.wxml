@@ -1,20 +1,20 @@
 <view class="wrap">
     <view class="detail">
      <view class="swiper" wx:if="{{basic}}" bindtap='navigatorToPicture'>
-        <!-- <swiper circular bindchange="switchChange" class="item" > -->
-            <!-- <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this"> -->
-                <image bindtap="navigatorToPhoto" data-value="{{item}}" src="{{basic.coverPic}}"></image>
-            <!-- </swiper-item> -->
-        <!-- </swiper> -->
-        <!-- <view class="count">
-            <text class="daoke-icon icon-suolvetu"></text>
+        <swiper circular bindchange="switchChange" class="item" >
+            <swiper-item wx:for="{{basic.coverPic}}" wx:key="*this">
+                <image src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="count">
+            <!-- <text class="daoke-icon icon-suolvetu"></text> -->
             {{current+1}}/{{basic.coverPic.length}}
-        </view> -->
-        <view class="share">
+        </view>
+        <!-- <view class="share">
             <button openType="share">
                 <text class="share-icon daoke-icon icon-shangchuan"></text>
             </button>
-        </view>
+        </view> -->
     </view>
         <view class="item1">
             <text class="font36">{{basic.roomName}}</text>

@@ -72,6 +72,7 @@ page {
 
 .price-top{
     display:flex;
+    justify-content:center;
 }
 
 .list-item .wrap1 .t2 {

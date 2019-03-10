@@ -110,11 +110,20 @@
 .item5 .t1{
   padding-top:20rpx;
 }
+.item5 .t2{
+  padding-top:10rpx;
+}
 
 .item5 .t3{
   margin-top:20rpx;
   display:flex;
   justify-content:space-between;
+}
+
+.item5 .t4{
+  color:#FD8238;
+  font-size:48rpx;
+  font-weight:bold;
 }
 
 .item6{
@@ -133,7 +142,7 @@
 .item7{
   margin:0 20rpx;
   background:#EFEFEF;
-  padding:10rpx 30rpx;
+  padding:10rpx 30rpx 30rpx;
   font-size:26rpx;
   color:#666;
 }

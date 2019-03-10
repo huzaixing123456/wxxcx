@@ -44,7 +44,10 @@ Page({
         roomId:this.data.roomId
       }).then(res => {
         var basic = res.basic;
-        var coverPic = HTTP.imgPath + basic['coverPic'];
+        var coverPic = [];
+        basic['coverPic'].forEach(item=>{
+          coverPic.push(HTTP.imgPath + item);
+        });
         basic['coverPic'] = coverPic;
         var bedType = basic['bedType'].replace(/\[|\]|"/g, '').replace(/、/g, ' ');
         bedType = bedType + '张';
