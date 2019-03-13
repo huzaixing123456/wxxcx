@@ -56,6 +56,16 @@ Page({
                     locationCityData: cityData,
                     showNotOpen: !data['isOpen']
                 });
+                if(!data['isOpen']){
+                    wx.showModal({
+                        title: '',
+                        showCancel:false,
+                        content: '当前定位的城市暂未开通，请在选择城市中，查看所有开通的城市',
+                        success(res) {
+                            
+                        }
+                    })
+                }
                 LocalStorage.set('locationCityData', cityData);
                 LocalStorage.set('cityData', cityData);
                 this.getDataByCity(cityData.cityId);

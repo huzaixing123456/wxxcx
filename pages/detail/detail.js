@@ -199,7 +199,7 @@ Page({
               price: basic['sumRoomPrice'],
               roomName:basic.roomName,
               maxLive: basic.maxLive,
-              roomCount: basic.roomAmount,
+              roomCount: basic.roomNum,
               pledge: rules.pledge > 0 ? rules.pledgeMoney:0,
               refundPer: rules.refundPer,
               checkInTime: notice['checkInTime'],
