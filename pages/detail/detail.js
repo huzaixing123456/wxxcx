@@ -79,6 +79,11 @@ Page({
         })
         var mapURL;
         var that = this;
+        var location = res.location;
+        var {longitude,latitude} = location;
+        var resultLocation = util.transformLocation(longitude,latitude);
+          location.longitude = resultLocation[0];
+          location.latitude = resultLocation[1];
         // let result = wx.getSystemInfoSync();
         // util.toast({
         //   title: JSON.stringify(result)
@@ -91,7 +96,7 @@ Page({
             // var imageHeight = windowWidth/5*4;
             var imageWidth = 375;
             var imageHeight = 300;
-            var mapURL = `https://apis.map.qq.com/ws/staticmap/v2/?center=${res.location['latitude']},${res.location['longitude']}&zoom=18&size=${imageWidth*2}*${imageHeight*2}&maptype=roadmap&markers=size:large|color:0xFFCCFF|label:k|${res.location['latitude']},${res.location['longitude']}&key=27BBZ-BDO6D-S774S-PRFUD-T56O6-OJBSG`;
+            var mapURL = `https://apis.map.qq.com/ws/staticmap/v2/?center=${location['latitude']},${location['longitude']}&zoom=18&size=${imageWidth*2}*${imageHeight*2}&maptype=roadmap&markers=size:large|color:0xFFCCFF|label:k|${location['latitude']},${location['longitude']}&key=27BBZ-BDO6D-S774S-PRFUD-T56O6-OJBSG`;
             that.setData({
               imageWidth,
               imageHeight,
@@ -102,15 +107,15 @@ Page({
             // })
           // }
         // });
-       
+
         this.setData({
           basic: res.basic,
-          location: res.location,
+          location: location,
           markers: [{
             iconPath: '../../assets/location.png',
             id: 0,
-            latitude: res.location['latitude'],
-            longitude: res.location['longitude'],
+            latitude: location['latitude'],
+            longitude: location['longitude'],
             width: 25,
             height: 25
           }],

@@ -3,6 +3,7 @@ import util from '../../libs/util';
 import LocalStorage from '../../libs/localStorage';
 import { HTTP } from '../../libs/const';
 
+
 Page({
     data: {
         startDate: "", //开始时间
@@ -24,7 +25,8 @@ Page({
         showTips:false //没选择城市时
     },
     onLoad: function (a) {
-      
+        let result = wx.getSystemInfoSync();
+        console.log(result);
     },
     getDataByCity(cityId) {
         var params = cityId ? { did: cityId } : null;

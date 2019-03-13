@@ -1,3 +1,5 @@
+import gcoord from './gcoord.js'
+
 //获取登录信息
 function getLogin() {
   return new Promise((resolve, reject) => {
@@ -132,6 +134,17 @@ function getRandomNumber(n) {
   return Math.floor(number);
 }
 
+//坐标转化
+function transformLocation(lon,lat) {
+    var { transform, WGS84, GCJ02,BD09 } = gcoord;
+    var result = gcoord.transform(
+        [lon, lat],    // 经纬度坐标
+        BD09,               // 当前坐标系
+        GCJ02                 // 目标坐标系
+    );
+    console.log(result);  // [116.41661560068297, 39.92196580126834]
+    return result
+}
 
 export default {
   getLogin,
@@ -145,5 +158,6 @@ export default {
   getStrByNum,
   getWeek,
   getDays,
-  getRandomNumber
+  getRandomNumber,
+  transformLocation
 }
