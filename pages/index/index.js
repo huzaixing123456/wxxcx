@@ -22,11 +22,19 @@ Page({
         rooms: '',
         peopleNum: '', //入住人数
         showNotOpen:false,
-        showTips:false //没选择城市时
+        showTips:false, //没选择城市时
+        roomId:''
     },
-    onLoad: function (a) {
-        let result = wx.getSystemInfoSync();
-        console.log(result);
+    onLoad: function (options) {
+      var {roomId} = options;
+      if (roomId){
+        this.setData({
+          roomId: roomId
+        })
+      }
+      
+        // let result = wx.getSystemInfoSync();
+        // console.log(result);
     },
     getDataByCity(cityId) {
         var params = cityId ? { did: cityId } : null;
@@ -58,16 +66,16 @@ Page({
                     locationCityData: cityData,
                     showNotOpen: !data['isOpen']
                 });
-                if(!data['isOpen']){
-                    wx.showModal({
-                        title: '',
-                        showCancel:false,
-                        content: '当前定位的城市暂未开通，请在选择城市中，查看所有开通的城市',
-                        success(res) {
+                // if(!data['isOpen']){
+                //     wx.showModal({
+                //         title: '',
+                //         showCancel:false,
+                //         content: '当前定位的城市暂未开通，请在选择城市中，查看所有开通的城市',
+                //         success(res) {
 
-                        }
-                    })
-                }
+                //         }
+                //     })
+                // }
                 LocalStorage.set('locationCityData', cityData);
                 LocalStorage.set('cityData', cityData);
                 this.getDataByCity(cityData.cityId);
@@ -77,6 +85,28 @@ Page({
         });
     },
     onShow() {
+      var checkDate = LocalStorage.getSync("checkDate");
+      if (checkDate){
+        var { startDate, endDate } = checkDate;
+        var start = util.getDateByNum(startDate);
+        var end = util.getDateByNum(endDate);
+        var days = util.getCountDay(start, end);
+        this.setData({
+          startDate: `${start.month}月${start.day}`,
+          endDate: `${end.month}月${end.day}`,
+          days
+        });
+      }else{
+        this.setDefaultDate();
+      }
+      if(this.data.roomId){
+        wx.navigateTo({
+          url: "../detail/detail?roomId=" + this.data.roomId
+        });
+        this.setData({
+          roomId:''
+        })
+      }
         var cityData = LocalStorage.getSync("cityData");
         var locationCityData = LocalStorage.getSync("locationCityData");
         if(locationCityData){
@@ -93,19 +123,6 @@ Page({
         }else{
             this.getLocation();
         }
-        LocalStorage.get('checkDate').then(res => {
-            var { startDate, endDate } = res;
-            var start = util.getDateByNum(startDate);
-            var end = util.getDateByNum(endDate);
-            var days = util.getCountDay(start, end);
-            this.setData({
-                startDate: `${start.month}月${start.day}`,
-                endDate: `${end.month}月${end.day}`,
-                days
-            });
-        }, () => {
-          this.setDefaultDate();
-        });
         // var people = LocalStorage.getSync('people');
         // if (people){
         //     this.setData({

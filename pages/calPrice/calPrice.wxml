@@ -26,7 +26,7 @@
             <view class='date-head' data-id="{{item.date}}">
                 <view class="text">{{item.day}}</view>
                 <view class="tips" wx:if="{{item.date>today&&item.num == 0&&item.date!=endDate}}">满房</view>
-                <view class="tips" wx:if="{{item.date>today&&item.num > 0 && item.date!=endDate}}">￥ {{item.price}}</view>
+                <view class="tips" wx:if="{{item.date>=today&&item.num > 0 && item.date!=endDate}}">￥ {{item.price}}</view>
                 <!--<view class="tips" wx:if="{{item.date == startDate}}">入住</view>-->
                 <view class="tips" wx:if="{{item.date == endDate}}">离店</view>
             </view>

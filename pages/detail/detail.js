@@ -163,38 +163,7 @@ Page({
             this.setData({
                 date
             });
-        },() => {
-            this.setDefaultDate();
         });
-    },
-    setDefaultDate(){
-        var current = util.getCurrentDate();
-        var tomorrow = util.getTomorrowDate();
-        var startDate = current.year+''+current.month+''+current.date;
-        var endDate = tomorrow.year+''+tomorrow.month+''+tomorrow.date;
-        var date = {
-            year: current['year'],
-            month: current['month'],
-            startDate: start,
-            endDate: end,
-            startCalendar:startDate.year+''+startDate.month+''+startDate.day,
-            endCalendar:endDate.year+''+endDate.month+''+endDate.day,
-            startStr: `${startDate.month}月${startDate.day}`,
-            endStr: `${endDate.month}月${endDate.day}`,
-            days
-        }
-        this.setData({
-            date
-        });
-        this.setData({
-            startDate: `${current.month}月${current.date}`,
-            endDate: `${tomorrow.month}月${tomorrow.date}`,
-            days: 1
-        });
-        LocalStorage.set('checkDate', {
-            startDate: util.getStrByNum(current.year, current.month, current.date),
-            endDate: util.getStrByNum(tomorrow.year, tomorrow.month, tomorrow.date)
-        })
     },
     getNoPayDay() {
         var { refundDay, refundPer } = this.data.rules;
@@ -265,7 +234,7 @@ Page({
     var { basic, roomId} = this.data;
     return {
         title: basic.roomName,        
-        path:'pages/detail/detail?roomId='+roomId,
+        path:'pages/index/index?roomId='+roomId,
 　　　　 imageUrl: basic.coverPic[0]
       }
   },
