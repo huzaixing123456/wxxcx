@@ -12,7 +12,10 @@ Page({
       deleteOrderFlag:false,
       leaveOrderFlag:false,
       markers:'',
-      range:false
+      range:false,
+      imageWidth:'',
+      imageHeight:'',
+      mapURL:''
     },
     onLoad: function(options) {
         let {orderId} = options;
@@ -22,14 +25,26 @@ Page({
           let { orderTime } = res;
           var times = (new Date().getTime()-orderTime) - 2 * 60 * 60 * 1000;
           var range = times > 0 ? true : false;
+            var {longitude,latitude} = res;
+            var resultLocation = util.transformLocation(longitude,latitude);
+            var longitude = resultLocation[0];
+            var latitude = resultLocation[1];
+            var imageWidth = 375;
+            var imageHeight = 300;
+            res.longitude = longitude;
+            res.latitude = latitude;
+            var mapURL = `https://apis.map.qq.com/ws/staticmap/v2/?center=${latitude},${longitude}&zoom=18&size=${imageWidth*2}*${imageHeight*2}&maptype=roadmap&markers=size:large|color:0xFFCCFF|label:k|${latitude},${longitude}&key=27BBZ-BDO6D-S774S-PRFUD-T56O6-OJBSG`;
             this.setData({
               order:res,
               range: range,
+              imageWidth,
+              imageHeight,
+              mapURL,
               markers:[{
                 iconPath: '../../../assets/location.png',
                 id: 0,
-                latitude: res['latitude'],
-                longitude: res['longitude'],
+                latitude: latitude,
+                longitude: longitude,
                 width: 25,
                 height: 25
               }],

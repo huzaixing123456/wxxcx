@@ -25,7 +25,7 @@ Page({
       date = date < 10 ? '0'+date:date;
       this.setData({
           today:year+''+month+''+date
-      })
+      });
       httpApi.getCalendar({roomId}).then(res=>{
           var date = JSON.parse(res);
           this.calFormate(date);
