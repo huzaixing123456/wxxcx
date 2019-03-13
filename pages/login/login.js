@@ -38,17 +38,17 @@ Page({
     },
     getPhone(e){
         this.setData({
-            phone:e.detail.value
+            phone:e.detail.value.replace(/\s+/g, '')
         })
     },
     getImageCode(e){
         this.setData({
-            imageCode:e.detail.value
+            imageCode:e.detail.value.replace(/\s+/g, '')
         })
     },
     setCode(e){
         this.setData({
-            code:e.detail.value
+            code:e.detail.value.replace(/\s+/g, '')
         })
     },
     getCode(){

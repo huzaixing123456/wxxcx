@@ -154,17 +154,17 @@ Page({
   },
   getName(e) {
     this.setData({
-      name: e.detail.value
+      name: e.detail.value.replace(/\s+/g, '')
     })
   },
   getPhone(e){
     this.setData({
-      phone: e.detail.value
+      phone: e.detail.value.replace(/\s+/g, '')
     })
   },
   getIdCard(e){
     this.setData({
-      idCard: e.detail.value
+      idCard: e.detail.value.replace(/\s+/g, '')
     })
   },
   bindCardChange(e){
