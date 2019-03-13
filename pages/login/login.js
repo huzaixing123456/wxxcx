@@ -184,7 +184,7 @@ Page({
               LocalStorage.set('user', {
                 token: res['access_token'],
                 prefix:res['token_type'],
-                telephone: phone
+                mobile: phone
               })
               wx.navigateBack();
             }

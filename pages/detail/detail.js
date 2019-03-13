@@ -194,7 +194,7 @@ Page({
         }else{
           var {basic,roomId,rules,notice} = this.data;
           LocalStorage.set('roomDeatal',{
-              coverPic:basic.coverPic,
+              coverPic:basic.coverPic[0],
               roomId,
               price: basic['sumRoomPrice'],
               roomName:basic.roomName,
@@ -230,7 +230,7 @@ Page({
     return {
         title: basic.roomName,        
         path:'pages/detail/detail?roomId='+roomId,
-　　　　 imageUrl: basic.coverPic
+　　　　 imageUrl: basic.coverPic[0]
       }
   },
   onready(){

@@ -87,7 +87,7 @@
 
     <view class="wrap6">
         <view class="t1">
-            <view class="font36 color">{{price}}</view>
+            <view class="font36 color">{{total}}</view>
             <view class="font22 color9">待付金额</view>
         </view>
         <form bindsubmit="submit" report-submit='true'>

@@ -53,7 +53,7 @@ Page({
       util.toast({ title: "请输入入住人姓名" });
       return;
     }
-    if (!REGEXP.TELEPHONE.test(phone)) {
+    if (!REGEXP.TELEPHONE.test(phone.replace(/\s+/g, ''))) {
       util.toast({ title: "请输入正确的手机号码" });
       return;
     }
