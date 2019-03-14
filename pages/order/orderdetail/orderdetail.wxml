@@ -94,6 +94,8 @@
   <view>¥{{order.pledge}}</view>
 </view>
 
+<view class='indexBtn' bindtap='goIndex'>去首页</view>
+
 <view class='item7'>
   <view class='t1'>温馨提示</view>
   <view class='t2'>

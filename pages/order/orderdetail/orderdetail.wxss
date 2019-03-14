@@ -1,3 +1,4 @@
+
 .item1{
   padding:30rpx 0;
   text-align:center;
@@ -239,4 +240,16 @@
 .content .t7{
   margin-top:10rpx;
   color:#999
+}
+
+.indexBtn{
+  display:inline-block;
+  background: #FD8238;
+  padding:10rpx 25rpx;
+  border-radius:5rpx;
+  font-size:36rpx;
+  color:#FFF;
+  margin:20rpx auto;
+  margin-left:50%;
+  transform:translateX(-50%);
 }

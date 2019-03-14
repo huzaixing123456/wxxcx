@@ -188,5 +188,10 @@ Page({
     wx.navigateTo({
       url: "../../detail/detail?roomId=" + roomId
     });
+  },
+  goIndex(){
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
   }
 });
