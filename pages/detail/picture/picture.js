@@ -13,55 +13,46 @@ Page({
     activeData:[],
     listData:[
      
-    ]
+    ],
+    name:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  formate(name,arr){
+    if(arr.length == 0)return [];
+    var imgArr = [];
+    arr.forEach((item)=>{
+      var obj = {
+        name: name,
+        src: HTTP.imgPath + item
+      }
+      imgArr.push(obj);
+    });
+    return imgArr;
+  },
   onLoad: function (options) {
     let { roomId } = options;
     httpApi.getRoomImage({roomId}).then(res=>{
       var { balconyPic_500, bathroomPic_500, bedroomPic_500, kitchenPic_500, parlorPic_500,otherPic_500} = res;
-      var listData = [{
-        name:"全部",
-        data:[]
-      }];
-      listData.push({
-        name:'阳台',
-        data:balconyPic_500
+      var listData = [];
+      listData = listData.concat(this.formate('阳台', balconyPic_500));
+      listData = listData.concat(this.formate('浴室', bathroomPic_500));
+      listData = listData.concat(this.formate('卧室', bedroomPic_500));
+      listData = listData.concat(this.formate('厨房', kitchenPic_500));
+      listData = listData.concat(this.formate('客厅', parlorPic_500));
+      listData = listData.concat(this.formate('其它', otherPic_500));
+      var name = listData.map(item=>{
+        return item.name;
       });
-      listData.push({
-        name: '浴室',
-        data: bathroomPic_500
-      });
-      listData.push({
-        name: '卧室',
-        data: bedroomPic_500
-      });
-      listData.push({
-        name: '厨房',
-        data: kitchenPic_500
-      });
-      listData.push({
-        name: '客厅',
-        data: parlorPic_500
-      });
-      listData.push({
-        name: '其它',
-        data: otherPic_500
-      });
-      listData.forEach(item=>{
-        var data = item.data.map(i=>{
-          i = HTTP.imgPath + i;
-          return i;
-        });
-        item['data'] = data;
-      })
+      var name = [...new Set(name)];
+      name.unshift('全部');
       this.setData({
-        listData
+        listData,
+        name:name
       });
-      this.changeData();
+      this.changeData('全部');
     })
   },
 
@@ -78,26 +69,26 @@ Page({
   onShow: function () {
     
   },
-  changeData(){
+  changeData(name){
     var { activeIndex, listData } = this.data;
     var tagArray = [];
-    if (activeIndex == 0) { //全部
-      listData.forEach(item=>{
-        tagArray = tagArray.concat(item.data);
-      })
+    if (name == "全部") { //全部
+      tagArray = listData; 
     }else{
-      tagArray = listData[activeIndex]['data'];
+      tagArray = listData.filter(item=>{
+        return item.name == name;
+      })
     }
     this.setData({
       activeData:tagArray
     })
   },
   changeNav(e){
-    var index = e.currentTarget.dataset.index;
+    var {index,name} = e.currentTarget.dataset;
     this.setData({
       activeIndex:index
     })
-    this.changeData();
+    this.changeData(name);
   },
   lookBigPicture(e){ 
     var { index } = e.currentTarget.dataset;
@@ -115,5 +106,8 @@ Page({
       this.setData({
           current: e.detail.current
       })
+  },
+  preventD(){
+    return;
   }
 })
