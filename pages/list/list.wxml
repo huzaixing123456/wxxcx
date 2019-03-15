@@ -23,7 +23,7 @@
       wx:for="{{list}}"
       wx:key="*this">
         <view class="wrap1">
-            <image src="{{item.coverPic}}"></image>
+            <image src="{{item.coverPic}}" mode="aspectFill"></image>
             <view class="t1">
                 <view class="price-top">
                     <text class="font22">{{(item.status != 1 || item.roomNum == 0)?'已满房':'¥ '+item.price}}</text>

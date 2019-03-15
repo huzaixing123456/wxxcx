@@ -29,15 +29,24 @@ Page({
         imageHeight:'',
         mapURL:''
     },
+    setDefaultDate() {
+      var current = util.getCurrentDate();
+      var tomorrow = util.getTomorrowDate();
+      var checkDate = {
+        startDate: util.getStrByNum(current.year, current.month, current.date),
+        endDate: util.getStrByNum(tomorrow.year, tomorrow.month, tomorrow.date) 
+      }
+      LocalStorage.set('checkDate', checkDate);
+      return checkDate
+    },
     onShow(){
+      var start, end;
       var checkDate = LocalStorage.getSync("checkDate");
-      var { startDate, endDate } = checkDate;
-      if (startDate) {
-        var start = util.getDateByNum(startDate, '-');
+      if (!checkDate){
+        checkDate =  this.setDefaultDate();
       }
-      if (endDate) {
-        var end = util.getDateByNum(endDate, '-');
-      }
+      start = util.getDateByNum(checkDate.startDate,'-');
+      end = util.getDateByNum(checkDate.endDate, '-');
       httpApi.getRoomDetail({
         checkInDate: start,
         checkOutDate: end,
