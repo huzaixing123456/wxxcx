@@ -27,7 +27,7 @@
       <view class="item" wx:for="{{list}}" wx:key='*this'>
       <view wx:for="{{item}}" wx:key='*this' wx:for-item='itemName' id="{{index}}">
         <view class="letter">{{index}}</view>
-        <view class="city_name" bindtap='changeCity' data-item="{{itemCity}}" wx:for="{{itemName}}" wx:for-item="itemCity" wx:key='*this'>{{itemCity.city}}</view>
+        <view class="city_name" bindtap='changeCity' data-item="{{itemCity}}" wx:for="{{itemName}}" wx:for-item="itemCity" wx:key='*this'>{{itemCity.district}}</view>
       </view>
       </view>
     </scroll-view>

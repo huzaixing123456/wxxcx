@@ -29,7 +29,7 @@ Page({
   changeCity(e) {
     var data = e.currentTarget.dataset.item;
     var cityData = {
-      name: data['city'],
+      name: data['district'],
       cityId: data['did']
     }
     LocalStorage.set("cityData", cityData);

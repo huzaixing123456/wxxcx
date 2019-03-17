@@ -53,6 +53,7 @@ Page({
       checkInDate: `${start.year}-${start.month}-${start.day}`,
       checkOutDate: `${end.year}-${end.month}-${end.day}`
     }
+    console.log(this.data.form);
     this.setData({
       form: Object.assign(this.data.form, oData),
       start: `${start.month}.${start.day}`,
@@ -95,8 +96,9 @@ Page({
         oData['facilities'] = filter.facilities;
       }
     }
+    console.log(oData);
     this.setData({
-      form: oData
+      form: Object.assign(this.data.form, oData)
     });
     this.getData();
   },
@@ -115,6 +117,7 @@ Page({
     this.getData(++pageNum);
   },
   getData(page = 1) {
+    console.log(page);
     var parmas = this.data.form;
     var tagParam = Object.assign({}, parmas);
     var { district, sort, filter} = this.data;
@@ -131,7 +134,7 @@ Page({
           tips: Object.keys(filter).length > 0 ? '当前筛选条件下无房，建议修改筛选条件' :'您附近无房或已客满'
         })
       }
-      if (content.length < 10) {
+      if (page >= data.maxPage) {
         this.setData({
           noMoreData: true
         })
