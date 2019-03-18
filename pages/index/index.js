@@ -193,5 +193,11 @@ Page({
       this.setData({
         showNotOpen:false
       })
-    }
+    },
+    onShareAppMessage: function () {
+        return {
+            title: '龙门客栈轻精品民宿',
+            path:'pages/index/index'
+        }
+    },
 });
